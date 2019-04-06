@@ -18,7 +18,8 @@ async def parse_response(ws, msg):
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		await funcs.choose_moves(ws, msg_arr[2], battletag)
-
+		print(msg)
+		
 	# check for short messages
 	elif (len(msg_arr) < 4):
 		pass
