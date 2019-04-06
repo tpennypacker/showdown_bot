@@ -1,17 +1,17 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "Ask Key"
+username = "testbot2798"
 
-password = "ascii"
+password = "password2798"
 
-ionext = True
+ionext = False
 
 timer = True
 
-hello = "have fun"
+hello = "oof yikes thats a mish"
 
-goodbye = "gg wp"
+goodbye = "another day, another opponent mished"
 
 autosearch = False
 
