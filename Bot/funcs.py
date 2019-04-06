@@ -50,7 +50,7 @@ def random_foe():
 
 async def log_in(ws, msg_arr):
 	ID = msg_arr[2]
-	challstr = msg_arr[3]	
+	challstr = msg_arr[3]
 	response = requests.post("https://play.pokemonshowdown.com/action.php?",
 		data={
 			'act': 'login',
@@ -78,15 +78,15 @@ async def startup_ops(ws):
 		print("Blocked challenges.")
 	else:
 		print("Unblocked challenges.")
-	
+
 	await change_avatar(ws)
 	print("Your avatar has been changed to " + bot_settings.avatar + ".\n")
 
 	if (bot_settings.ionext):
 		await ionext(ws)
 		print("Your next match will be invite-only. \n")
-	
-	
+
+
 # gets called once at the start of the battle
 async def on_battle_start(ws, battletag):
 	await hello(ws, battletag)
@@ -94,6 +94,7 @@ async def on_battle_start(ws, battletag):
 	if (bot_settings.timer):
 		await timer(ws, battletag)
 		print("Timer started for match: " + battletag + "\n")
+		#await choose_leads(ws, battletag)
 
 # gets called once at the end of the battle
 async def on_battle_end(ws, battletag):
@@ -118,5 +119,12 @@ async def choose_moves(ws, battledata, battletag):
 	await ws.send(command_str)
 
 
+# gets called at team preview
+async def choose_leads(ws, battletag):
 
-
+	leads = random.sample(range(1,7), 2) # 2 unique numbers from 1-6
+	leads2 = [str(i) for i in leads]
+	leads3 = "".join(leads2)
+	command_str = battletag + "|/choose team " + leads3
+	print("Sending command: " + command_str)
+	await ws.send(command_str)

@@ -8,11 +8,17 @@ from string import printable
 import bot_settings
 import funcs
 
+
 async def parse_response(ws, msg):
 	msg_arr = msg.split('|')
 
 	if (len(msg_arr) < 3):
 		pass
+
+	# triggers at team preview
+	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"teamPreview"'):
+		battletag = msg_arr[0][1:].split('\n')[0]
+		await funcs.choose_leads(ws, battletag)
 
 	# triggers at the start of each turn
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
@@ -42,14 +48,19 @@ async def parse_response(ws, msg):
 		await funcs.on_battle_end(ws, battletag)
 
 
-
 async def connect_to_ps():
-    async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
-        while(True):
-            #print("_____________________________")
-            msg = await ws.recv()
-            await parse_response(ws, msg)
+	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
+		with open("C:\\Users\\Stephen\\Desktop\\Programming\\Python\\codees\\bot with fespy3\\showdown_bot\\Bot\\bot_log.txt", "w") as logfile:
+			while(True):
+				#print("_____________________________")
+				msg = await ws.recv()
+				msg = msg.replace("\u2606", "*plyr*")
+				print(msg, file=logfile)
+				print("_____________________________\n", file=logfile)
+				#print(msg)
+				#print("_____________________________\n")
+				await parse_response(ws, msg)
 
 #os.system('cls') # windows
-os.system('clear') # mac
+#os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())
