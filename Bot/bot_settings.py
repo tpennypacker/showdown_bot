@@ -15,7 +15,7 @@ goodbye = "another day, another opponent mished"
 
 autosearch = False
 
-avatar = "whitney"
+avatar = ""
 
 block_pms = False
 

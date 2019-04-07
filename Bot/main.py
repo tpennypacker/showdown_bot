@@ -20,6 +20,15 @@ async def parse_response(ws, msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		await funcs.choose_leads(ws, battletag)
 
+	# triggers when forced to switch
+	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"forceSwitch"'):
+		battletag = msg_arr[0][1:].split('\n')[0]
+		await funcs.choose_switch(ws, msg_arr[2], battletag)
+
+	# check if wait message
+	elif (msg_arr[1] == "request" and msg_arr[2][0:7] == '{"wait"'):
+		pass
+
 	# triggers at the start of each turn
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
 		battletag = msg_arr[0][1:].split('\n')[0]

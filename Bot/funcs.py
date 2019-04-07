@@ -38,8 +38,8 @@ async def blockchallenges(ws):
 	else:
 		await ws.send("|/unblockchallenges")
 
-def attack(move, foe):
-	return ("move " + str(move) + " " + str(foe))
+def attack(move, foe, mega):
+	return ("move " + str(move) + mega + " " + str(foe))
 
 def random_move():
 	return random.randint(1, 4)
@@ -79,8 +79,9 @@ async def startup_ops(ws):
 	else:
 		print("Unblocked challenges.")
 
-	await change_avatar(ws)
-	print("Your avatar has been changed to " + bot_settings.avatar + ".\n")
+	if (len(bot_settings.avatar) > 0):
+		await change_avatar(ws)
+		print("Your avatar has been changed to " + bot_settings.avatar + ".\n")
 
 	if (bot_settings.ionext):
 		await ionext(ws)
@@ -112,8 +113,9 @@ async def on_battle_end(ws, battletag):
 # gets called at the start of each turn
 async def choose_moves(ws, battledata, battletag):
 
-	decision1 = attack(random_move(), random_foe())
-	decision2 = attack(random_move(), random_foe())
+	mega1, mega2 = get_can_mega(ws, battledata, battletag)
+	decision1 = attack(random_move(), random_foe(), mega1)
+	decision2 = attack(random_move(), random_foe(), mega2)
 	command_str = battletag + "|/choose " + decision1 + ", " + decision2
 	print("Sending command: " + command_str)
 	await ws.send(command_str)
@@ -122,9 +124,34 @@ async def choose_moves(ws, battledata, battletag):
 # gets called at team preview
 async def choose_leads(ws, battletag):
 
-	leads = random.sample(range(1,7), 2) # 2 unique numbers from 1-6
-	leads2 = [str(i) for i in leads]
-	leads3 = "".join(leads2)
-	command_str = battletag + "|/choose team " + leads3
+	leads = random.sample(range(1, 7), 2)  # 2 unique numbers from 1-6
+	leads = [str(i) for i in leads]
+	command_str = battletag + "|/choose team " + "".join(leads)
 	print("Sending command: " + command_str)
 	await ws.send(command_str)
+
+
+# gets called when forced to switch
+async def choose_switch(ws, battledata, battletag):
+
+	battle_json = json.loads(battledata)
+	switch1, switch2 = battle_json['forceSwitch']  # each True or False
+	if (switch1 == switch2):
+		switch_str = "switch, switch"
+	else:
+		switch_str = "switch"
+	command_str = battletag + "|/choose " + switch_str
+	print("Sending command: " + command_str)
+	await ws.send(command_str)
+
+
+# called at start of each turn, checks if can mega
+def get_can_mega(ws, battledata, battletag):
+
+	battle_json = json.loads(battledata)
+	mega_dic = {True: ' mega', False: ''}
+	can_mega1 = 'canMegaEvo' in battle_json['active'][0].keys()
+	can_mega2 = 'canMegaEvo' in battle_json['active'][1].keys()
+	mega_str1 = mega_dic[can_mega1]
+	mega_str2 = mega_dic[can_mega2]
+	return mega_str1, mega_str2
