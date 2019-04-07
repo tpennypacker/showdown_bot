@@ -1,8 +1,8 @@
-|updateuser|Guest 1508377|0|170
+|updateuser|Guest 1763570|0|266
 |formats|,1|US/UM Singles|[Gen 7] Random Battle,f|[Gen 7] Unrated Random Battle,b|[Gen 7] OU,e|[Gen 7] Ubers,e|[Gen 7] UU,e|[Gen 7] RU,e|[Gen 7] NU,e|[Gen 7] PU,e|[Gen 7] LC,e|[Gen 7] Monotype,e|[Gen 7] Anything Goes,e|[Gen 7] 1v1,e|[Gen 7] ZU,e|[Gen 7] CAP,e|[Gen 7] CAP LC,c|[Gen 7] Battle Spot Singles,1e|[Gen 7] Battle Spot Special 15,1e|[Gen 7] Custom Game,c|,1|US/UM Doubles|[Gen 7] Random Doubles Battle,f|[Gen 7] Doubles OU,e|[Gen 7] Doubles Ubers,e|[Gen 7] Doubles UU,e|[Gen 7] VGC 2019 Sun Series,1c|[Gen 7] VGC 2019 Moon Series,1c|[Gen 7] VGC 2019 Ultra Series,1e|[Gen 7] VGC 2018,1e|[Gen 7] VGC 2017,1c|[Gen 7] Battle Spot Doubles,1e|[Gen 7] 2v2 Doubles,c|[Gen 7] Metronome Battle,c|[Gen 7] Doubles Custom Game,c|,2|OM of the Month|[Gen 7] Godly Gift,e|[Gen 7] Mix and Mega LC,e|,2|Other Metagames|[Gen 7] Balanced Hackmons,e|[Gen 7] Mix and Mega,e|[Gen 7] Almost Any Ability,e|[Gen 7] Camomons,c|[Gen 7] STABmons,e|[Gen 7] Tier Shift,e|[Gen 7] Partners in Crime,c|[Gen 6] Gen-NEXT OU,8|,2|Let's Go!|[Gen 7 Let's Go] Random Battle,f|[Gen 7 Let's Go] OU,1e|[Gen 7 Let's Go] Singles No Restrictions,c|[Gen 7 Let's Go] Doubles OU,1e|[Gen 7 Let's Go] Doubles No Restrictions,c|,2|Randomized Metas|[Gen 7] Battle Factory,f|[Gen 7] BSS Factory,f|[Gen 7] Monotype Random Battle,f|[Gen 7] Super Staff Bros Brawl,f|[Gen 7] Challenge Cup 1v1,f|[Gen 7] Challenge Cup 2v2,d|[Gen 7] Hackmons Cup,f|[Gen 7] Doubles Hackmons Cup,d|[Gen 6] Random Battle,f|[Gen 6] Battle Factory,d|[Gen 5] Random Battle,f|[Gen 4] Random Battle,f|[Gen 3] Random Battle,f|[Gen 2] Random Battle,f|[Gen 1] Random Battle,f|[Gen 1] Challenge Cup,9|,3|RoA Spotlight|[Gen 5] UU,e|[Gen 3] NU,e|[Gen 4] Monotype,e|,3|Past Gens OU|[Gen 6] OU,e|[Gen 5] OU,e|[Gen 4] OU,e|[Gen 3] OU,e|[Gen 2] OU,e|[Gen 1] OU,e|,3|OR/AS Singles|[Gen 6] Ubers,c|[Gen 6] UU,c|[Gen 6] RU,c|[Gen 6] NU,c|[Gen 6] PU,c|[Gen 6] LC,c|[Gen 6] Monotype,c|[Gen 6] Anything Goes,c|[Gen 6] 1v1,c|[Gen 6] CAP,c|[Gen 6] Battle Spot Singles,1c|[Gen 6] Custom Game,c|,3|OR/AS Doubles/Triples|[Gen 6] Doubles OU,c|[Gen 6] VGC 2016,1c|[Gen 6] Battle Spot Doubles,1c|[Gen 6] Doubles Custom Game,c|[Gen 6] Battle Spot Triples,1c|[Gen 6] Triples Custom Game,c|,4|B2/W2 Singles|[Gen 5] Ubers,c|[Gen 5] RU,c|[Gen 5] NU,c|[Gen 5] LC,c|[Gen 5] Monotype,c|[Gen 5] GBU Singles,1c|[Gen 5] Custom Game,c|,4|B2/W2 Doubles|[Gen 5] Doubles OU,c|[Gen 5] GBU Doubles,1c|[Gen 5] Doubles Custom Game,c|,4|DPP Singles|[Gen 4] Ubers,c|[Gen 4] UU,c|[Gen 4] NU,c|[Gen 4] LC,c|[Gen 4] Anything Goes,c|[Gen 4] Custom Game,c|,4|DPP Doubles|[Gen 4] Doubles OU,c|[Gen 4] Doubles Custom Game,c|,4|Past Generations|[Gen 3] Ubers,c|[Gen 3] UU,c|[Gen 3] Custom Game,c|[Gen 3] Doubles Custom Game,c|[Gen 2] Ubers,c|[Gen 2] UU,c|[Gen 2] NU,c|[Gen 2] Custom Game,c|[Gen 1] Ubers,c|[Gen 1] UU,c|[Gen 1] OU (tradeback),c|[Gen 1] Stadium OU,c|[Gen 1] Custom Game,c
 _____________________________
 
-|challstr|4|19966f0425eee0c8ec07ef6a2eba260756ed3604f9599fd819842d385eea4cd7b1d397a8d28d874b5072a1bffe0eb368e51b8132e2fc3c7bc179320251446606d14916c904ca371ac15c94486e45af77e2129e17f09c3d68895057cd22611d36ee8999e017782b55efdfd251f984189a221037a0f80c49e6cdd0702c792df955
+|challstr|4|5d1749aca717218bec2976bc9b20450a7355f542879a2e4185d89ef4739e5d7cc0ccc09bb03975dbcaf06f4bf8fe80e4401c7050bf62667cfa7584898e06461fc5394b70581c64b9395bff0fa34f5a9adf99e3731633eec83c5b358e9b6d00cdd753894f99a10dadb716e7ccefd647454d914a118cd0dec122296c8f70ef12c0
 _____________________________
 
 |updatesearch|{"searching":[],"games":null}
@@ -23,46 +23,416 @@ _____________________________
 |error|You are already available for challenges!
 _____________________________
 
-Avatar changed to:
-|raw|<img src="//play.pokemonshowdown.com/sprites/trainers/whitney.png" alt="whitney" width="80" height="80" />
+|updatechallenges|{"challengesFrom":{},"challengeTo":{"to":"yuicchii","format":"gen7doublesou"}}
 _____________________________
 
-|updatesearch|{"searching":["gen7doublesou"],"games":null}
+|pm| Yuicchii| testbot2798|is thi sfor dpl
+_____________________________
+
+|pm| testbot2798| Yuicchii|no
+_____________________________
+
+|pm| testbot2798| Yuicchii|is that even up
+_____________________________
+
+|updatechallenges|{"challengesFrom":{},"challengeTo":null}
 _____________________________
 
 |updatesearch|{"searching":[],"games":null}
 _____________________________
 
-|updatesearch|{"searching":[],"games":{"battle-gen7doublesou-888480615":"[Gen 7] Doubles OU Battle*"}}
+|updatesearch|{"searching":[],"games":{"battle-gen7doublesou-888765759":"[Gen 7] Doubles OU Battle"}}
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888765759
 |init|battle
-|title|testbot2798 vs. KazdaUFO
+|title|testbot2798 vs. Yuicchii
 |j|*plyr*testbot2798
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888765759
 |request|
 _____________________________
 
->battle-gen7doublesou-888480615
-|j|*plyr*KazdaUFO
+>battle-gen7doublesou-888765759
+|j|*plyr*Yuicchii
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888765759
 |player|p1|testbot2798|whitney
 
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"teamPreview":true,"maxTeamSize":6,"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"344/344","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"}]},"rqid":2}
+>battle-gen7doublesou-888765759
+|request|{"teamPreview":true,"maxTeamSize":6,"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":2}
 _____________________________
 
->battle-gen7doublesou-888480615
-|player|p2|KazdaUFO|29
+>battle-gen7doublesou-888765759
+|player|p2|Yuicchii|256
+|teamsize|p1|6
+|teamsize|p2|6
+|gametype|doubles
+|gen|7
+|tier|[Gen 7] Doubles OU
+|rule|Species Clause: Limit one of each Pokémon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Moody Clause: Moody is banned
+|rule|Evasion Abilities Clause: Evasion abilities are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Swagger Clause: Swagger is banned
+|clearpoke
+|poke|p1|Manectric, M|item
+|poke|p1|Victini|item
+|poke|p1|Landorus-Therian, M|item
+|poke|p1|Kyurem-Black|item
+|poke|p1|Tapu Fini|item
+|poke|p1|Kartana|item
+|poke|p2|Torkoal, F|item
+|poke|p2|Charizard, F|item
+|poke|p2|Blacephalon|item
+|poke|p2|Heatran, F|item
+|poke|p2|Victini|item
+|poke|p2|Darmanitan, F|item
+|teampreview
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*testbot2798|oof yikes thats a mish
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total | 60 sec grace
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Battle timer is ON: inactive players will automatically lose when time's up. (requested by testbot2798)
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|nice bot
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|nice fire resists as well
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"active":[{"moves":[{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flamethrower","id":"flamethrower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Volt Switch","id":"voltswitch","pp":32,"maxpp":32,"target":"normal","disabled":false}],"canMegaEvo":true},{"moves":[{"move":"Dragon Claw","id":"dragonclaw","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Fusion Bolt","id":"fusionbolt","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canZMove":[null,null,{"move":"Subzero Slammer","target":"normal"},null]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":4}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|start
+|switch|p1a: Manectric|Manectric, M|311/311
+|switch|p1b: Kyurem|Kyurem-Black|391/391
+|switch|p2a: Blow Your Mind|Blacephalon, shiny|100/100
+|switch|p2b: Torkoal my bae|Torkoal, F|100/100
+|-ability|p1b: Kyurem|Teravolt
+|-weather|SunnyDay|[from] ability: Drought|[of] p2b: Torkoal my bae
+|turn|1
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"forceSwitch":[true,false],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":true,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"28/391","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":6}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|detailschange|p1a: Manectric|Manectric-Mega, M
+|-mega|p1a: Manectric|Manectric|Manectite
+|-ability|p1a: Manectric|Intimidate|boost
+|-unboost|p2a: Blow Your Mind|atk|1
+|-unboost|p2b: Torkoal my bae|atk|1
+|move|p2a: Blow Your Mind|Mind Blown|p1b: Kyurem|[spread] p2b: Torkoal my bae,p1a: Manectric,p1b: Kyurem
+|-resisted|p2b: Torkoal my bae
+|-damage|p2b: Torkoal my bae|41/100
+|-damage|p1a: Manectric|0 fnt
+|-damage|p1b: Kyurem|28/391
+|-damage|p2a: Blow Your Mind|50/100|[from] Mind Blown
+|faint|p1a: Manectric
+|-ability|p2a: Blow Your Mind|Beast Boost|boost
+|-boost|p2a: Blow Your Mind|spa|1
+|move|p1b: Kyurem|Earth Power|p2b: Torkoal my bae
+|-supereffective|p2b: Torkoal my bae
+|-damage|p2b: Torkoal my bae|0 fnt
+|faint|p2b: Torkoal my bae
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"active":[{"moves":[{"move":"Blue Flare","id":"blueflare","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Psychic","id":"psychic","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Dragon Claw","id":"dragonclaw","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Fusion Bolt","id":"fusionbolt","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":15,"maxpp":16,"target":"normal","disabled":false}],"canZMove":[null,null,{"move":"Subzero Slammer","target":"normal"},null]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"28/391","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":8}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|switch|p1a: Victini|Victini|404/404
+|switch|p2b: Scrap metal|Heatran, F|100/100
+|turn|2
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"forceSwitch":[false,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Victini","details":"Victini","condition":"88/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":10}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|move|p2a: Blow Your Mind|Mind Blown|p1b: Kyurem|[spread] p1a: Victini,p1: Kyurem
+|-start|p2b: Scrap metal|ability: Flash Fire
+|-resisted|p1a: Victini
+|-damage|p1a: Victini|240/404
+|-damage|p1b: Kyurem|0 fnt
+|-damage|p2a: Blow Your Mind|0 fnt|[from] Mind Blown
+|faint|p2a: Blow Your Mind
+|faint|p1b: Kyurem
+|move|p1a: Victini|Energy Ball|p2b: Scrap metal
+|-resisted|p2b: Scrap metal
+|-damage|p2b: Scrap metal|96/100
+|move|p2b: Scrap metal|Earth Power|p1a: Victini
+|-supereffective|p1a: Victini
+|-damage|p1a: Victini|88/404
+|-unboost|p1a: Victini|spd|1
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"active":[{"moves":[{"move":"Blue Flare","id":"blueflare","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Psychic","id":"psychic","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"U-turn","id":"uturn","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Rock Tomb","id":"rocktomb","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Victini","details":"Victini","condition":"88/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":true,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":12}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|switch|p2a: Aray's wet dream|Charizard, F|100/100
+|switch|p1b: Landorus|Landorus-Therian, M|382/382
+|-ability|p1b: Landorus|Intimidate|boost
+|-unboost|p2a: Aray's wet dream|atk|1
+|-unboost|p2b: Scrap metal|atk|1
+|turn|3
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"active":[{"moves":[{"move":"Blue Flare","id":"blueflare","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Psychic","id":"psychic","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Earth Power","id":"earthpower","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"U-turn","id":"uturn","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Rock Tomb","id":"rocktomb","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Victini","details":"Victini","condition":"88/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":true,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":14}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|detailschange|p2a: Aray's wet dream|Charizard-Mega-Y, F
+|-mega|p2a: Aray's wet dream|Charizard|Charizardite Y
+|move|p2b: Scrap metal|Protect|p2b: Scrap metal
+|-singleturn|p2b: Scrap metal|Protect
+|move|p1a: Victini|Energy Ball|p2a: Aray's wet dream
+|-resisted|p2a: Aray's wet dream
+|-damage|p2a: Aray's wet dream|96/100
+|move|p2a: Aray's wet dream|Tailwind|p2a: Aray's wet dream
+|-sidestart|p2: Yuicchii|move: Tailwind
+|move|p1b: Landorus|Earth Power|p2b: Scrap metal
+|-activate|p2b: Scrap metal|move: Protect
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+|turn|4
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|good dpl match
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"forceSwitch":[true,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"0 fnt","active":true,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"noCancel":true,"rqid":16}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|move|p2a: Aray's wet dream|Heat Wave|p1a: Victini|[spread] p1a: Victini,p1b: Landorus
+|-resisted|p1a: Victini
+|-damage|p1a: Victini|0 fnt
+|-damage|p1b: Landorus|111/382
+|faint|p1a: Victini
+|move|p2b: Scrap metal|Eruption|p1b: Landorus
+|-damage|p1b: Landorus|0 fnt
+|faint|p1b: Landorus
+|
+|-weather|SunnyDay|[upkeep]
+|upkeep
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Leaf Blade","id":"leafblade","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Smart Strike","id":"smartstrike","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Sacred Sword","id":"sacredsword","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":true,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"0 fnt","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"}]},"rqid":18}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|switch|p1a: Tapu Fini|Tapu Fini|343/343
+|switch|p1b: Kartana|Kartana|260/260
+|-fieldstart|move: Misty Terrain|[from] ability: Misty Surge|[of] p1a: Tapu Fini
+|turn|5
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-888765759
+|
+|move|p2a: Aray's wet dream|Heat Wave|p1a: Tapu Fini|[spread] p1a: Tapu Fini,p1b: Kartana
+|-resisted|p1a: Tapu Fini
+|-supereffective|p1b: Kartana
+|-damage|p1a: Tapu Fini|247/343
+|-damage|p1b: Kartana|0 fnt
+|faint|p1b: Kartana
+|-zpower|p2b: Scrap metal
+|move|p2b: Scrap metal|Inferno Overdrive|p1a: Tapu Fini|[zeffect]
+|-resisted|p1a: Tapu Fini
+|-damage|p1a: Tapu Fini|0 fnt
+|faint|p1a: Tapu Fini
+|
+|win|Yuicchii
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|ez
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*testbot2798|bg
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*testbot2798|this team has a terrible monofire matchupo
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|u had
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|2 fire resists
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|sobad
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*testbot2798|fini isn't a check to fires in sun
+
+_____________________________
+
+>battle-gen7doublesou-888765759
+|c|*plyr*Yuicchii|:I
+
+_____________________________
+
+|updatesearch|{"searching":["gen7doublesou"],"games":null}
+_____________________________
+
+|pm| testbot2798| Yuicchii|also give me monofire
+_____________________________
+
+|pm| Yuicchii| testbot2798|n
+_____________________________
+
+|pm| Yuicchii| testbot2798|you'll ct
+_____________________________
+
+|pm| testbot2798| Yuicchii|wow sorude
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+|updatesearch|{"searching":[],"games":{"battle-gen7doublesou-888767008":"[Gen 7] Doubles OU Battle*"}}
+_____________________________
+
+>battle-gen7doublesou-888767008
+|init|battle
+|title|testbot2798 vs. MercurioYM
+|j|*plyr*testbot2798
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|
+_____________________________
+
+>battle-gen7doublesou-888767008
+|j|*plyr*MercurioYM
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|player|p1|testbot2798|whitney
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"teamPreview":true,"maxTeamSize":6,"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":2}
+_____________________________
+
+>battle-gen7doublesou-888767008
+|player|p2|MercurioYM|170
 |teamsize|p1|6
 |teamsize|p2|6
 |gametype|doubles
@@ -78,743 +448,363 @@ _____________________________
 |rule|HP Percentage Mod: HP is shown in percentages
 |rule|Swagger Clause: Swagger is banned
 |clearpoke
-|poke|p1|Aegislash, F|item
-|poke|p1|Amoonguss, M|item
-|poke|p1|Camerupt, F|item
-|poke|p1|Deoxys-Attack|item
-|poke|p1|Diancie|item
+|poke|p1|Manectric, M|item
+|poke|p1|Victini|item
+|poke|p1|Landorus-Therian, M|item
+|poke|p1|Kyurem-Black|item
 |poke|p1|Tapu Fini|item
-|poke|p2|Kingdra, M|item
-|poke|p2|Venusaur, F|item
-|poke|p2|Volcarona, M|item
-|poke|p2|Klefki, F|item
-|poke|p2|Krookodile, M|item
-|poke|p2|Oricorio-Sensu, M|item
+|poke|p1|Kartana|item
+|poke|p2|Terrakion|item
+|poke|p2|Whimsicott, F|item
+|poke|p2|Pelipper, F|item
+|poke|p2|Swampert, F|item
+|poke|p2|Incineroar, M|item
+|poke|p2|Lucario, F|item
 |teampreview
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |c|*plyr*testbot2798|oof yikes thats a mish
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total | 60 sec grace
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Battle timer is ON: inactive players will automatically lose when time's up. (requested by testbot2798)
 
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":48,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"344/344","active":true,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":4}
+|pm| Yuicchii| testbot2798|although
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flamethrower","id":"flamethrower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Volt Switch","id":"voltswitch","pp":32,"maxpp":32,"target":"normal","disabled":false}],"canMegaEvo":true}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":4}
+_____________________________
+
+>battle-gen7doublesou-888767008
 |
 |start
-|switch|p1a: Tapu Fini|Tapu Fini|344/344
-|switch|p1b: Aegislash|Aegislash, F|324/324
-|switch|p2a: Klefki|Klefki, F|100/100
-|switch|p2b: Krookodile|Krookodile, M|100/100
-|-ability|p2b: Krookodile|Intimidate|boost
-|-unboost|p1a: Tapu Fini|atk|1
-|-unboost|p1b: Aegislash|atk|1
+|switch|p1a: Tapu Fini|Tapu Fini|343/343
+|switch|p1b: Manectric|Manectric, M|311/311
+|switch|p2a: Whimsicott|Whimsicott, F, shiny|100/100
+|switch|p2b: Lucario|Lucario, F|100/100
 |-fieldstart|move: Misty Terrain|[from] ability: Misty Surge|[of] p1a: Tapu Fini
 |turn|1
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":48,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":23,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"344/344","active":true,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":6}
+|pm| Yuicchii| testbot2798|im p sure i sent it to u at some point
 _____________________________
 
->battle-gen7doublesou-888480615
+|pm| testbot2798| Yuicchii|probably
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"forceSwitch":[false,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"253/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":true,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":6}
+_____________________________
+
+>battle-gen7doublesou-888767008
 |
-|switch|p2b: Venusaur|Venusaur, F|100/100
-|move|p2a: Klefki|Light Screen|p2a: Klefki
-|-sidestart|p2: KazdaUFO|move: Light Screen
-|move|p1a: Tapu Fini|Scald|p2b: Venusaur
-|-resisted|p2b: Venusaur
-|-damage|p2b: Venusaur|90/100
-|-formechange|p1b: Aegislash|Aegislash-Blade||[from] ability: Stance Change
-|move|p1b: Aegislash|Hidden Power|p2b: Venusaur
-|-supereffective|p2b: Venusaur
-|-damage|p2b: Venusaur|62/100
+|detailschange|p1b: Manectric|Manectric-Mega, M
+|-mega|p1b: Manectric|Manectric|Manectite
+|-ability|p1b: Manectric|Intimidate|boost
+|-unboost|p2a: Whimsicott|atk|1
+|-unboost|p2b: Lucario|atk|1
+|move|p1b: Manectric|Flamethrower|p2a: Whimsicott
+|-supereffective|p2a: Whimsicott
+|-damage|p2a: Whimsicott|24/100
+|move|p2a: Whimsicott|Beat Up|p2b: Lucario
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|99/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|98/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|97/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-resisted|p2b: Lucario
+|-crit|p2b: Lucario
+|-damage|p2b: Lucario|94/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|93/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|91/100
+|-ability|p2b: Lucario|Justified|boost
+|-boost|p2b: Lucario|atk|1
+|-hitcount|p2b: Lucario|6
+|move|p2b: Lucario|Earthquake|p1a: Tapu Fini|[spread] p2a: Whimsicott,p1a: Tapu Fini,p1b: Manectric
+|-resisted|p2a: Whimsicott
+|-supereffective|p1b: Manectric
+|-damage|p2a: Whimsicott|0 fnt
+|-damage|p1a: Tapu Fini|82/343
+|-damage|p1b: Manectric|0 fnt
+|-enditem|p1a: Tapu Fini|Mago Berry|[eat]
+|-heal|p1a: Tapu Fini|253/343|[from] item: Mago Berry
+|-damage|p2b: Lucario|81/100|[from] item: Life Orb
+|faint|p2a: Whimsicott
+|faint|p1b: Manectric
+|move|p1a: Tapu Fini|Ice Beam|p2b: Lucario
+|-resisted|p2b: Lucario
+|-damage|p2b: Lucario|64/100
 |
 |upkeep
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|inactive|Time left: 150 sec this turn | 150 sec total
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Blue Flare","id":"blueflare","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Psychic","id":"psychic","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"253/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Victini","details":"Victini","condition":"404/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":8}
+_____________________________
+
+>battle-gen7doublesou-888767008
+|
+|switch|p1b: Victini|Victini|404/404
+|switch|p2a: Incineroar|Incineroar, M, shiny|100/100
+|-ability|p2a: Incineroar|Intimidate|boost
+|-unboost|p1a: Tapu Fini|atk|1
+|-unboost|p1b: Victini|atk|1
 |turn|2
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":22,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":48,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":22,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"164/344","active":true,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":8}
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Blue Flare","id":"blueflare","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Psychic","id":"psychic","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"63/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Victini","details":"Victini","condition":"362/404","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":10}
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |
-|switch|p2a: Krookodile|Krookodile, M|100/100
-|-ability|p2a: Krookodile|Intimidate|boost
-|-unboost|p1a: Tapu Fini|atk|1
-|-unboost|p1b: Aegislash|atk|1
-|detailschange|p2b: Venusaur|Venusaur-Mega, F
-|-mega|p2b: Venusaur|Venusaur|Venusaurite
-|move|p1a: Tapu Fini|Scald|p2a: Krookodile
-|-supereffective|p2a: Krookodile
-|-damage|p2a: Krookodile|44/100
-|move|p2b: Venusaur|Giga Drain|p1a: Tapu Fini
-|-supereffective|p1a: Tapu Fini
-|-damage|p1a: Tapu Fini|164/344
-|-heal|p2b: Venusaur|87/100|[from] drain|[of] p1a: Tapu Fini
-|move|p1b: Aegislash|Hidden Power|p2a: Krookodile
-|-supereffective|p2a: Krookodile
-|-damage|p2a: Krookodile|7/100
+|move|p2a: Incineroar|Fake Out|p1b: Victini
+|-damage|p1b: Victini|362/404
+|cant|p1b: Victini|flinch
+|move|p2b: Lucario|Drain Punch|p1a: Tapu Fini
+|-resisted|p1a: Tapu Fini
+|-damage|p1a: Tapu Fini|63/343
+|-heal|p2b: Lucario|98/100|[from] drain|[of] p1a: Tapu Fini
+|-damage|p2b: Lucario|88/100|[from] item: Life Orb
+|move|p1a: Tapu Fini|Moonblast|p2a: Incineroar
+|-damage|p2a: Incineroar|75/100
+|-unboost|p2a: Incineroar|spa|1
 |
 |upkeep
 |turn|3
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|inactive|KazdaUFO has 120 seconds left.
-
+|pm| Yuicchii| testbot2798|https://pokepast.es/c5dbc5471d515195
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"forceSwitch":[true,false],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":true,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"noCancel":true,"rqid":10}
+>battle-gen7doublesou-888767008
+|request|{"wait":true,"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"35/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":12}
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |
-|switch|p2a: Klefki|Klefki, F|100/100
-|move|p1a: Tapu Fini|Ice Beam|p2a: Klefki
-|-resisted|p2a: Klefki
-|-damage|p2a: Klefki|93/100
-|move|p2b: Venusaur|Sludge Bomb|p1a: Tapu Fini
-|-supereffective|p1a: Tapu Fini
-|-damage|p1a: Tapu Fini|0 fnt
-|faint|p1a: Tapu Fini
-|move|p1b: Aegislash|Shadow Ball|p2b: Venusaur
-|-damage|p2b: Venusaur|62/100
+|move|p2b: Lucario|Extreme Speed|p1b: Victini
+|-damage|p1b: Victini|0 fnt
+|-damage|p2b: Lucario|78/100|[from] item: Life Orb
+|faint|p1b: Victini
+|move|p1a: Tapu Fini|Scald|p2b: Lucario
+|-damage|p2b: Lucario|37/100
+|move|p2a: Incineroar|U-turn|p1a: Tapu Fini
+|-resisted|p1a: Tapu Fini
+|-damage|p1a: Tapu Fini|35/343
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|inactive|Time left: 150 sec this turn | 150 sec total
+_____________________________
+
+|pm| testbot2798| Yuicchii|wow thank you
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"forceSwitch":[false,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"35/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":true,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"noCancel":true,"rqid":14}
+_____________________________
+
+>battle-gen7doublesou-888767008
+|
+|switch|p2a: Swampert|Swampert, F, shiny|100/100
 |
 |upkeep
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't move: You need a switch response
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Scald","id":"scald","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]},{"moves":[{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"U-turn","id":"uturn","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Rock Tomb","id":"rocktomb","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"35/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"382/382","active":true,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":16}
 _____________________________
 
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to an active Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to an active Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 90 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":48,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":22,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"324/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":12}
-_____________________________
-
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |
-|switch|p1a: Amoonguss|Amoonguss, M|432/432
+|switch|p1b: Landorus|Landorus-Therian, M|382/382
+|-ability|p1b: Landorus|Intimidate|boost
+|-unboost|p2a: Swampert|atk|1
+|-unboost|p2b: Lucario|atk|1
 |turn|4
 
 _____________________________
 
->battle-gen7doublesou-888480615
-|inactive|Time left: 105 sec this turn | 105 sec total
+>battle-gen7doublesou-888767008
+|inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":47,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":22,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"257/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":14}
+>battle-gen7doublesou-888767008
+|request|{"forceSwitch":[true,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"0 fnt","active":true,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":false,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":false,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"}]},"rqid":18}
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |
-|move|p1b: Aegislash|Shadow Sneak|p2b: Venusaur
-|-damage|p2b: Venusaur|56/100
-|move|p2a: Klefki|Draining Kiss|p1b: Aegislash
-|-resisted|p1b: Aegislash
-|-damage|p1b: Aegislash|297/324
-|-heal|p2a: Klefki|99/100|[from] drain|[of] p1b: Aegislash
-|move|p2b: Venusaur|Leech Seed|p1b: Aegislash
-|-start|p1b: Aegislash|move: Leech Seed
-|move|p1a: Amoonguss|Energy Ball|p2b: Venusaur
-|-resisted|p2b: Venusaur
-|-damage|p2b: Venusaur|51/100
+|detailschange|p2a: Swampert|Swampert-Mega, F, shiny
+|-mega|p2a: Swampert|Swampert|Swampertite
+|move|p2b: Lucario|Drain Punch|p1a: Tapu Fini
+|-resisted|p1a: Tapu Fini
+|-damage|p1a: Tapu Fini|0 fnt
+|-heal|p2b: Lucario|44/100|[from] drain|[of] p1a: Tapu Fini
+|-damage|p2b: Lucario|34/100|[from] item: Life Orb
+|faint|p1a: Tapu Fini
+|move|p1b: Landorus|Earth Power|p2b: Lucario
+|-supereffective|p2b: Lucario
+|-crit|p2b: Lucario
+|-damage|p2b: Lucario|0 fnt
+|faint|p2b: Lucario
+|move|p2a: Swampert|Ice Punch|p1b: Landorus
+|-supereffective|p1b: Landorus
+|-crit|p1b: Landorus
+|-damage|p1b: Landorus|0 fnt
+|faint|p1b: Landorus
 |
-|-damage|p1b: Aegislash|257/324|[from] Leech Seed|[of] p2b: Venusaur
-|-heal|p2b: Venusaur|62/100|[silent]
 |upkeep
+
+_____________________________
+
+>battle-gen7doublesou-888767008
+|inactive|Time left: 150 sec this turn | 150 sec total
+_____________________________
+
+|pm| testbot2798| Yuicchii|hmm actually it can't use it yet
+_____________________________
+
+|pm| testbot2798| Yuicchii|it only knows how to use single target moves
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Dragon Claw","id":"dragonclaw","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Fusion Bolt","id":"fusionbolt","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canZMove":[null,null,{"move":"Subzero Slammer","target":"normal"},null]},{"moves":[{"move":"Leaf Blade","id":"leafblade","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Smart Strike","id":"smartstrike","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Sacred Sword","id":"sacredsword","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"391/391","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":true,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"0 fnt","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"}]},"rqid":20}
+_____________________________
+
+>battle-gen7doublesou-888767008
+|
+|switch|p2b: Terrakion|Terrakion, shiny|100/100
+|switch|p1b: Kartana|Kartana|260/260
+|switch|p1a: Kyurem|Kyurem-Black|391/391
+|-ability|p1a: Kyurem|Teravolt
 |turn|5
 
 _____________________________
 
->battle-gen7doublesou-888480615
-|inactive|Time left: 130 sec this turn | 130 sec total
+>battle-gen7doublesou-888767008
+|inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":46,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":22,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"133/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":16}
+|pm| Yuicchii| testbot2798|wow are u really making a bot
 _____________________________
 
->battle-gen7doublesou-888480615
+|pm| Yuicchii| testbot2798|for doubles
+_____________________________
+
+>battle-gen7doublesou-888767008
+|request|{"active":[{"moves":[{"move":"Dragon Claw","id":"dragonclaw","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Fusion Bolt","id":"fusionbolt","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canZMove":[null,null,{"move":"Subzero Slammer","target":"normal"},null]},{"moves":[{"move":"Leaf Blade","id":"leafblade","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Smart Strike","id":"smartstrike","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Sacred Sword","id":"sacredsword","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Knock Off","id":"knockoff","pp":32,"maxpp":32,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Kyurem","details":"Kyurem-Black","condition":"0 fnt","active":true,"stats":{"atk":439,"def":236,"spa":249,"spd":216,"spe":317},"moves":["dragonclaw","fusionbolt","icebeam","earthpower"],"baseAbility":"teravolt","item":"iciumz","pokeball":"pokeball","ability":"teravolt"},{"ident":"p1: Kartana","details":"Kartana","condition":"260/260","active":true,"stats":{"atk":398,"def":298,"spa":138,"spd":161,"spe":348},"moves":["leafblade","smartstrike","sacredsword","knockoff"],"baseAbility":"beastboost","item":"aguavberry","pokeball":"pokeball","ability":"beastboost"},{"ident":"p1: Manectric","details":"Manectric-Mega, M","condition":"0 fnt","active":false,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p1: Victini","details":"Victini","condition":"0 fnt","active":false,"stats":{"atk":184,"def":236,"spa":236,"spd":245,"spe":320},"moves":["blueflare","psychic","energyball","thunderbolt"],"baseAbility":"victorystar","item":"assaultvest","pokeball":"pokeball","ability":"victorystar"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Landorus","details":"Landorus-Therian, M","condition":"0 fnt","active":false,"stats":{"atk":293,"def":227,"spa":255,"spd":203,"spe":280},"moves":["earthpower","knockoff","uturn","rocktomb"],"baseAbility":"intimidate","item":"magoberry","pokeball":"pokeball","ability":"intimidate"}]},"rqid":22}
+_____________________________
+
+>battle-gen7doublesou-888767008
 |
-|move|p1b: Aegislash|Shadow Sneak|p2a: Klefki
-|-crit|p2a: Klefki
-|-damage|p2a: Klefki|70/100
-|move|p2a: Klefki|Draining Kiss|p1b: Aegislash
-|-resisted|p1b: Aegislash
-|-damage|p1b: Aegislash|229/324
-|-heal|p2a: Klefki|76/100|[from] drain|[of] p1b: Aegislash
-|move|p2b: Venusaur|Giga Drain|p1b: Aegislash
-|-resisted|p1b: Aegislash
-|-damage|p1b: Aegislash|173/324
-|-heal|p2b: Venusaur|70/100|[from] drain|[of] p1b: Aegislash
-|move|p1a: Amoonguss|Giga Drain|p2b: Venusaur
-|-resisted|p2b: Venusaur
-|-damage|p2b: Venusaur|66/100
+|switch|p2a: Incineroar|Incineroar, M, shiny|75/100
+|-ability|p2a: Incineroar|Intimidate|boost
+|-unboost|p1a: Kyurem|atk|1
+|-unboost|p1b: Kartana|atk|1
+|move|p1b: Kartana|Smart Strike|p2b: Terrakion
+|-supereffective|p2b: Terrakion
+|-damage|p2b: Terrakion|42/100
+|move|p2b: Terrakion|Close Combat|p1a: Kyurem
+|-supereffective|p1a: Kyurem
+|-damage|p1a: Kyurem|0 fnt
+|-unboost|p2b: Terrakion|def|1
+|-unboost|p2b: Terrakion|spd|1
+|faint|p1a: Kyurem
 |
-|-damage|p1b: Aegislash|133/324|[from] Leech Seed|[of] p2b: Venusaur
-|-heal|p2b: Venusaur|77/100|[silent]
 |-fieldend|Misty Terrain
 |upkeep
 |turn|6
 
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Why u have energy ball and giga drain???
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|KazdaUFO has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Wasting moveslots mate
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Shadow Ball","id":"shadowball","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Shadow Sneak","id":"shadowsneak","pp":46,"maxpp":48,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":21,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"432/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"28/324","active":true,"stats":{"atk":301,"def":136,"spa":438,"spd":136,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"rqid":18}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Klefki|Thunder Wave|p1a: Amoonguss
-|-status|p1a: Amoonguss|par
-|move|p2b: Venusaur|Giga Drain|p1b: Aegislash
-|-resisted|p1b: Aegislash
-|-damage|p1b: Aegislash|68/324
-|-heal|p2b: Venusaur|86/100|[from] drain|[of] p1b: Aegislash
-|move|p1b: Aegislash|Hidden Power|p2b: Venusaur
-|-supereffective|p2b: Venusaur
-|-damage|p2b: Venusaur|73/100
-|move|p1a: Amoonguss|Giga Drain|p2b: Venusaur
-|-resisted|p2b: Venusaur
-|-damage|p2b: Venusaur|69/100
-|
-|-damage|p1b: Aegislash|28/324|[from] Leech Seed|[of] p2b: Venusaur
-|-heal|p2b: Venusaur|80/100|[silent]
-|upkeep
-|turn|7
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|KazdaUFO has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Take out energy ball for suttin else
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"forceSwitch":[false,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"321/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":true,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"}]},"noCancel":true,"rqid":20}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Klefki|Draining Kiss|p1b: Aegislash
-|-resisted|p1b: Aegislash
-|-damage|p1b: Aegislash|1/324
-|-heal|p2a: Klefki|83/100|[from] drain|[of] p1b: Aegislash
-|move|p2b: Venusaur|Sludge Bomb|p1a: Amoonguss
-|-damage|p1a: Amoonguss|294/432 par
-|move|p1b: Aegislash|Shadow Ball|p2b: Venusaur
-|-damage|p2b: Venusaur|55/100
-|cant|p1a: Amoonguss|par
-|
-|-heal|p1a: Amoonguss|321/432 par|[from] item: Leftovers
-|-damage|p1b: Aegislash|0 fnt|[from] Leech Seed|[of] p2b: Venusaur
-|-heal|p2b: Venusaur|56/100|[silent]
-|faint|p1b: Aegislash
-|upkeep
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't move: You need a switch response
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Power Gem","id":"powergem","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Hidden Power Fire","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"321/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"304/304","active":true,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"weaknesspolicy","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":22}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p1b: Diancie|Diancie|304/304
-|turn|8
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 135 sec this turn | 135 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Moonblast","id":"moonblast","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Power Gem","id":"powergem","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Hidden Power Fire","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"348/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"166/304","active":true,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":24}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Klefki|Reflect|p2a: Klefki
-|-sidestart|p2: KazdaUFO|Reflect
-|move|p2b: Venusaur|Giga Drain|p1b: Diancie
-|-supereffective|p1b: Diancie
-|-damage|p1b: Diancie|166/304
-|-heal|p2b: Venusaur|75/100|[from] drain|[of] p1b: Diancie
-|-enditem|p1b: Diancie|Weakness Policy
-|-boost|p1b: Diancie|atk|2
-|-boost|p1b: Diancie|spa|2
-|move|p1b: Diancie|Moonblast|p2a: Klefki
-|-resisted|p2a: Klefki
-|-damage|p2a: Klefki|56/100
-|-unboost|p2a: Klefki|spa|1
-|cant|p1a: Amoonguss|par
-|
-|-heal|p1a: Amoonguss|348/432 par|[from] item: Leftovers
-|-sideend|p2: KazdaUFO|move: Light Screen
-|upkeep
-|turn|9
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Moonblast","id":"moonblast","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Power Gem","id":"powergem","pp":32,"maxpp":32,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Hidden Power Fire","id":"hiddenpower","pp":23,"maxpp":24,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"375/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"128/304","active":true,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":26}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Klefki|Light Screen|p2a: Klefki
-|-sidestart|p2: KazdaUFO|move: Light Screen
-|move|p2b: Venusaur|Leech Seed|p1b: Diancie
-|-start|p1b: Diancie|move: Leech Seed
-|move|p1b: Diancie|Hidden Power|p2b: Venusaur
-|-supereffective|p2b: Venusaur
-|-damage|p2b: Venusaur|56/100
-|move|p1a: Amoonguss|Sludge Bomb|p2a: Klefki
-|-immune|p2a: Klefki
-|
-|-heal|p1a: Amoonguss|375/432 par|[from] item: Leftovers
-|-damage|p1b: Diancie|128/304|[from] Leech Seed|[of] p2b: Venusaur
-|-heal|p2b: Venusaur|67/100|[silent]
-|upkeep
-|turn|10
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Take out energy ball for spore
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|KazdaUFO has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Amoingus should have spore!
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*testbot2798|this is a bot
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"forceSwitch":[false,true],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"381/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":true,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":false,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"noCancel":true,"rqid":28}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Klefki|Draining Kiss|p1a: Amoonguss
-|-resisted|p1a: Amoonguss
-|-damage|p1a: Amoonguss|354/432 par
-|-heal|p2a: Klefki|61/100|[from] drain|[of] p1a: Amoonguss
-|-status|p2a: Klefki|par|[from] ability: Effect Spore|[of] p1a: Amoonguss
-|move|p2b: Venusaur|Giga Drain|p1b: Diancie
-|-supereffective|p1b: Diancie
-|-damage|p1b: Diancie|0 fnt
-|-heal|p2b: Venusaur|84/100|[from] drain|[of] p1b: Diancie
-|faint|p1b: Diancie
-|move|p1a: Amoonguss|Energy Ball|p2a: Klefki
-|-resisted|p2a: Klefki
-|-damage|p2a: Klefki|50/100 par
-|
-|-heal|p1a: Amoonguss|381/432 par|[from] item: Leftovers
-|upkeep
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't move: You need a switch response
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*testbot2798|it doesn't understand status yet
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*testbot2798|only attacking moves
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|I dont wven know what a bot it
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|But giv
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|But why give it two grass attacks
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to an active Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to an active Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to a fainted Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Diversifyy
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 90 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't switch: You can't switch to a fainted Pokémon
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Psycho Boost","id":"psychoboost","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Extreme Speed","id":"extremespeed","pp":8,"maxpp":8,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"381/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":30}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p1b: Deoxys|Deoxys-Attack|241/241
-|-ability|p1b: Deoxys|Pressure
-|turn|11
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 115 sec this turn | 115 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"wait":true,"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"408/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241 par","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":32}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p2b: Krookodile|Krookodile, M|7/100
-|-ability|p2b: Krookodile|Intimidate|boost
-|-unboost|p1a: Amoonguss|atk|1
-|-unboost|p1b: Deoxys|atk|1
-|move|p1b: Deoxys|Extreme Speed|p2a: Klefki
-|-resisted|p2a: Klefki
-|-damage|p2a: Klefki|44/100 par
-|move|p2a: Klefki|Thunder Wave|p1b: Deoxys
-|-status|p1b: Deoxys|par
-|move|p1a: Amoonguss|Sludge Bomb|p2b: Krookodile
-|-resisted|p2b: Krookodile
-|-damage|p2b: Krookodile|0 fnt
-|faint|p2b: Krookodile
-|
-|-heal|p1a: Amoonguss|408/432 par|[from] item: Leftovers
-|upkeep
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 140 sec this turn | 140 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] There's nothing to choose
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Giga Drain","id":"gigadrain","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Sludge Bomb","id":"sludgebomb","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":14,"maxpp":16,"target":"normal","disabled":false},{"move":"Foul Play","id":"foulplay","pp":24,"maxpp":24,"target":"normal","disabled":false}]},{"moves":[{"move":"Psycho Boost","id":"psychoboost","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Extreme Speed","id":"extremespeed","pp":7,"maxpp":8,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"408/432 par","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241 par","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":34}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p2b: Volcarona|Volcarona, M|100/100
-|turn|12
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"forceSwitch":[true,false],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"0 fnt","active":true,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241 par","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":false,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"noCancel":true,"rqid":36}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p2a: Oricorio|Oricorio-Sensu, M|100/100
-|move|p2b: Volcarona|Fiery Dance|p1a: Amoonguss
-|-supereffective|p1a: Amoonguss
-|-damage|p1a: Amoonguss|132/432 par
-|-activate|p2a: Oricorio|ability: Dancer
-|move|p2a: Oricorio|Fiery Dance|p1a: Amoonguss|[from]Dancer
-|-supereffective|p1a: Amoonguss
-|-damage|p1a: Amoonguss|0 fnt
-|faint|p1a: Amoonguss
-|cant|p1b: Deoxys|par
-|
-|upkeep
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|error|[Invalid choice] Can't move: You need a switch response
-_____________________________
-
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|We dancing
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|testbot2798 has 120 seconds left.
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Flamethrower","id":"flamethrower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Ancient Power","id":"ancientpower","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canMegaEvo":true},{"moves":[{"move":"Psycho Boost","id":"psychoboost","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Extreme Speed","id":"extremespeed","pp":7,"maxpp":8,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":true,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"241/241 par","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"focussash","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"0 fnt","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":38}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|switch|p1a: Camerupt|Camerupt, F|344/344
-|turn|13
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 140 sec this turn | 140 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Flamethrower","id":"flamethrower","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Ancient Power","id":"ancientpower","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canMegaEvo":true},{"moves":[{"move":"Psycho Boost","id":"psychoboost","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Extreme Speed","id":"extremespeed","pp":7,"maxpp":8,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"344/344","active":true,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"1/241 par","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"0 fnt","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":40}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2a: Oricorio|Protect|p2a: Oricorio
-|-singleturn|p2a: Oricorio|Protect
-|move|p2b: Volcarona|Bug Buzz|p1b: Deoxys
-|-supereffective|p1b: Deoxys
-|-enditem|p1b: Deoxys|Focus Sash
-|-damage|p1b: Deoxys|1/241 par
-|move|p1b: Deoxys|Energy Ball|p2a: Oricorio
-|-activate|p2a: Oricorio|move: Protect
-|move|p1a: Camerupt|Flamethrower|p2a: Oricorio
-|-activate|p2a: Oricorio|move: Protect
-|
-|upkeep
-|turn|14
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
-|request|{"active":[{"moves":[{"move":"Flamethrower","id":"flamethrower","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Earth Power","id":"earthpower","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Ancient Power","id":"ancientpower","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Flash Cannon","id":"flashcannon","pp":16,"maxpp":16,"target":"normal","disabled":false}],"canMegaEvo":true},{"moves":[{"move":"Psycho Boost","id":"psychoboost","pp":8,"maxpp":8,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Energy Ball","id":"energyball","pp":15,"maxpp":16,"target":"normal","disabled":false},{"move":"Extreme Speed","id":"extremespeed","pp":7,"maxpp":8,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p1","pokemon":[{"ident":"p1: Camerupt","details":"Camerupt, F","condition":"93/344","active":true,"stats":{"atk":205,"def":176,"spa":339,"spd":187,"spe":104},"moves":["flamethrower","earthpower","ancientpower","flashcannon"],"baseAbility":"magmaarmor","item":"cameruptite","pokeball":"pokeball","ability":"magmaarmor"},{"ident":"p1: Deoxys","details":"Deoxys-Attack","condition":"0 fnt","active":true,"stats":{"atk":356,"def":77,"spa":459,"spd":76,"spe":438},"moves":["psychoboost","icebeam","energyball","extremespeed"],"baseAbility":"pressure","item":"","pokeball":"pokeball","ability":"pressure"},{"ident":"p1: Tapu Fini","details":"Tapu Fini","condition":"0 fnt","active":false,"stats":{"atk":139,"def":266,"spa":301,"spd":296,"spe":207},"moves":["scald","moonblast","naturesmadness","icebeam"],"baseAbility":"mistysurge","item":"wikiberry","pokeball":"pokeball","ability":"mistysurge"},{"ident":"p1: Amoonguss","details":"Amoonguss, M","condition":"0 fnt","active":false,"stats":{"atk":157,"def":176,"spa":295,"spd":197,"spe":96},"moves":["gigadrain","sludgebomb","energyball","foulplay"],"baseAbility":"effectspore","item":"leftovers","pokeball":"pokeball","ability":"effectspore"},{"ident":"p1: Diancie","details":"Diancie","condition":"0 fnt","active":false,"stats":{"atk":184,"def":337,"spa":328,"spd":336,"spe":136},"moves":["moonblast","powergem","earthpower","hiddenpowerfire60"],"baseAbility":"clearbody","item":"","pokeball":"pokeball","ability":"clearbody"},{"ident":"p1: Aegislash","details":"Aegislash, F","condition":"0 fnt","active":false,"stats":{"atk":121,"def":336,"spa":218,"spd":336,"spe":156},"moves":["shadowball","flashcannon","shadowsneak","hiddenpowerice60"],"baseAbility":"stancechange","item":"assaultvest","pokeball":"pokeball","ability":"stancechange"}]},"rqid":42}
-_____________________________
-
->battle-gen7doublesou-888480615
-|
-|move|p2b: Volcarona|Fiery Dance|p1a: Camerupt
-|-resisted|p1a: Camerupt
-|-damage|p1a: Camerupt|262/344
-|-activate|p2a: Oricorio|ability: Dancer
-|move|p2a: Oricorio|Fiery Dance|p1b: Deoxys|[from]Dancer
-|-damage|p1b: Deoxys|0 fnt
-|faint|p1b: Deoxys
-|move|p2a: Oricorio|Revelation Dance|p1a: Camerupt
-|-damage|p1a: Camerupt|93/344
-|move|p1a: Camerupt|Earth Power|p2b: Volcarona
-|-crit|p2b: Volcarona
-|-damage|p2b: Volcarona|39/100
-|-enditem|p2b: Volcarona|Sitrus Berry|[eat]
-|-heal|p2b: Volcarona|64/100|[from] item: Sitrus Berry
-|
-|upkeep
-|turn|15
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|inactive|Time left: 150 sec this turn | 150 sec total
-_____________________________
-
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |error|[Invalid choice] Can't move: You sent more choices than unfainted Pokémon.
 _____________________________
 
->battle-gen7doublesou-888480615
-|c|*plyr*KazdaUFO|Gg bot
+>battle-gen7doublesou-888767008
+|
+|move|p1b: Kartana|Smart Strike|p2a: Incineroar
+|-resisted|p2a: Incineroar
+|-damage|p2a: Incineroar|63/100
+|move|p2b: Terrakion|Close Combat|p1b: Kartana
+|-supereffective|p1b: Kartana
+|-damage|p1b: Kartana|0 fnt
+|-unboost|p2b: Terrakion|def|1
+|-unboost|p2b: Terrakion|spd|1
+|faint|p1b: Kartana
+|
+|win|MercurioYM
 
 _____________________________
 
->battle-gen7doublesou-888480615
-|
-|move|p2a: Oricorio|Protect|p2a: Oricorio
-|-singleturn|p2a: Oricorio|Protect
-|move|p2b: Volcarona|Fiery Dance|p1a: Camerupt
-|-resisted|p1a: Camerupt
-|-damage|p1a: Camerupt|20/344
-|-boost|p2b: Volcarona|spa|1
-|-activate|p2a: Oricorio|ability: Dancer
-|move|p2a: Oricorio|Fiery Dance|p1a: Camerupt|[from]Dancer
-|-resisted|p1a: Camerupt
-|-damage|p1a: Camerupt|0 fnt
-|-boost|p2a: Oricorio|spa|1
-|faint|p1a: Camerupt
-|
-|win|KazdaUFO
-
-_____________________________
-
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 |inactive|Time left: 150 sec this turn | 150 sec total
 _____________________________
 
->battle-gen7doublesou-888480615
+>battle-gen7doublesou-888767008
 ||Ladder updating...
 _____________________________
 
 |updatesearch|{"searching":[],"games":null}
 _____________________________
 
->battle-gen7doublesou-888480615
-|raw|testbot2798's rating: 1000 &rarr; <strong>1000</strong><br />(+0 for losing)
-|raw|KazdaUFO's rating: 1165 &rarr; <strong>1179</strong><br />(+14 for winning)
-
-_____________________________
-
->battle-gen7doublesou-888480615
-|l|*plyr*KazdaUFO
+>battle-gen7doublesou-888767008
+|l|*plyr*MercurioYM
 
 _____________________________
 
