@@ -47,6 +47,9 @@ def random_move():
 def random_foe():
 	return random.randint(1, 2)
 
+def get_battle(battles, battletag):
+	return next((battle for battle in battles if battle.battletag == battletag), None)
+
 
 async def log_in(ws, msg_arr):
 	ID = msg_arr[2]
@@ -95,7 +98,6 @@ async def on_battle_start(ws, battletag):
 	if (bot_settings.timer):
 		await timer(ws, battletag)
 		print("Timer started for match: " + battletag + "\n")
-		#await choose_leads(ws, battletag)
 
 # gets called once at the end of the battle
 async def on_battle_end(ws, battletag):
@@ -111,11 +113,14 @@ async def on_battle_end(ws, battletag):
 
 
 # gets called at the start of each turn
-async def choose_moves(ws, battledata, battletag):
+async def choose_moves(ws, battles, battletag):
+	battle = get_battle(battles, battletag)
 
-	mega1, mega2 = get_can_mega(ws, battledata, battletag)
-	decision1 = attack(random_move(), random_foe(), mega1)
-	decision2 = attack(random_move(), random_foe(), mega2)
+	mega1, mega2 = get_can_mega(battle.team_data)
+	move1, target1 = find_supereffective_move(battle, 0)
+	move2, target2 = find_supereffective_move(battle, 1)
+	decision1 = attack(move1, target1, mega1)
+	decision2 = attack(move2, target2, mega2)
 	command_str = battletag + "|/choose " + decision1 + ", " + decision2
 	print("Sending command: " + command_str)
 	await ws.send(command_str)
@@ -146,12 +151,86 @@ async def choose_switch(ws, battledata, battletag):
 
 
 # called at start of each turn, checks if can mega
-def get_can_mega(ws, battledata, battletag):
+def get_can_mega(battledata):
 
-	battle_json = json.loads(battledata)
 	mega_dic = {True: ' mega', False: ''}
-	can_mega1 = 'canMegaEvo' in battle_json['active'][0].keys()
-	can_mega2 = 'canMegaEvo' in battle_json['active'][1].keys()
+	can_mega1 = 'canMegaEvo' in battledata['active'][0].keys()
+	can_mega2 = 'canMegaEvo' in battledata['active'][1].keys()
 	mega_str1 = mega_dic[can_mega1]
 	mega_str2 = mega_dic[can_mega2]
 	return mega_str1, mega_str2
+
+# attack_type is a string, ie "Fire"
+# target_types is an array, ie ["Fire"] or ["Fire, Flying"]
+def get_type_effectiveness(attack_type, target_types):
+	mult = 1.0
+	with open('data/typechart.json') as typechart_file:
+		typechart = json.load(typechart_file)
+		for target_type in target_types:
+			x = typechart[target_type]["damageTaken"][attack_type]
+			if (x == 1): mult *= 2 # super effective
+			elif (x == 2): mult *= 0.5 # not very effective
+			elif (x == 3): mult *= 0 # doesn't affect
+
+	return mult
+
+# example return: [["Fire"], ["Fire", "Flying"]]
+def get_foes_types(battle):
+	types = []
+	with open('data/pokedex.json') as pokedex_file:
+		pokedex = json.load(pokedex_file)
+		for foes in battle.foes:
+			formatted_foe = foes.lower().replace(' ', '').replace('-', '')
+			types.append(pokedex[formatted_foe]["types"])
+
+	return types
+
+# user is 0 or 1
+# returns move_index, foe_index
+def find_supereffective_move(battle, user):
+	with open('data/moves.json') as moves_file:
+		moves = json.load(moves_file)
+		my_moves = battle.team_data["active"][user]["moves"]
+
+		# for each move
+		for i in range(len(my_moves)):
+			id = my_moves[i]["id"]
+			#print(id)
+			#print(i)
+			type = moves[id]["type"]
+			foes_types = get_foes_types(battle)
+			# print(foes_types)
+
+			# for each foe
+			for j in range (len(foes_types)):
+				if (get_type_effectiveness(type, foes_types[j]) > 1):
+					return (i+1, j+1)
+
+	return (random_move(), random_foe())
+
+
+# updates foes in the associated battle object
+def update_active_foes(msg_arr, battles):
+	battletag = msg_arr[0][1:].split("\n")[0]
+	battle = get_battle(battles, battletag)
+	
+	# parse through the update looking for switches made by the opponent
+	for i in range (3, len(msg_arr)):
+		if (msg_arr[i-2] == "switch" and msg_arr[i-1][0:2] != battle.my_side):
+			# store the new pokemon in the correct slot in the battle object
+			if (msg_arr[i-1][2] == 'a'):
+				battle.foes[0] = msg_arr[i].split(',')[0]
+			elif (msg_arr[i-1][2] == 'b'):
+				battle.foes[1] = msg_arr[i].split(',')[0]
+
+
+
+
+
+
+
+
+
+
+
+
