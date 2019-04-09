@@ -14,7 +14,12 @@ battles = []
 async def parse_response(ws, msg):
 	msg_arr = msg.split('|')
 
-	if (len(msg_arr) < 3):
+	# triggers when a battle ends
+	if ("|win|" in msg):
+		battletag = msg_arr[0][1:].split('\n')[0]
+		await funcs.on_battle_end(ws, battletag)
+
+	elif (len(msg_arr) < 3):
 		pass
 
 	# triggers at team preview
@@ -27,24 +32,19 @@ async def parse_response(ws, msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		await funcs.choose_switch(ws, msg_arr[2], battletag)
 
-	# check if wait message
-	elif (msg_arr[1] == "request" and msg_arr[2][0:7] == '{"wait"'):
-		pass
-
-	# summary after each turn happens
-	elif (msg_arr[0][0:7] == ">battle" and msg_arr[1] == "\n"):
-		funcs.update_active_foes(msg_arr, battles)
-		battletag = msg_arr[0][1:].split('\n')[0]
-		battle = funcs.get_battle(battles, battletag)
-		if ("|turn|" in msg):
-			await funcs.choose_moves(ws, battles, battletag)
-
-
-	# triggers at the start of each turn, BEFORE the summary
+	# triggers when get move request or wait request
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		battle = funcs.get_battle(battles, battletag)
 		battle.team_data = json.loads(msg_arr[2])
+
+	# triggers when receieve battle information, can be at end of or during turn
+	elif (msg_arr[0][0:7] == ">battle" and msg_arr[1] == "\n"):
+		funcs.update_active_pokemon(msg_arr, battles)
+		battletag = msg_arr[0][1:].split('\n')[0]
+		battle = funcs.get_battle(battles, battletag)
+		if ("|turn|" in msg):
+			await funcs.choose_moves(ws, battles, battletag)
 
 	# check for short messages
 	elif (len(msg_arr) < 4):
@@ -64,15 +64,10 @@ async def parse_response(ws, msg):
 		battles.append(Battle(battletag, msg_arr[2])) # instantiate battle object
 		await funcs.on_battle_start(ws, battletag)
 
-	# triggers when a battle ends
-	elif ("|win|" in msg):
-		battletag = msg_arr[0][1:].split('\n')[0]
-		await funcs.on_battle_end(ws, battletag)
-
 
 async def connect_to_ps():
 	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
-		#with open("C:\\Users\\Stephen\\Desktop\\Programming\\Python\\codees\\bot with fespy3\\showdown_bot\\Bot\\bot_log.txt", "w") as logfile:
+		#with open("C:\\Users\\Stephen\\Desktop\\Programming\\Python\\codees\\bot with fespy5\\showdown_bot\\Bot\\bot_log.txt", "w") as logfile:
 		while(True):
 			msg = await ws.recv()
 			#print(msg)
@@ -83,5 +78,5 @@ async def connect_to_ps():
 			await parse_response(ws, msg)
 
 #os.system('cls') # windows
-os.system('clear') # mac
+#os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

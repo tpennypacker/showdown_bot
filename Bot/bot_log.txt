@@ -1,0 +1,181 @@
+|updateuser|Guest 63759|0|101|{"blockPMs":false,"blockChallenges":false}
+|formats|,1|US/UM Singles|[Gen 7] Random Battle,f|[Gen 7] Unrated Random Battle,b|[Gen 7] OU,e|[Gen 7] Ubers,e|[Gen 7] UU,e|[Gen 7] RU,e|[Gen 7] NU,e|[Gen 7] PU,e|[Gen 7] LC,e|[Gen 7] Monotype,e|[Gen 7] Anything Goes,e|[Gen 7] 1v1,e|[Gen 7] ZU,e|[Gen 7] CAP,e|[Gen 7] CAP LC,c|[Gen 7] Battle Spot Singles,1e|[Gen 7] Battle Spot Special 15,1e|[Gen 7] Custom Game,c|,1|US/UM Doubles|[Gen 7] Random Doubles Battle,f|[Gen 7] Doubles OU,e|[Gen 7] Doubles Ubers,e|[Gen 7] Doubles UU,e|[Gen 7] VGC 2019 Sun Series,1c|[Gen 7] VGC 2019 Moon Series,1c|[Gen 7] VGC 2019 Ultra Series,1e|[Gen 7] VGC 2018,1e|[Gen 7] VGC 2017,1c|[Gen 7] Battle Spot Doubles,1e|[Gen 7] 2v2 Doubles,c|[Gen 7] Metronome Battle,c|[Gen 7] Doubles Custom Game,c|,2|OM of the Month|[Gen 7] Godly Gift,e|[Gen 7] Mix and Mega LC,e|,2|Other Metagames|[Gen 7] Balanced Hackmons,e|[Gen 7] Mix and Mega,e|[Gen 7] Almost Any Ability,e|[Gen 7] Camomons,c|[Gen 7] STABmons,e|[Gen 7] Tier Shift,e|[Gen 7] Partners in Crime,c|[Gen 6] Gen-NEXT OU,8|,2|Let's Go!|[Gen 7 Let's Go] Random Battle,f|[Gen 7 Let's Go] OU,1e|[Gen 7 Let's Go] Singles No Restrictions,c|[Gen 7 Let's Go] Doubles OU,1e|[Gen 7 Let's Go] Doubles No Restrictions,c|,2|Randomized Metas|[Gen 7] Battle Factory,f|[Gen 7] BSS Factory,f|[Gen 7] Monotype Random Battle,f|[Gen 7] Super Staff Bros Brawl,f|[Gen 7] Challenge Cup 1v1,f|[Gen 7] Challenge Cup 2v2,d|[Gen 7] Hackmons Cup,f|[Gen 7] Doubles Hackmons Cup,d|[Gen 6] Random Battle,f|[Gen 6] Battle Factory,d|[Gen 5] Random Battle,f|[Gen 4] Random Battle,f|[Gen 3] Random Battle,f|[Gen 2] Random Battle,f|[Gen 1] Random Battle,f|[Gen 1] Challenge Cup,9|,3|RoA Spotlight|[Gen 5] UU,e|[Gen 3] NU,e|[Gen 4] Monotype,e|,3|Past Gens OU|[Gen 6] OU,e|[Gen 5] OU,e|[Gen 4] OU,e|[Gen 3] OU,e|[Gen 2] OU,e|[Gen 1] OU,e|,3|OR/AS Singles|[Gen 6] Ubers,c|[Gen 6] UU,c|[Gen 6] RU,c|[Gen 6] NU,c|[Gen 6] PU,c|[Gen 6] LC,c|[Gen 6] Monotype,c|[Gen 6] Anything Goes,c|[Gen 6] 1v1,c|[Gen 6] CAP,c|[Gen 6] Battle Spot Singles,1c|[Gen 6] Custom Game,c|,3|OR/AS Doubles/Triples|[Gen 6] Doubles OU,c|[Gen 6] VGC 2016,1c|[Gen 6] Battle Spot Doubles,1c|[Gen 6] Doubles Custom Game,c|[Gen 6] Battle Spot Triples,1c|[Gen 6] Triples Custom Game,c|,4|B2/W2 Singles|[Gen 5] Ubers,c|[Gen 5] RU,c|[Gen 5] NU,c|[Gen 5] LC,c|[Gen 5] Monotype,c|[Gen 5] GBU Singles,1c|[Gen 5] Custom Game,c|,4|B2/W2 Doubles|[Gen 5] Doubles OU,c|[Gen 5] GBU Doubles,1c|[Gen 5] Doubles Custom Game,c|,4|DPP Singles|[Gen 4] Ubers,c|[Gen 4] UU,c|[Gen 4] NU,c|[Gen 4] LC,c|[Gen 4] Anything Goes,c|[Gen 4] Custom Game,c|,4|DPP Doubles|[Gen 4] Doubles OU,c|[Gen 4] Doubles Custom Game,c|,4|Past Generations|[Gen 3] Ubers,c|[Gen 3] UU,c|[Gen 3] Custom Game,c|[Gen 3] Doubles Custom Game,c|[Gen 2] Ubers,c|[Gen 2] UU,c|[Gen 2] NU,c|[Gen 2] Custom Game,c|[Gen 1] Ubers,c|[Gen 1] UU,c|[Gen 1] OU (tradeback),c|[Gen 1] Stadium OU,c|[Gen 1] Custom Game,c
+_____________________________
+
+|challstr|4|d0047065a64976ac0308ed700277c94965ef2ab92e430143a076c047bac21b63d66f5d60345fb50a71aa492143667711544d90a2ae84971f3f3855e9887249703f6accf8ac5a35da3fcf9ec4da6f13a208e1bce89be388bf764c6767f13e7584a520c8fae4fde71f13781fb55184171502e60018209fd9e22d07e7931ec26e7f
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+|updateuser|testbot2798|1|20|{"blockPMs":false,"blockChallenges":false}
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+|updatechallenges|{"challengesFrom":{},"challengeTo":null}
+_____________________________
+
+|error|You are not blocking private messages! To block, use /blockpms
+_____________________________
+
+|error|You are already available for challenges!
+_____________________________
+
+|updatechallenges|{"challengesFrom":{"yodabot":"gen7doublesou"},"challengeTo":null}
+_____________________________
+
+|updatechallenges|{"challengesFrom":{},"challengeTo":null}
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+|updatesearch|{"searching":[],"games":{"battle-gen7doublesou-890115158":"[Gen 7] Doubles OU Battle"}}
+_____________________________
+
+>battle-gen7doublesou-890115158
+|init|battle
+|title|yodabot vs. testbot2798
+|j|*plyr*yodabot
+|j|*plyr*testbot2798
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|request|
+_____________________________
+
+>battle-gen7doublesou-890115158
+|player|p1|yodabot|2
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|request|{"teamPreview":true,"maxTeamSize":6,"side":{"name":"testbot2798","id":"p2","pokemon":[{"ident":"p2: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p2: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"}]},"rqid":3}
+_____________________________
+
+>battle-gen7doublesou-890115158
+|player|p2|testbot2798|20
+|teamsize|p1|2
+|teamsize|p2|2
+|gametype|doubles
+|gen|7
+|tier|[Gen 7] Doubles OU
+|rule|Species Clause: Limit one of each Pokémon
+|rule|OHKO Clause: OHKO moves are banned
+|rule|Moody Clause: Moody is banned
+|rule|Evasion Abilities Clause: Evasion abilities are banned
+|rule|Evasion Moves Clause: Evasion moves are banned
+|rule|Endless Battle Clause: Forcing endless battles is banned
+|rule|HP Percentage Mod: HP is shown in percentages
+|rule|Swagger Clause: Swagger is banned
+|clearpoke
+|poke|p1|Lanturn, F|
+|poke|p1|Jolteon, M|
+|poke|p2|Manectric, M|item
+|poke|p2|Tapu Fini|item
+|teampreview
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|error|[Invalid choice] Can't choose for Team Preview: You do not have a Pokémon in slot 5
+_____________________________
+
+>battle-gen7doublesou-890115158
+|c|*plyr*testbot2798|oof yikes thats a mish
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|inactive|Time left: 300 sec this turn | 300 sec total | 60 sec grace
+_____________________________
+
+>battle-gen7doublesou-890115158
+|inactive|Battle timer is ON: inactive players will automatically lose when time's up. (requested by testbot2798)
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|request|{"active":[{"moves":[{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flamethrower","id":"flamethrower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Volt Switch","id":"voltswitch","pp":32,"maxpp":32,"target":"normal","disabled":false}],"canMegaEvo":true},{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p2","pokemon":[{"ident":"p2: Manectric","details":"Manectric, M","condition":"311/311","active":true,"stats":{"atk":139,"def":156,"spa":280,"spd":156,"spe":339},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"lightningrod","item":"manectite","pokeball":"pokeball","ability":"lightningrod"},{"ident":"p2: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"}]},"rqid":5}
+_____________________________
+
+>battle-gen7doublesou-890115158
+|
+|start
+|switch|p1a: Lanturn|Lanturn, F|100/100
+|switch|p1b: Jolteon|Jolteon, M|100/100
+|switch|p2a: Manectric|Manectric, M|311/311
+|switch|p2b: Tapu Fini|Tapu Fini|343/343
+|-fieldstart|move: Misty Terrain|[from] ability: Misty Surge|[of] p2b: Tapu Fini
+|turn|1
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-890115158
+|request|{"active":[{"moves":[{"move":"Thunderbolt","id":"thunderbolt","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Flamethrower","id":"flamethrower","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Hidden Power Ice","id":"hiddenpower","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Volt Switch","id":"voltswitch","pp":32,"maxpp":32,"target":"normal","disabled":false}]},{"moves":[{"move":"Scald","id":"scald","pp":24,"maxpp":24,"target":"normal","disabled":false},{"move":"Moonblast","id":"moonblast","pp":23,"maxpp":24,"target":"normal","disabled":false},{"move":"Ice Beam","id":"icebeam","pp":16,"maxpp":16,"target":"normal","disabled":false},{"move":"Nature's Madness","id":"naturesmadness","pp":16,"maxpp":16,"target":"normal","disabled":false}]}],"side":{"name":"testbot2798","id":"p2","pokemon":[{"ident":"p2: Manectric","details":"Manectric-Mega, M","condition":"311/311","active":true,"stats":{"atk":139,"def":196,"spa":340,"spd":196,"spe":405},"moves":["thunderbolt","flamethrower","hiddenpowerice60","voltswitch"],"baseAbility":"intimidate","item":"manectite","pokeball":"pokeball","ability":"intimidate"},{"ident":"p2: Tapu Fini","details":"Tapu Fini","condition":"343/343","active":true,"stats":{"atk":139,"def":347,"spa":226,"spd":296,"spe":221},"moves":["scald","moonblast","icebeam","naturesmadness"],"baseAbility":"mistysurge","item":"magoberry","pokeball":"pokeball","ability":"mistysurge"}]},"rqid":7}
+_____________________________
+
+>battle-gen7doublesou-890115158
+|
+|detailschange|p2a: Manectric|Manectric-Mega, M
+|-mega|p2a: Manectric|Manectric|Manectite
+|-ability|p2a: Manectric|Intimidate|boost
+|-unboost|p1a: Lanturn|atk|1
+|-unboost|p1b: Jolteon|atk|1
+|move|p2a: Manectric|Flamethrower|p1b: Jolteon
+|-damage|p1b: Jolteon|60/100
+|move|p1b: Jolteon|Thunderbolt|p1a: Lanturn
+|-immune|p1a: Lanturn|[from] ability: Volt Absorb
+|move|p2b: Tapu Fini|Moonblast|p1a: Lanturn
+|-damage|p1a: Lanturn|64/100
+|move|p1a: Lanturn|Thunderbolt|p1b: Jolteon
+|-heal|p1b: Jolteon|84/100|[from] ability: Volt Absorb|[of] p1a: Lanturn
+|
+|upkeep
+|turn|2
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+>battle-gen7doublesou-890115158
+|c|*plyr*yodabot|YES
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|-message|yodabot forfeited.
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|
+|win|testbot2798
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|inactive|Time left: 300 sec this turn | 300 sec total
+_____________________________
+
+|updatesearch|{"searching":[],"games":null}
+_____________________________
+
+>battle-gen7doublesou-890115158
+|c|*plyr*testbot2798|another day, another opponent mished
+
+_____________________________
+
+>battle-gen7doublesou-890115158
+|deinit
+_____________________________
+

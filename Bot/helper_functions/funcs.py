@@ -40,7 +40,10 @@ async def blockchallenges(ws):
 		await ws.send("|/unblockchallenges")
 
 def attack(move, foe, mega):
-	return ("move " + str(move) + mega + " " + str(foe))
+	if foe != None:
+		return ("move " + str(move) + mega + " " + str(foe))
+	else:
+		return ("move " + str(move) + mega)
 
 def get_battle(battles, battletag):
 	return next((battle for battle in battles if battle.battletag == battletag), None)
@@ -112,13 +115,23 @@ async def choose_moves(ws, battles, battletag):
 	battle = get_battle(battles, battletag)
 
 	mega1, mega2 = get_info.get_can_mega(battle.team_data)
-	move1, target1 = get_info.find_supereffective_move(battle, 0)
-	move2, target2 = get_info.find_supereffective_move(battle, 1)
-	decision1 = attack(move1, target1, mega1)
-	decision2 = attack(move2, target2, mega2)
-	command_str = battletag + "|/choose " + decision1 + ", " + decision2
+	if (battle.allies[0] != ""): # decide 1st move if alive
+		move1, target1 = get_info.find_best_move(battle, 0)
+		decision1 = attack(move1, target1, mega1)
+	else:
+		decision1 = ""
+	if (battle.allies[1] != ""): # decide 2nd move if alive
+		move2, target2 = get_info.find_best_move(battle, 1)
+		decision2 = attack(move2, target2, mega2)
+	else:
+		decision2 = ""
+	if (battle.allies[0] != "" and battle.allies[1] != ""): # combine moves
+		command_str = battletag + "|/choose " + decision1 + ", " + decision2
+	else:
+		command_str = battletag + "|/choose " + decision1 + decision2
 	print("Sending command: " + command_str)
 	await ws.send(command_str)
+
 
 
 # gets called at team preview
@@ -145,28 +158,34 @@ async def choose_switch(ws, battledata, battletag):
 	await ws.send(command_str)
 
 
-# updates foes in the associated battle object
-def update_active_foes(msg_arr, battles):
+# updates foes/allies in the associated battle object
+def update_active_pokemon(msg_arr, battles):
 	battletag = msg_arr[0][1:].split("\n")[0]
 	battle = get_battle(battles, battletag)
-	
+
 	# parse through the update looking for switches made by the opponent
 	for i in range (3, len(msg_arr)):
-		if (msg_arr[i-2] == "switch" and msg_arr[i-1][0:2] != battle.my_side):
-			# store the new pokemon in the correct slot in the battle object
-			if (msg_arr[i-1][2] == 'a'):
-				battle.foes[0] = msg_arr[i].split(',')[0]
-			elif (msg_arr[i-1][2] == 'b'):
-				battle.foes[1] = msg_arr[i].split(',')[0]
-
-
-
-
-
-
-
-
-
-
-
-
+		# store new pokemon from switches in correct slot of the battle object
+		if (msg_arr[i-2] == "switch"):
+			if (msg_arr[i-1][0:2] != battle.my_side):
+				if (msg_arr[i-1][2] == 'a'):
+					battle.foes[0] = msg_arr[i].split(',')[0]
+				elif (msg_arr[i-1][2] == 'b'):
+					battle.foes[1] = msg_arr[i].split(',')[0]
+			else:
+				if (msg_arr[i-1][2] == 'a'):
+					battle.allies[0] = msg_arr[i].split(',')[0]
+				elif (msg_arr[i-1][2] == 'b'):
+					battle.allies[1] = msg_arr[i].split(',')[0]
+		# replace fainted pokemon with empty string
+		elif (msg_arr[i-2] == "faint"):
+			if (msg_arr[i-1][0:2] != battle.my_side):
+				if (msg_arr[i-1][2] == 'a'):
+					battle.foes[0] = ""
+				elif (msg_arr[i-1][2] == 'b'):
+					battle.foes[1] = ""
+			else:
+				if (msg_arr[i-1][2] == 'a'):
+					battle.allies[0] = ""
+				elif (msg_arr[i-1][2] == 'b'):
+					battle.allies[1] = ""
