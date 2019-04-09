@@ -3,6 +3,7 @@ import bot_settings
 import requests
 import json
 import random
+from helper_functions import get_info
 
 async def ionext(ws):
 	await ws.send("|/ionext")
@@ -40,12 +41,6 @@ async def blockchallenges(ws):
 
 def attack(move, foe, mega):
 	return ("move " + str(move) + mega + " " + str(foe))
-
-def random_move():
-	return random.randint(1, 4)
-
-def random_foe():
-	return random.randint(1, 2)
 
 def get_battle(battles, battletag):
 	return next((battle for battle in battles if battle.battletag == battletag), None)
@@ -116,9 +111,9 @@ async def on_battle_end(ws, battletag):
 async def choose_moves(ws, battles, battletag):
 	battle = get_battle(battles, battletag)
 
-	mega1, mega2 = get_can_mega(battle.team_data)
-	move1, target1 = find_supereffective_move(battle, 0)
-	move2, target2 = find_supereffective_move(battle, 1)
+	mega1, mega2 = get_info.get_can_mega(battle.team_data)
+	move1, target1 = get_info.find_supereffective_move(battle, 0)
+	move2, target2 = get_info.find_supereffective_move(battle, 1)
 	decision1 = attack(move1, target1, mega1)
 	decision2 = attack(move2, target2, mega2)
 	command_str = battletag + "|/choose " + decision1 + ", " + decision2
@@ -148,65 +143,6 @@ async def choose_switch(ws, battledata, battletag):
 	command_str = battletag + "|/choose " + switch_str
 	print("Sending command: " + command_str)
 	await ws.send(command_str)
-
-
-# called at start of each turn, checks if can mega
-def get_can_mega(battledata):
-
-	mega_dic = {True: ' mega', False: ''}
-	can_mega1 = 'canMegaEvo' in battledata['active'][0].keys()
-	can_mega2 = 'canMegaEvo' in battledata['active'][1].keys()
-	mega_str1 = mega_dic[can_mega1]
-	mega_str2 = mega_dic[can_mega2]
-	return mega_str1, mega_str2
-
-# attack_type is a string, ie "Fire"
-# target_types is an array, ie ["Fire"] or ["Fire, Flying"]
-def get_type_effectiveness(attack_type, target_types):
-	mult = 1.0
-	with open('data/typechart.json') as typechart_file:
-		typechart = json.load(typechart_file)
-		for target_type in target_types:
-			x = typechart[target_type]["damageTaken"][attack_type]
-			if (x == 1): mult *= 2 # super effective
-			elif (x == 2): mult *= 0.5 # not very effective
-			elif (x == 3): mult *= 0 # doesn't affect
-
-	return mult
-
-# example return: [["Fire"], ["Fire", "Flying"]]
-def get_foes_types(battle):
-	types = []
-	with open('data/pokedex.json') as pokedex_file:
-		pokedex = json.load(pokedex_file)
-		for foes in battle.foes:
-			formatted_foe = foes.lower().replace(' ', '').replace('-', '')
-			types.append(pokedex[formatted_foe]["types"])
-
-	return types
-
-# user is 0 or 1
-# returns move_index, foe_index
-def find_supereffective_move(battle, user):
-	with open('data/moves.json') as moves_file:
-		moves = json.load(moves_file)
-		my_moves = battle.team_data["active"][user]["moves"]
-
-		# for each move
-		for i in range(len(my_moves)):
-			id = my_moves[i]["move"].lower().replace(" ", "")
-			#print(id)
-			#print(i)
-			type = moves[id]["type"]
-			foes_types = get_foes_types(battle)
-			# print(foes_types)
-
-			# for each foe
-			for j in range (len(foes_types)):
-				if (get_type_effectiveness(type, foes_types[j]) > 1):
-					return (i+1, j+1)
-
-	return (random_move(), random_foe())
 
 
 # updates foes in the associated battle object

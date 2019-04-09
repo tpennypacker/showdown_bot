@@ -6,7 +6,7 @@ import os
 from string import printable
 
 import bot_settings
-import funcs
+from helper_functions import funcs
 from battle import Battle
 
 battles = []
@@ -83,5 +83,5 @@ async def connect_to_ps():
 			await parse_response(ws, msg)
 
 #os.system('cls') # windows
-#os.system('clear') # mac
+os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())
