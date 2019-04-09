@@ -93,6 +93,9 @@ async def startup_ops(ws):
 
 # gets called once at the start of the battle
 async def on_battle_start(ws, battletag):
+	if (bot_settings.ionext):
+		await ionext(ws)
+		print("Your next match will be invite-only. \n")
 	await hello(ws, battletag)
 	print("Saying " + bot_settings.hello + "\n")
 	if (bot_settings.timer):
@@ -104,9 +107,6 @@ async def on_battle_end(ws, battletag):
 	await goodbye(ws, battletag)
 	print("Saying " + bot_settings.goodbye + "\n")
 	await leave_battle(ws, battletag)
-	if (bot_settings.ionext):
-		await ionext(ws)
-		print("Your next match will be invite-only. \n")
 	if(bot_settings.autosearch):
 		await search_again(ws, battletag)
 		print("Searching for a new match. \n")
@@ -194,7 +194,7 @@ def find_supereffective_move(battle, user):
 
 		# for each move
 		for i in range(len(my_moves)):
-			id = my_moves[i]["id"]
+			id = my_moves[i]["move"].lower().replace(" ", "")
 			#print(id)
 			#print(i)
 			type = moves[id]["type"]

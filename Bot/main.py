@@ -65,7 +65,7 @@ async def parse_response(ws, msg):
 		await funcs.on_battle_start(ws, battletag)
 
 	# triggers when a battle ends
-	elif ('>battle' in msg_arr[0] and msg_arr[2] == 'win'):
+	elif ("|win|" in msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		await funcs.on_battle_end(ws, battletag)
 
