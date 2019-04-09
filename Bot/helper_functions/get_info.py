@@ -128,7 +128,7 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 				foes_abilities = [item for sublist in foes_abilities for item in sublist]
 				# if foes has ability then return 0
 				for foe_ability in foes_abilities:
-					if foe_ability in redirectable_types[move_type]:
+					if foe_ability == redirectable_types[move_type]:
 						return 0
 
 			if (move_type in absorbable_types.keys()):
