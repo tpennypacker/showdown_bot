@@ -47,11 +47,18 @@ def find_best_move(battle, user):
 		foes_types = get_pokemons_types(foes)
 		possible_moves = [] # list of possible moves in format [move, target, effective bp]
 
+		if (my_moves[0]["id"] == "struggle"): # if only have struggle, then send set response
+			return (1, None)
+
+
 		# for each move
 		for i, move in enumerate(my_moves, 1):
 			id = move["id"]
 			type = moves[id]["type"]
 			base_power = moves[id]["basePower"]
+
+			if (move["disabled"] == True): # don't consider disabled moves
+				continue
 
 
 			# for each foe

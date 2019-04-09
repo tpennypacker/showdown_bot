@@ -11,7 +11,9 @@ timer = True
 
 hello = "oof yikes thats a mish"
 
-goodbye = "another day, another opponent mished"
+win_txt = "another day, another opponent mished"
+
+lose_txt = "I was only operating at 10% efficiency anyways"
 
 autosearch = False
 

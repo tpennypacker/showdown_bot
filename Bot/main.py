@@ -17,7 +17,11 @@ async def parse_response(ws, msg):
 	# triggers when a battle ends
 	if ("|win|" in msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
-		await funcs.on_battle_end(ws, battletag)
+		win_str = "|win|" + bot_settings.username.lower()
+		if (win_str in msg): # see who won, and give appropriate response
+			await funcs.on_battle_end(ws, battletag, 1)
+		else:
+			await funcs.on_battle_end(ws, battletag, 0)
 
 	elif (len(msg_arr) < 3):
 		pass
@@ -25,7 +29,7 @@ async def parse_response(ws, msg):
 	# triggers at team preview
 	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"teamPreview"'):
 		battletag = msg_arr[0][1:].split('\n')[0]
-		await funcs.choose_leads(ws, battletag)
+		await funcs.choose_leads(ws, msg_arr[2], battletag)
 
 	# triggers when forced to switch
 	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"forceSwitch"'):

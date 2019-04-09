@@ -17,8 +17,8 @@ async def timer(ws, battletag):
 async def hello(ws, battletag):
 	await ws.send(battletag + "|" + bot_settings.hello)
 
-async def goodbye(ws, battletag):
-	await ws.send(battletag + "|" + bot_settings.goodbye)
+async def goodbye(ws, battletag, phrase):
+	await ws.send(battletag + "|" + phrase)
 
 async def leave_battle(ws, battletag):
 	await ws.send(battletag + "|/leave")
@@ -101,9 +101,13 @@ async def on_battle_start(ws, battletag):
 		print("Timer started for match: " + battletag + "\n")
 
 # gets called once at the end of the battle
-async def on_battle_end(ws, battletag):
-	await goodbye(ws, battletag)
-	print("Saying " + bot_settings.goodbye + "\n")
+async def on_battle_end(ws, battletag, winner):
+	if (winner == 1):
+		phrase = bot_settings.win_txt
+	else:
+		phrase = bot_settings.lose_txt
+	await goodbye(ws, battletag, phrase)
+	print("Saying " + phrase + "\n")
 	await leave_battle(ws, battletag)
 	if(bot_settings.autosearch):
 		await search_again(ws, battletag)
@@ -133,11 +137,11 @@ async def choose_moves(ws, battles, battletag):
 	await ws.send(command_str)
 
 
-
 # gets called at team preview
-async def choose_leads(ws, battletag):
-
-	leads = random.sample(range(1, 7), 2)  # 2 unique numbers from 1-6
+async def choose_leads(ws, battledata, battletag):
+	battle_json = json.loads(battledata)
+	num_pokemon = len(battle_json["side"]["pokemon"])
+	leads = random.sample(range(1, num_pokemon+1), 2)  # e.g. 2 unique numbers from 1-6
 	leads = [str(i) for i in leads]
 	command_str = battletag + "|/choose team " + "".join(leads)
 	print("Sending command: " + command_str)
