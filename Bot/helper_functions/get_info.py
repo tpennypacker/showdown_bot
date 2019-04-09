@@ -126,16 +126,15 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 				alive_foes = [get_formatted_name(foe) for foe in foes if foe != ""]
 				foes_abilities = [pokedex[foe]["abilities"].values() for foe in alive_foes]
 				foes_abilities = [item for sublist in foes_abilities for item in sublist]
-				# if foes has ability then return 0
-				for foe_ability in foes_abilities:
-					if foe_ability == redirectable_types[move_type]:
-						return 0
+				# if foes have ability then return 0
+				if redirectable_types[move_type] in foes_abilities:
+					return 0
 
 			if (move_type in absorbable_types.keys()):
 				# get possible abilities for targeted foe
 				target_foe = get_formatted_name(foes[target])
 				target_abilities = pokedex[target_foe]["abilities"].values()
-				# if foes has ability then return 0
+				# if foe has ability then return 0
 				for foe_ability in target_abilities:
 					if foe_ability in absorbable_types[move_type]:
 						return 0
