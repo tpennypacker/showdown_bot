@@ -36,8 +36,9 @@ async def parse_response(ws, msg):
 		funcs.update_active_foes(msg_arr, battles)
 		battletag = msg_arr[0][1:].split('\n')[0]
 		battle = funcs.get_battle(battles, battletag)
-		await funcs.choose_moves(ws, battles, battletag)
-		
+		if ("|turn|" in msg):
+			await funcs.choose_moves(ws, battles, battletag)
+
 
 	# triggers at the start of each turn, BEFORE the summary
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
@@ -74,7 +75,7 @@ async def connect_to_ps():
 		#with open("C:\\Users\\Stephen\\Desktop\\Programming\\Python\\codees\\bot with fespy3\\showdown_bot\\Bot\\bot_log.txt", "w") as logfile:
 		while(True):
 			msg = await ws.recv()
-			print(msg)
+			#print(msg)
 			#print("_____________________\n")
 			#msg = msg.replace("\u2606", "*plyr*")
 			#print(msg, file=logfile)
@@ -82,5 +83,5 @@ async def connect_to_ps():
 			await parse_response(ws, msg)
 
 #os.system('cls') # windows
-os.system('clear') # mac
+#os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())
