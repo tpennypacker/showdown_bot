@@ -54,7 +54,7 @@ def find_best_move(battle, user):
 		# for each move
 		for i, move in enumerate(my_moves, 1):
 			id = move["move"].lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
-			type = moves[id]["type"]
+			move_type = moves[id]["type"]
 			base_power = moves[id]["basePower"]
 
 			if (move["disabled"] == True): # don't consider disabled moves
@@ -64,14 +64,14 @@ def find_best_move(battle, user):
 			# for each foe
 			if (foes[0] != "" and foes[1] != ""): # both alive
 				for j, foe in enumerate(foes_types, 1):
-					effective_bp = base_power * get_stab_effectiveness(type, my_types, my_ability) * get_type_effectiveness(type, foe) * get_ability_effectiveness(my_ability, type, foes, j-1)
+					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe) * get_ability_effectiveness(my_ability, move_type, foes, j-1) * get_field_modifier(battle, my_types, my_ability, move_type, foes[j-1], foe)
 					possible_moves.append([i, j, effective_bp])
 			else:
 				if (foes[0] != ""): # only 1st alive
-					effective_bp = base_power * get_stab_effectiveness(type, my_types, my_ability) * get_type_effectiveness(type, foes_types[0]) * get_ability_effectiveness(my_ability, type, foes, 0)
+					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foes_types[0]) * get_ability_effectiveness(my_ability, move_type, foes, 0) * get_field_modifier(battle, my_types, my_ability, move_type, foes[0], foes_types[0])
 					possible_moves.append([i, 1, effective_bp])
 				else: # only 2nd alive
-					effective_bp = base_power * get_stab_effectiveness(type, my_types, my_ability) * get_type_effectiveness(type, foes_types[1]) * get_ability_effectiveness(my_ability, type, foes, 1)
+					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foes_types[1]) * get_ability_effectiveness(my_ability, move_type, foes, 1) * get_field_modifier(battle, my_types, my_ability, move_type, foes[1], foes_types[1])
 					possible_moves.append([i, 2, effective_bp])
 
 		# sort possible moves by effective base power in descending order
@@ -151,3 +151,36 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 # get relevant team_data about a given pokemon
 def get_pokemon_from_team(battle, target_mon):
 	return next((pokemon for pokemon in battle.team_data["side"]["pokemon"] if target_mon in pokemon["details"]), None)
+
+# get modifier from weather/terrain
+def get_field_modifier(battle, my_types, my_ability, move_type, foe, foe_types):
+	with open('data/pokedex.json') as pokedex_file:
+		pokedex = json.load(pokedex_file)
+		formatted_foe = get_formatted_name(foe)
+		# each True or False
+		user_flying = ("Flying" in my_types or my_ability == "levitate")
+		target_flying = ("Flying" in foe_types or "Levitate" in pokedex[formatted_foe]["abilities"].values())
+		mult = 1
+		# weather
+		if (move_type == "Fire"):
+			if (battle.weather == "SunnyDay"):
+				mult *= 1.5
+			elif (battle.weather == "RainDance"):
+				mult *= 0.5
+		elif (move_type == "Water"):
+			if (battle.weather == "SunnyDay"):
+				mult *= 0.5
+			elif (battle.weather == "RainDance"):
+				mult *= 1.5
+		# terrain
+		elif (move_type == "Dragon"):
+			if (battle.terrain == "Misty Terrain" and target_flying == False):
+				mult *= 0.5
+		elif (user_flying == False):
+			if (move_type == "Electric" and battle.terrain == "Electric Terrain"):
+				mult *= 1.5
+			if (move_type == "Psychic" and battle.terrain == "Psychic Terrain"):
+				mult *= 1.5
+			if (move_type == "Grass" and battle.terrain == "Grassy Terrain"):
+				mult *= 1.5
+	return mult

@@ -7,3 +7,5 @@ class Battle:
 		self.team_data = None
 		self.battletag = battletag
 		self.my_side = my_side
+		self.terrain = None # e.g. "Electric Terrain"
+		self.weather = None # e.g. "RainDance"

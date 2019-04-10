@@ -167,7 +167,7 @@ def update_active_pokemon(msg_arr, battles):
 	battletag = msg_arr[0][1:].split("\n")[0]
 	battle = get_battle(battles, battletag)
 
-	# parse through the update looking for switches made by the opponent
+	# parse through the update looking for relevant information
 	for i in range (3, len(msg_arr)):
 		# store new pokemon from switches in correct slot of the battle object
 		if (msg_arr[i-2] == "switch"):
@@ -193,3 +193,15 @@ def update_active_pokemon(msg_arr, battles):
 					battle.allies[0] = ""
 				elif (msg_arr[i-1][2] == 'b'):
 					battle.allies[1] = ""
+		# look for terrain being set
+		elif (msg_arr[i-1] == "-fieldstart"):
+			battle.terrain = msg_arr[i][6:]
+		# look for terrain ending
+		elif (msg_arr[i-1] == "-fieldend"):
+			battle.terrain = None
+		# look for weather
+		elif (msg_arr[i-1] == "-weather"):
+			if (msg_arr[i][0:4] == "none"):
+				battle.weather = None
+			else:
+				battle.weather = msg_arr[i]
