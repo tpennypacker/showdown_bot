@@ -53,7 +53,7 @@ def find_best_move(battle, user):
 
 		# for each move
 		for i, move in enumerate(my_moves, 1):
-			id = move["id"]
+			id = move["move"].lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
 			type = moves[id]["type"]
 			base_power = moves[id]["basePower"]
 
@@ -100,7 +100,7 @@ mons_with_useless_forms = ['gastrodon', 'shellos', 'florges', 'genesect',
 							'magearna', 'minior']
 
 def get_formatted_name(pokemon):
-	formatted = pokemon.lower().replace(' ', '').replace('-', '').replace("'", "")
+	formatted = pokemon.lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "")
 
 	for mon in mons_with_useless_forms:
 		if mon in formatted:
@@ -127,7 +127,7 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 	with open('data/pokedex.json') as pokedex_file:
 		pokedex = json.load(pokedex_file)
 		# if don't have ability ignoring ability, and absorbable move type, then check for abilities
-		if (my_ability != "terravolt" or my_ability != "turboblaze" or my_ability != "moldbreaker"):
+		if (my_ability != "terravolt" and my_ability != "turboblaze" and my_ability != "moldbreaker"):
 			if (move_type in redirectable_types.keys()):
 				# get both foes abilities need to consider, list of all possiblities in one big list
 				alive_foes = [get_formatted_name(foe) for foe in foes if foe != ""]

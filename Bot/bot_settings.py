@@ -1,9 +1,9 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "testbot2798"
+username = "Ask Key"
 
-password = "password2798"
+password = "ascii"
 
 ionext = False
 
@@ -15,7 +15,7 @@ win_txt = "another day, another opponent mished"
 
 lose_txt = "I was only operating at 10% efficiency anyways"
 
-autosearch = False
+autosearch = True
 
 avatar = ""
 

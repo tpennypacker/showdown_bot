@@ -18,7 +18,7 @@ async def parse_response(ws, msg):
 	if ("|win|" in msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		win_str = "|win|" + bot_settings.username.lower()
-		if (win_str in msg): # see who won, and give appropriate response
+		if (win_str in msg.lower()): # see who won, and give appropriate response
 			await funcs.on_battle_end(ws, battletag, 1)
 		else:
 			await funcs.on_battle_end(ws, battletag, 0)
@@ -82,5 +82,5 @@ async def connect_to_ps():
 			await parse_response(ws, msg)
 
 #os.system('cls') # windows
-#os.system('clear') # mac
+os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())
