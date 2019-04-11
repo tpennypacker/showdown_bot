@@ -189,3 +189,43 @@ def get_field_modifier(battle, my_types, my_ability, move_type, move_category, f
 			if (move_type == "Grass" and battle.terrain == "Grassy Terrain"):
 				mult *= 1.5
 	return mult
+
+
+
+
+
+
+def calculate_scores(battle):
+	scores = []
+
+	pokemons = battle.team_data['side']['pokemon']
+
+	for i in range(len(pokemons)):
+		pokemon = pokemons[i]
+
+		# skip if the pokemon is already out, or if fainted
+		if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
+			continue
+
+		name = get_formatted_name(pokemon['details'])
+		power = 100 + i
+		scores.append({'name':name, 'power':power})
+
+	return(scores)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

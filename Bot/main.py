@@ -5,6 +5,7 @@ import json
 import os
 from string import printable
 
+import ai
 import bot_settings
 from helper_functions import funcs
 from battle import Battle
@@ -29,12 +30,15 @@ async def parse_response(ws, msg):
 	# triggers at team preview
 	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"teamPreview"'):
 		battletag = msg_arr[0][1:].split('\n')[0]
-		await funcs.choose_leads(ws, msg_arr[2], battletag)
+		await ai.choose_leads(ws, msg_arr[2], battletag)
 
 	# triggers when forced to switch
 	elif (msg_arr[1] == "request" and msg_arr[2][0:14] == '{"forceSwitch"'):
 		battletag = msg_arr[0][1:].split('\n')[0]
-		await funcs.choose_switch(ws, msg_arr[2], battletag)
+		battle = funcs.get_battle(battles, battletag)
+		funcs.update_active_pokemon(msg_arr, battles)
+		battle.team_data = json.loads(msg_arr[2])
+		await ai.choose_switch(ws, battle, battletag)
 
 	# triggers when get move request or wait request
 	elif (msg_arr[1] == "request" and len(msg_arr[2]) > 0):
@@ -48,7 +52,7 @@ async def parse_response(ws, msg):
 		battletag = msg_arr[0][1:].split('\n')[0]
 		battle = funcs.get_battle(battles, battletag)
 		if ("|turn|" in msg):
-			await funcs.choose_moves(ws, battles, battletag)
+			await ai.choose_moves(ws, battles, battletag)
 
 	# check for short messages
 	elif (len(msg_arr) < 4):
