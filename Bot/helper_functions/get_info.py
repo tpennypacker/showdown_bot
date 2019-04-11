@@ -34,52 +34,96 @@ def get_type_effectiveness(attack_type, target_types):
 	return mult
 
 
-# user is 0 or 1
-# returns move_index, foe_index
-def find_best_move(battle, user):
+# return index position of target pokemon in list (e.g. of active mons/full team)
+def index_of_pokemon(target, pokemon_list):
+	target = get_formatted_name(target)
+	pokemon_list = [get_formatted_name(pokemon) for pokemon in pokemon_list]
+	return pokemon_list.index(target)
+
+
+# e.g. convert "hiddenpowerice60" to "hiddenpowerice"
+def remove_hp_power(move_name):
+	if ("hiddenpower" in move_name):
+		return move_name[:-2]
+	else:
+		return move_name
+
+
+# format active moves, and denote disabled moves as ""
+def format_active_move(move):
+	if (move["disabled"] == True):
+		return ""
+	else:
+		return move["move"].lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
+
+
+def get_formatted_team_names(battle):
+	pokemons = battle.team_data['side']['pokemon']
+	pokemons = [get_formatted_name(pokemon['details']) for pokemon in pokemons]
+	return pokemons
+
+
+# find best move for a given mon against the active foes
+# returns move_index, foe_index, effective base power
+def find_best_move_active_foes(battle, user):
+	possible_moves = []
+	foes = battle.foes
+	for i, foe in enumerate(foes, 1):
+		if (foe == ""): # ignore dead foe
+			continue
+		best_move = find_best_move_against_foe(battle, user, foe)
+		best_move[1] = i
+		possible_moves.append(best_move)
+	possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
+	# return (move index, target index, effective bp) of strongest move/target combination
+	return possible_moves[0]
+
+
+	pokemons = battle.team_data['side']['pokemon']
+
+	for pokemon in pokemons:
+		# skip if the pokemon is already out, or if fainted
+		if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
+			continue
+
+		name = get_formatted_name(pokemon['details'])
+
+
+# user is Pokemon's name, foe is Pokemon's name
+# returns move_index, foe_index, effective base power
+def find_best_move_against_foe(battle, user, foe):
 	with open('data/moves.json') as moves_file:
 		moves = json.load(moves_file)
-		my_pokemon = get_pokemon_from_team(battle, battle.allies[user])
-		my_moves = battle.team_data["active"][user]["moves"]
-		my_types = get_pokemons_types(battle.allies)[user]
-		my_ability = my_pokemon["baseAbility"]
-		foes = battle.foes
-		foes_types = get_pokemons_types(foes)
+		user_index = index_of_pokemon(user, get_formatted_team_names(battle))
+		my_types = get_pokemons_types([user])[0]
+		my_ability = battle.team_data["side"]["pokemon"][user_index]["ability"]
+		foe_types = get_pokemons_types([foe])[0]
 		possible_moves = [] # list of possible moves in format [move, target, effective bp]
 
-		if (my_moves[0]["id"] == "struggle"): # if only have struggle, then send set response
-			return (1, None)
-
+		if (user_index <= 1): # active pokemon
+			user_active = True
+			my_moves = battle.team_data["active"][user_index]["moves"]
+			my_moves = [format_active_move(move) for move in my_moves]
+			if (my_moves[0] == "struggle"): # if only have struggle, then send set response
+				return (1, None, 50)
+		else: # pokemon in back
+			user_active = False
+			my_moves = battle.team_data["side"]["pokemon"][user_index]["moves"]
+			my_moves = [remove_hp_power(move) for move in my_moves]
 
 		# for each move
 		for i, move in enumerate(my_moves, 1):
-			id = move["move"].lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
-			move_category = moves[id]["category"]
-			move_type = moves[id]["type"]
-			base_power = moves[id]["basePower"]
-
-
-			if (move["disabled"] == True): # don't consider disabled moves
+			if (move == ""): # don't consider disabled moves
 				continue
-
-
-			# for each foe
-			if (foes[0] != "" and foes[1] != ""): # both alive
-				for j, foe in enumerate(foes_types, 1):
-					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe) * get_ability_effectiveness(my_ability, move_type, foes, j-1) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foes[j-1], foe)
-					possible_moves.append([i, j, effective_bp])
-			else:
-				if (foes[0] != ""): # only 1st alive
-					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foes_types[0]) * get_ability_effectiveness(my_ability, move_type, foes, 0) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foes[0], foes_types[0])
-					possible_moves.append([i, 1, effective_bp])
-				else: # only 2nd alive
-					effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foes_types[1]) * get_ability_effectiveness(my_ability, move_type, foes, 1) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foes[1], foes_types[1])
-					possible_moves.append([i, 2, effective_bp])
-
+			move_category = moves[move]["category"]
+			move_type = moves[move]["type"]
+			base_power = moves[move]["basePower"]
+			effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.foes, foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
+			possible_moves.append([i, None, effective_bp])
 		# sort possible moves by effective base power in descending order
 		possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
-	# return move/target of strongest move
-	return possible_moves[0][0:2]
+	# return (move index, target index, effective bp) of strongest move
+	return possible_moves[0]
 
 
 # example return: [["Fire"], ["Fire", "Flying"]]
@@ -102,7 +146,7 @@ mons_with_useless_forms = ['gastrodon', 'shellos', 'florges', 'genesect',
 							'magearna', 'minior']
 
 def get_formatted_name(pokemon):
-	formatted = pokemon.lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "")
+	formatted = pokemon.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "")
 
 	for mon in mons_with_useless_forms:
 		if mon in formatted:
@@ -141,7 +185,7 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 
 			if (move_type in absorbable_types.keys()):
 				# get possible abilities for targeted foe
-				target_foe = get_formatted_name(foes[target])
+				target_foe = get_formatted_name(target)
 				target_abilities = pokedex[target_foe]["abilities"].values()
 				# if foe has ability then return 0
 				for foe_ability in target_abilities:
@@ -200,32 +244,13 @@ def calculate_scores(battle):
 
 	pokemons = battle.team_data['side']['pokemon']
 
-	for i in range(len(pokemons)):
-		pokemon = pokemons[i]
-
+	for pokemon in pokemons:
 		# skip if the pokemon is already out, or if fainted
 		if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
 			continue
 
 		name = get_formatted_name(pokemon['details'])
-		power = 100 + i
+		move, target, power = find_best_move_active_foes(battle, name)
 		scores.append({'name':name, 'power':power})
 
 	return(scores)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

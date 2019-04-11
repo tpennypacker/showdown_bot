@@ -11,8 +11,13 @@ def attack(move, foe, mega):
 	else:
 		return ("move " + str(move) + mega)
 
+
 def get_battle(battles, battletag):
 	return next((battle for battle in battles if battle.battletag == battletag), None)
+
+
+def get_battletag(msg_arr):
+	return msg_arr[0][1:].split('\n')[0]
 
 
 async def log_in(ws, msg_arr):

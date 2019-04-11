@@ -1,9 +1,9 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "oompaloomparoomba"
+username = "testbot2798"
 
-password = "ascii"
+password = "password2798"
 
 ionext = False
 
