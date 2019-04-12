@@ -57,6 +57,7 @@ async def on_battle_start(ws, battletag):
 	if (bot_settings.timer):
 		await senders.timer(ws, battletag)
 
+
 # gets called once at the end of the battle
 async def on_battle_end(ws, battletag, winner):
 	if (winner == 1):
@@ -67,6 +68,15 @@ async def on_battle_end(ws, battletag, winner):
 	await senders.leave_battle(ws, battletag)
 	if(bot_settings.autosearch):
 		await senders.search_again(ws, battletag)
+
+
+# accept challenges if in correct tier
+async def handle_challenges(ws, msg_arr):
+	challenges = json.loads(msg_arr[2])
+	challengers = challenges["challengesFrom"].keys()
+	for challenger in challengers:
+		if (challenges["challengesFrom"][challenger] == bot_settings.play_tier):
+			await senders.accept_challenge(ws, challenger)
 
 
 # updates foes/allies in the associated battle object
@@ -112,7 +122,9 @@ def update_active_pokemon(msg_arr, battles):
 				battle.weather = None
 			else:
 				battle.weather = msg_arr[i]
-
-
-
-
+		# look for ally switch
+		elif (msg_arr[i-1] == "swap"):
+			if (msg_arr[i][0:2] != battle.my_side):
+				battle.foes[0], battle.foes[1] = battle.foes[1], battle.foes[0]
+			else:
+				battle.allies[0], battle.allies[1], = battle.allies[1], battle.allies[0]

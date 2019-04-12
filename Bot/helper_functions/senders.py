@@ -47,7 +47,9 @@ async def blockchallenges(ws):
 		await ws.send("|/unblockchallenges")
 		print("Unblocked challenges")
 
-
+async def accept_challenge(ws, challenger):
+	await ws.send("|/utm " + bot_settings.bot_team)
+	await ws.send("|/accept " + challenger)
 
 
 async def send_login_msg(ws, msg):
@@ -67,11 +69,3 @@ async def send_turn_decision(ws, command_str):
 async def send_forced_switch_decision(ws, command_str):
 	print("Sending forced switch: " + command_str)
 	await ws.send(command_str)
-
-
-
-
-
-
-
-

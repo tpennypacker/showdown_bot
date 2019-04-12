@@ -6,6 +6,6 @@ class Battle:
 		self.allies = ["no pokemon", "no pokemon"]
 		self.team_data = None
 		self.battletag = battletag
-		self.my_side = my_side
+		self.my_side = my_side # p1 or p2
 		self.terrain = None # e.g. "Electric Terrain"
 		self.weather = None # e.g. "RainDance"

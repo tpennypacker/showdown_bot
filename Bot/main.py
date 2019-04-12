@@ -24,6 +24,10 @@ async def parse_response(ws, msg):
 		else:
 			await funcs.on_battle_end(ws, battletag, 0)
 
+	elif (msg_arr[1] == "updatechallenges"):
+		if (bot_settings.accept_challenges == True):
+			await funcs.handle_challenges(ws, msg_arr)
+
 	elif (len(msg_arr) < 3):
 		pass
 
