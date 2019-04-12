@@ -17,9 +17,8 @@ async def choose_moves(ws, battles, battletag):
 	battle = funcs.get_battle(battles, battletag)
 	allies = battle.allies
 	mega = get_info.get_can_mega(battle.team_data)
-
-	scores = get_info.calculate_scores(battle)
-	sorted_scores = sorted(scores, key = lambda i: i['power'], reverse=True)
+	can_switch = get_info.get_can_switch(battle.team_data)
+	sorted_scores = get_info.calculate_scores(battle)
 
 
 	decisions = []
@@ -28,8 +27,8 @@ async def choose_moves(ws, battles, battletag):
 			move, target, bp = get_info.find_best_move_active_foes(battle, allies[i])
 
 			# consider switching
-			if (bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
-				decisions.append('switch ' + sorted_scores[0]['name'])
+			if (can_switch[i] == True and bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
+				decisions.append('switch ' +  get_info.format_switch_name(sorted_scores[0]['name']))
 				sorted_scores.pop(0) # make sure you don't switch to the same pokemon twice
 
 			# attack
@@ -43,10 +42,8 @@ async def choose_moves(ws, battles, battletag):
 
 	# combine moves
 	if (allies[0] != "" and allies[1] != ""):
-		#command_str = battletag + "|/choose " + decision1 + ", " + decision2
 		command_str = battletag + "|/choose " + decisions[0] + ", " + decisions[1]
 	else:
-		#command_str = battletag + "|/choose " + decision1 + decision2
 		command_str = battletag + "|/choose " + decisions[0] + decisions[1]
 
 	await senders.send_turn_decision(ws, command_str)
@@ -70,11 +67,11 @@ async def choose_switch(ws, battle, battletag):
 
 	# switch both, multiple mons left
 	elif (switch1 == switch2):
-		switch_str = "switch " + sorted_scores[0]['name'].split(',')[0] + ", switch " + sorted_scores[1]['name'].split(',')[0]
+		switch_str = "switch " + get_info.format_switch_name(sorted_scores[0]['name']) + ", switch " +  get_info.format_switch_name(sorted_scores[1]['name'])
 
 	# switch one
 	else:
-		switch_str = "switch " + sorted_scores[0]['name'].split(',')[0]
+		switch_str = "switch " +  get_info.format_switch_name(sorted_scores[0]['name'])
 
 	command_str = battletag + "|/choose " + switch_str
 	await senders.send_forced_switch_decision(ws, command_str)

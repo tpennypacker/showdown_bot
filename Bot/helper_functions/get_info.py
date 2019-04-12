@@ -72,7 +72,7 @@ def find_best_move_active_foes(battle, user):
 		if (foe == ""): # ignore dead foe
 			continue
 		best_move = find_best_move_against_foe(battle, user, foe)
-		best_move[1] = i
+		best_move[1] = i # give index of foe
 		possible_moves.append(best_move)
 	possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
 	# return (move index, target index, effective bp) of strongest move/target combination
@@ -112,14 +112,14 @@ def find_best_move_against_foe(battle, user, foe):
 			my_moves = [remove_hp_power(move) for move in my_moves]
 
 		# for each move
-		for i, move in enumerate(my_moves, 1):
+		for move in my_moves:
 			if (move == ""): # don't consider disabled moves
 				continue
 			move_category = moves[move]["category"]
 			move_type = moves[move]["type"]
 			base_power = moves[move]["basePower"]
 			effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.foes, foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
-			possible_moves.append([i, None, effective_bp])
+			possible_moves.append([move, None, effective_bp])
 		# sort possible moves by effective base power in descending order
 		possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
 	# return (move index, target index, effective bp) of strongest move
@@ -146,7 +146,7 @@ mons_with_useless_forms = ['gastrodon', 'shellos', 'florges', 'genesect',
 							'magearna', 'minior']
 
 def get_formatted_name(pokemon):
-	formatted = pokemon.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "")
+	formatted = pokemon.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "").strip("\n")
 
 	for mon in mons_with_useless_forms:
 		if mon in formatted:
@@ -194,9 +194,11 @@ def get_ability_effectiveness(my_ability, move_type, foes, target):
 	# if opponent can't have any absorbing abilities, then return 1
 	return 1
 
+
 # get relevant team_data about a given pokemon
 def get_pokemon_from_team(battle, target_mon):
 	return next((pokemon for pokemon in battle.team_data["side"]["pokemon"] if target_mon in pokemon["details"]), None)
+
 
 # get modifier from weather/terrain
 def get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types):
@@ -235,10 +237,6 @@ def get_field_modifier(battle, my_types, my_ability, move_type, move_category, f
 	return mult
 
 
-
-
-
-
 def calculate_scores(battle):
 	scores = []
 
@@ -252,5 +250,34 @@ def calculate_scores(battle):
 		name = get_formatted_name(pokemon['details'])
 		move, target, power = find_best_move_active_foes(battle, name)
 		scores.append({'name':name, 'power':power})
+	# put dummy entries so doesn't get huffy when 1 or 0 mons available
+	if (len(scores) == 1):
+		scores.append({'name':"dummy_name", 'power':0})
+	elif (len(scores) == 0):
+		scores.append({'name':"dummy_name1", 'power':0})
+		scores.append({'name':"dummy_name2", 'power':0})
 
+	scores = sorted(scores, key = lambda i: i['power'], reverse=True)
 	return(scores)
+
+
+def format_switch_name(pokemon_name):
+	pokemon_name = pokemon_name.split(',')[0]
+	if (pokemon_name[-4:] == "mega"):
+		return pokemon_name[:-4]
+	elif (pokemon_name[-5:] == "megax" or pokemon_name[-5:] == "megay"):
+		return pokemon_name[:-5]
+	else:
+		return pokemon_name
+
+
+def get_can_switch(team_data):
+	active_info = team_data["active"]
+	can_switch = []
+	for i in range(2):
+		keys = active_info[i].keys()
+		if ("trapped" in keys or "maybeTrapped" in keys):
+			can_switch.append(False)
+		else:
+			can_switch.append(True)
+	return can_switch
