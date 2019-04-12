@@ -6,7 +6,7 @@ import os
 from string import printable
 
 import ai
-import bot_settings
+from settings import bot_settings
 from helper_functions import funcs
 from battle import Battle
 

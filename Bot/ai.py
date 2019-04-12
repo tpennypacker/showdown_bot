@@ -2,6 +2,7 @@ from helper_functions import funcs
 from helper_functions import get_info
 from helper_functions import senders
 from battle import Battle
+from settings import ai_settings
 import json
 import random
 from operator import itemgetter
@@ -12,23 +13,42 @@ from operator import itemgetter
 
 # gets called at the start of each turn
 async def choose_moves(ws, battles, battletag):
+
 	battle = funcs.get_battle(battles, battletag)
 	allies = battle.allies
-	mega1, mega2 = get_info.get_can_mega(battle.team_data)
-	if (allies[0] != ""): # decide 1st move if alive
-		move1, target1, bp1 = get_info.find_best_move_active_foes(battle, allies[0])
-		decision1 = funcs.attack(move1, target1, mega1)
+	mega = get_info.get_can_mega(battle.team_data)
+
+	scores = get_info.calculate_scores(battle)
+	sorted_scores = sorted(scores, key = lambda i: i['power'], reverse=True)
+
+
+	decisions = []
+	for i in range (2):
+		if (allies[i] != ""):
+			move, target, bp = get_info.find_best_move_active_foes(battle, allies[i])
+
+			# consider switching
+			if (bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
+				decisions.append('switch ' + sorted_scores[0]['name'])
+				sorted_scores.pop(0) # make sure you don't switch to the same pokemon twice
+
+			# attack
+			else:
+				decisions.append(funcs.attack(move, target, mega[i]))
+
+		# if the slot is fainted, don't send a command for it
+		else:
+			decisions.append("")
+
+
+	# combine moves
+	if (allies[0] != "" and allies[1] != ""):
+		#command_str = battletag + "|/choose " + decision1 + ", " + decision2
+		command_str = battletag + "|/choose " + decisions[0] + ", " + decisions[1]
 	else:
-		decision1 = ""
-	if (allies[1] != ""): # decide 2nd move if alive
-		move2, target2, bp2 = get_info.find_best_move_active_foes(battle, allies[1])
-		decision2 = funcs.attack(move2, target2, mega2)
-	else:
-		decision2 = ""
-	if (allies[0] != "" and allies[1] != ""): # combine moves
-		command_str = battletag + "|/choose " + decision1 + ", " + decision2
-	else:
-		command_str = battletag + "|/choose " + decision1 + decision2
+		#command_str = battletag + "|/choose " + decision1 + decision2
+		command_str = battletag + "|/choose " + decisions[0] + decisions[1]
+
 	await senders.send_turn_decision(ws, command_str)
 
 
@@ -38,8 +58,6 @@ async def choose_switch(ws, battle, battletag):
 
 	scores = get_info.calculate_scores(battle)
 	sorted_scores = sorted(scores, key = lambda i: i['power'], reverse=True)
-
-	print("_________________\n")
 
 	switch1, switch2 = battle.team_data['forceSwitch']  # each True or False
 

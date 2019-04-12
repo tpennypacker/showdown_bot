@@ -1,4 +1,4 @@
-import bot_settings
+from settings import bot_settings
 import requests
 import json
 from helper_functions import get_info
@@ -76,8 +76,8 @@ def update_active_pokemon(msg_arr, battles):
 
 	# parse through the update looking for relevant information
 	for i in range (3, len(msg_arr)):
-		# store new pokemon from switches in correct slot of the battle object
-		if (msg_arr[i-2] == "switch"):
+		# store new pokemon from switches or megas in correct slot of the battle object
+		if (msg_arr[i-2] == "switch" or msg_arr[i-2] == "detailschange"):
 			if (msg_arr[i-1][0:2] != battle.my_side):
 				if (msg_arr[i-1][2] == 'a'):
 					battle.foes[0] = msg_arr[i].split(',')[0]
@@ -112,3 +112,7 @@ def update_active_pokemon(msg_arr, battles):
 				battle.weather = None
 			else:
 				battle.weather = msg_arr[i]
+
+
+
+
