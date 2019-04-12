@@ -1,16 +1,16 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "Ask Key"
+username = "yodabot"
 
-password = "ascii"
+password = "password2798"
 
 ionext = False
 
 timer = False
 
 # can use <opponent_name> then opponent's name will be substituted in
-hello = "glhf  <opponent_name>."
+hello = "glhf  <opponent_name>"
 
 win_txt = "gg <opponent_name>"
 

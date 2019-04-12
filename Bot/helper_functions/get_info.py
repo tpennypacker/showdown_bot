@@ -34,7 +34,7 @@ def get_type_effectiveness(attack_type, target_types):
 	return mult
 
 
-# return index position of target pokemon in list (e.g. of active mons/full team)
+# return index position of target pokemon in list of pokemon (e.g. target foe in active mons)
 def index_of_pokemon(target, pokemon_list):
 	target = get_formatted_name(target)
 	pokemon_list = [get_formatted_name(pokemon) for pokemon in pokemon_list]
@@ -64,27 +64,28 @@ def get_formatted_team_names(battle):
 
 
 # find best move for a given mon against the active foes
-# returns move_name, foe_index, effective base power
+# returns (move_name, foe_index, effective base power)
 def find_best_move_active_foes(battle, user):
 	possible_moves = []
 	foes = battle.foes
 	for i, foe in enumerate(foes, 1):
 		if (foe == ""): # ignore dead foe
 			continue
-		best_move = find_best_move_against_foe(battle, user, foe)
-		best_move[1] = i # give index of foe
+		moves_damage = find_best_move_against_foe(battle, user, foe)
 		possible_moves.append(moves_damage)
 
-
+	# deal with spread moves which only hit opponents (e.g. Muddy Water)
 	if (len(possible_moves) > 1):
 		for i in range (len(possible_moves[0])):
 			move = possible_moves[0][i]
 			if (is_spread_move(move[0])):
-				possible_moves[0][i][2] += possible_moves[1][i][2] # add damage to second target
-				possible_moves[0][i][1] = 2 # indicate that target is both foes
-				possible_moves[1].pop[i] # pop the second instance of the spread move
-		possible_moves = possible_moves[0].append(possible_moves[1])
+				possible_moves[0][i][2] += possible_moves[1][i][2] # add base power against second target
+				possible_moves[0][i][2] *= 0.75 # apply spread reduction factor
+				possible_moves[0][i][1] = 3 # indicate that target is both foes
+				possible_moves[1].pop(i) # pop the second instance of the spread move
 
+	# combine lists of moves against each foe into single list of possible moves
+	possible_moves = [move for sublist in possible_moves for move in sublist]
 
 	# sort based on power
 	possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
@@ -94,7 +95,7 @@ def find_best_move_active_foes(battle, user):
 
 
 # user is Pokemon's name, foe is Pokemon's name
-# returns move_name, foe_index, effective base power of all moves
+# returns list of (move_name, foe_index, effective base power) for each usable move
 def find_best_move_against_foe(battle, user, foe):
 	with open('data/moves.json') as moves_file:
 		moves = json.load(moves_file)
@@ -115,6 +116,11 @@ def find_best_move_against_foe(battle, user, foe):
 			my_moves = battle.team_data["side"]["pokemon"][user_index]["moves"]
 			my_moves = [remove_hp_power(move) for move in my_moves]
 
+		if (foe in battle.foes): # if target foe active then get position for sending move
+			foe_index = index_of_pokemon(foe, battle.foes) + 1
+		else:
+			foe_index = None
+
 		# for each move
 		for move in my_moves:
 			if (move == ""): # don't consider disabled moves
@@ -123,8 +129,8 @@ def find_best_move_against_foe(battle, user, foe):
 			move_type = moves[move]["type"]
 			base_power = moves[move]["basePower"]
 			effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.foes, foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
-			possible_moves.append([move, None, effective_bp])
-	
+			possible_moves.append([move, foe_index, effective_bp])
+
 	# return (move name, target index, effective bp) of each move
 	return possible_moves
 
@@ -240,6 +246,7 @@ def get_field_modifier(battle, my_types, my_ability, move_type, move_category, f
 	return mult
 
 
+# calculate scores used for switching, uses strongest move for each available pokemon
 def calculate_scores(battle):
 	scores = []
 
