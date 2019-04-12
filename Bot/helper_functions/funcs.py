@@ -6,7 +6,7 @@ from helper_functions import senders
 
 
 def attack(move, foe, mega):
-	if foe != None:
+	if foe != None and foe != 2: # make sure there is a foe, and that the move is not a spread move
 		return ("move " + str(move) + mega + " " + str(foe))
 	else:
 		return ("move " + str(move) + mega)

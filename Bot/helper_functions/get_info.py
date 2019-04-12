@@ -64,7 +64,7 @@ def get_formatted_team_names(battle):
 
 
 # find best move for a given mon against the active foes
-# returns move_index, foe_index, effective base power
+# returns move_name, foe_index, effective base power
 def find_best_move_active_foes(battle, user):
 	possible_moves = []
 	foes = battle.foes
@@ -73,24 +73,28 @@ def find_best_move_active_foes(battle, user):
 			continue
 		best_move = find_best_move_against_foe(battle, user, foe)
 		best_move[1] = i # give index of foe
-		possible_moves.append(best_move)
+		possible_moves.append(moves_damage)
+
+
+	if (len(possible_moves) > 1):
+		for i in range (len(possible_moves[0])):
+			move = possible_moves[0][i]
+			if (is_spread_move(move[0])):
+				possible_moves[0][i][2] += possible_moves[1][i][2] # add damage to second target
+				possible_moves[0][i][1] = 2 # indicate that target is both foes
+				possible_moves[1].pop[i] # pop the second instance of the spread move
+		possible_moves = possible_moves[0].append(possible_moves[1])
+
+
+	# sort based on power
 	possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
-	# return (move index, target index, effective bp) of strongest move/target combination
+	# return (move name, target index, effective bp) of strongest move/target combination
 	return possible_moves[0]
 
 
-	pokemons = battle.team_data['side']['pokemon']
-
-	for pokemon in pokemons:
-		# skip if the pokemon is already out, or if fainted
-		if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
-			continue
-
-		name = get_formatted_name(pokemon['details'])
-
 
 # user is Pokemon's name, foe is Pokemon's name
-# returns move_index, foe_index, effective base power
+# returns move_name, foe_index, effective base power of all moves
 def find_best_move_against_foe(battle, user, foe):
 	with open('data/moves.json') as moves_file:
 		moves = json.load(moves_file)
@@ -120,10 +124,9 @@ def find_best_move_against_foe(battle, user, foe):
 			base_power = moves[move]["basePower"]
 			effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.foes, foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
 			possible_moves.append([move, None, effective_bp])
-		# sort possible moves by effective base power in descending order
-		possible_moves = sorted(possible_moves, key=itemgetter(2), reverse=True)
-	# return (move index, target index, effective bp) of strongest move
-	return possible_moves[0]
+	
+	# return (move name, target index, effective bp) of each move
+	return possible_moves
 
 
 # example return: [["Fire"], ["Fire", "Flying"]]
@@ -281,3 +284,10 @@ def get_can_switch(team_data):
 		else:
 			can_switch.append(True)
 	return can_switch
+
+
+def is_spread_move(formatted_move):
+	with open('data/moves.json') as moves_file:
+		moves = json.load(moves_file)
+		move_data = moves[formatted_move]
+		return (move_data['target'] == 'allAdjacentFoes')

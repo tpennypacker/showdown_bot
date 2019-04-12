@@ -1,20 +1,20 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "yodabot"
+username = "Ask Key"
 
-password = "password2798"
+password = "ascii"
 
 ionext = False
 
 timer = False
 
 # can use <opponent_name> then opponent's name will be substituted in
-hello = "I did not hit her. It’s not true. It’s bull$(^&. I did not hit her. I did not. Oh, hi, <opponent_name>."
+hello = "glhf  <opponent_name>."
 
-win_txt = "Chicken, <opponent_name>, you’re just a little chicken. Cheep, cheep, cheep, cheep, cheep!"
+win_txt = "gg <opponent_name>"
 
-lose_txt = "Everybody betrayed me! I’m fed up with this world."
+lose_txt = "Time to drown my sorrows in cheeseburgers"
 
 autosearch = False
 
