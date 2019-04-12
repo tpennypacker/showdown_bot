@@ -20,9 +20,9 @@ async def parse_response(ws, msg):
 		battletag = funcs.get_battletag(msg_arr)
 		win_str = "|win|" + bot_settings.username.lower()
 		if (win_str in msg.lower()): # see who won, and give appropriate response
-			await funcs.on_battle_end(ws, battletag, 1)
+			await funcs.on_battle_end(ws, battles, battletag, 1)
 		else:
-			await funcs.on_battle_end(ws, battletag, 0)
+			await funcs.on_battle_end(ws, battles, battletag, 0)
 
 	elif (msg_arr[1] == "updatechallenges"):
 		if (bot_settings.accept_challenges == True):
@@ -70,12 +70,23 @@ async def parse_response(ws, msg):
 	elif (msg_arr[1] == 'updateuser' and msg_arr[2].lower() == bot_settings.username.lower()):
 		await funcs.startup_ops(ws)
 
-	# triggers when a battle starts
+	# triggers when battle initialises
+	elif ('>battle' in msg_arr[0] and msg_arr[1] == 'init'):
+		battletag = funcs.get_battletag(msg_arr)
+		battles.append(Battle(battletag)) # instantiate battle object
+
+	# triggers when can identify foe
+	elif ('>battle' in msg_arr[0] and msg_arr[1] == 'player' and msg_arr[3].lower() != bot_settings.username.lower()):
+		battletag = funcs.get_battletag(msg_arr)
+		battle = funcs.get_battle(battles, battletag)
+		battle.opponent_name = msg_arr[3]
+		await funcs.on_battle_start(ws, battles, battletag)
+
+	# triggers when can identify bot's side
 	elif ('>battle' in msg_arr[0] and msg_arr[1] == 'player' and msg_arr[3].lower() == bot_settings.username.lower()):
 		battletag = funcs.get_battletag(msg_arr)
-		battles.append(Battle(battletag, msg_arr[2])) # instantiate battle object
-		await funcs.on_battle_start(ws, battletag)
-
+		battle = funcs.get_battle(battles, battletag)
+		battle.my_side = msg_arr[2]
 
 async def connect_to_ps():
 	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:

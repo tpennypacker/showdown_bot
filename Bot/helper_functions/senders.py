@@ -15,9 +15,9 @@ async def timer(ws, battletag):
 	await ws.send(battletag + "|/timer on")
 	print("Timer started for match: " + battletag + "\n")
 
-async def hello(ws, battletag):
-	await ws.send(battletag + "|" + bot_settings.hello)
-	print("Saying " + bot_settings.hello + "\n")
+async def hello(ws, battletag, phrase):
+	await ws.send(battletag + "|" + phrase)
+	print("Saying " + phrase + "\n")
 
 async def goodbye(ws, battletag, phrase):
 	await ws.send(battletag + "|" + phrase)

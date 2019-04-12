@@ -50,20 +50,22 @@ async def startup_ops(ws):
 
 
 # gets called once at the start of the battle
-async def on_battle_start(ws, battletag):
+async def on_battle_start(ws, battles, battletag):
+	battle = get_battle(battles, battletag)
 	if (bot_settings.ionext):
 		await senders.ionext(ws)
-	await senders.hello(ws, battletag)
+	await senders.hello(ws, battletag, bot_settings.hello.replace("<opponent_name>", battle.opponent_name))
 	if (bot_settings.timer):
 		await senders.timer(ws, battletag)
 
 
 # gets called once at the end of the battle
-async def on_battle_end(ws, battletag, winner):
+async def on_battle_end(ws, battles, battletag, winner):
+	battle = get_battle(battles, battletag)
 	if (winner == 1):
-		phrase = bot_settings.win_txt
+		phrase = bot_settings.win_txt.replace("<opponent_name>", battle.opponent_name)
 	else:
-		phrase = bot_settings.lose_txt
+		phrase = bot_settings.lose_txt.replace("<opponent_name>", battle.opponent_name)
 	await senders.goodbye(ws, battletag, phrase)
 	await senders.leave_battle(ws, battletag)
 	if(bot_settings.autosearch):

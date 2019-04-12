@@ -9,11 +9,12 @@ ionext = False
 
 timer = False
 
-hello = "oof yikes thats a mish"
+# can use <opponent_name> then opponent's name will be substituted in
+hello = "I did not hit her. It’s not true. It’s bull$(^&. I did not hit her. I did not. Oh, hi, <opponent_name>."
 
-win_txt = "another day, another opponent mished"
+win_txt = "Chicken, <opponent_name>, you’re just a little chicken. Cheep, cheep, cheep, cheep, cheep!"
 
-lose_txt = "I was only operating at 10% efficiency anyways"
+lose_txt = "Everybody betrayed me! I’m fed up with this world."
 
 autosearch = False
 
