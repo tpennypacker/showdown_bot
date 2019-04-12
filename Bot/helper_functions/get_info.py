@@ -260,14 +260,9 @@ def calculate_scores(battle):
 		name = get_formatted_name(pokemon['details'])
 		move, target, power = find_best_move_active_foes(battle, name)
 		scores.append({'name':name, 'power':power})
-	# put dummy entries so doesn't get huffy when 1 or 0 mons available
-	if (len(scores) == 1):
-		scores.append({'name':"dummy_name", 'power':0})
-	elif (len(scores) == 0):
-		scores.append({'name':"dummy_name1", 'power':0})
-		scores.append({'name':"dummy_name2", 'power':0})
 
-	scores = sorted(scores, key = lambda i: i['power'], reverse=True)
+	if (len(scores) > 0):
+		scores = sorted(scores, key = lambda i: i['power'], reverse=True)
 	return(scores)
 
 

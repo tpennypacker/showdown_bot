@@ -27,7 +27,7 @@ async def choose_moves(ws, battles, battletag):
 			move, target, bp = get_info.find_best_move_active_foes(battle, allies[i])
 
 			# consider switching
-			if (can_switch[i] == True and bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
+			if (len(sorted_scores) > 0 and can_switch[i] == True and bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
 				decisions.append('switch ' +  get_info.format_switch_name(sorted_scores[0]['name']))
 				sorted_scores.pop(0) # make sure you don't switch to the same pokemon twice
 

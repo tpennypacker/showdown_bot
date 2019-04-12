@@ -10,7 +10,7 @@ ionext = False
 timer = False
 
 # can use <opponent_name> then opponent's name will be substituted in
-hello = "glhf  <opponent_name>"
+hello = "I did not hit her. It’s not true. It’s bull$(^&. I did not hit her. I did not. Oh, hi, <opponent_name>."
 
 win_txt = "gg <opponent_name>"
 
