@@ -5,3 +5,7 @@ damage_floor = 150
 # factor by which manual switch's strongest move must be compared to current pokemon, e.g. for switch_mult = 2 switch-in must have a strongest move with twice the base power
 # higher -> less likely to manually switch
 switch_mult = 2
+
+# when calculating the defensive score of a friendly pokemon,
+# we assume that the foe has stabs of ai_bp power
+ai_bp = 90

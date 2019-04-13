@@ -18,7 +18,9 @@ async def choose_moves(ws, battles, battletag):
 	allies = battle.allies
 	mega = get_info.get_can_mega(battle.team_data)
 	can_switch = get_info.get_can_switch(battle.team_data)
-	sorted_scores = get_info.calculate_scores(battle)
+	sorted_ratios = get_info.calculate_score_ratio(battle)
+	print("Sorted ratios")
+	print(sorted_ratios)
 
 
 	decisions = []
@@ -27,8 +29,16 @@ async def choose_moves(ws, battles, battletag):
 			move, target, bp = get_info.find_best_move_active_foes(battle, allies[i])
 
 			# consider switching
-			if (len(sorted_scores) > 0 and can_switch[i] == True and bp >= ai_settings.damage_floor and sorted_scores[0]['power'] > (ai_settings.switch_mult * bp)):
-				decisions.append('switch ' +  get_info.format_switch_name(sorted_scores[0]['name']))
+			my_name = get_info.get_formatted_name(allies[i])
+			my_ratio = next((ratio for ratio in sorted_ratios if ratio['name'] == my_name), None)
+			print("My ratio")
+			print(my_ratio)
+			print("My name")
+			print(my_name)
+			print("______________\n")
+
+			if (len(sorted_ratios) > 0 and can_switch[i] == True and bp >= ai_settings.damage_floor and sorted_ratios[0]['ratio'] > (ai_settings.switch_mult * my_ratio)):
+				decisions.append('switch ' +  get_info.format_switch_name(sorted_ratios[0]['name']))
 				sorted_scores.pop(0) # make sure you don't switch to the same pokemon twice
 
 			# attack

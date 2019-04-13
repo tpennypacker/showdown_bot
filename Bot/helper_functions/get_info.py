@@ -1,6 +1,9 @@
 import json
 import random
 from operator import itemgetter
+from settings import ai_settings
+import numpy as np
+
 
 def random_move():
 	return random.randint(1, 4)
@@ -247,23 +250,44 @@ def get_field_modifier(battle, my_types, my_ability, move_type, move_category, f
 
 
 # calculate scores used for switching, uses strongest move for each available pokemon
-def calculate_scores(battle):
-	scores = []
+def calculate_score_ratio(battle):
+	with open('data/pokedex.json') as pokedex_file:
+		pokedex = json.load(pokedex_file)
+		scores = []
 
-	pokemons = battle.team_data['side']['pokemon']
+		pokemons = battle.team_data['side']['pokemon']
 
-	for pokemon in pokemons:
-		# skip if the pokemon is already out, or if fainted
-		if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
-			continue
+		for pokemon in pokemons:
+			# skip if the pokemon is already out, or if fainted
+			if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
+				continue
 
-		name = get_formatted_name(pokemon['details'])
-		move, target, power = find_best_move_active_foes(battle, name)
-		scores.append({'name':name, 'power':power})
+			# get my pokemon's "score" against the opponent
+			name = get_formatted_name(pokemon['details'])
+			move, target, power = find_best_move_active_foes(battle, name)
+			
 
-	if (len(scores) > 0):
-		scores = sorted(scores, key = lambda i: i['power'], reverse=True)
-	return(scores)
+			# get the sum of the opponent's scores against us
+			foes_score = []
+			for foe in battle.foes:
+				foe_score = []
+				foe_types = pokedex[get_formatted_name(foe)]['types']
+				for foe_type in foe_types:
+					# NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
+					damage = ai_settings.ai_bp * 1.5 * get_type_effectiveness(foe_type, pokedex[name]['types'])
+					foe_score.append(damage)
+
+				index, value = max(enumerate(foe_score), key=itemgetter(1))
+				foes_score.append(value)
+			foes_total_score = np.sum(foes_score)
+
+			ratio = power / foes_total_score
+
+			scores.append({'name':name, 'ratio':ratio})
+
+		if (len(scores) > 0):
+			scores = sorted(scores, key = lambda i: i['ratio'], reverse=True)
+		return(scores)
 
 
 def format_switch_name(pokemon_name):
