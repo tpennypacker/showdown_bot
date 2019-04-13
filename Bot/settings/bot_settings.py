@@ -16,6 +16,8 @@ win_txt = "gg <opponent_name>"
 
 lose_txt = "Time to drown my sorrows in cheeseburgers"
 
+auto_join_room = "smogon doubles" # bot will join this room when turned on, if "" then won't join any
+
 autosearch = False
 
 play_tier = "gen7doublesou" # format team is for, to accept challenges in

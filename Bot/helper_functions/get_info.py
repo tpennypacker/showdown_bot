@@ -250,7 +250,7 @@ def get_field_modifier(battle, my_types, my_ability, move_type, move_category, f
 
 
 # calculate scores used for switching, uses strongest move for each available pokemon
-def calculate_score_ratio(battle):
+def calculate_score_ratio_switches(battle):
 	with open('data/pokedex.json') as pokedex_file:
 		pokedex = json.load(pokedex_file)
 		scores = []
@@ -262,32 +262,41 @@ def calculate_score_ratio(battle):
 			if (pokemon['active'] or pokemon['condition'] == '0 fnt'):
 				continue
 
-			# get my pokemon's "score" against the opponent
 			name = get_formatted_name(pokemon['details'])
-			move, target, power = find_best_move_active_foes(battle, name)
-			
 
-			# get the sum of the opponent's scores against us
-			foes_score = []
-			for foe in battle.foes:
-				foe_score = []
-				foe_types = pokedex[get_formatted_name(foe)]['types']
-				for foe_type in foe_types:
-					# NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
-					damage = ai_settings.ai_bp * 1.5 * get_type_effectiveness(foe_type, pokedex[name]['types'])
-					foe_score.append(damage)
-
-				index, value = max(enumerate(foe_score), key=itemgetter(1))
-				foes_score.append(value)
-			foes_total_score = np.sum(foes_score)
-
-			ratio = power / foes_total_score
+			ratio = calculate_score_ratio_single(battle, name)
 
 			scores.append({'name':name, 'ratio':ratio})
 
 		if (len(scores) > 0):
 			scores = sorted(scores, key = lambda i: i['ratio'], reverse=True)
 		return(scores)
+
+
+# calculate score ratio for a single pokemon with formatted name "name"
+def calculate_score_ratio_single(battle, name):
+	with open('data/pokedex.json') as pokedex_file:
+		pokedex = json.load(pokedex_file)
+
+		# get pokemon's "score" against the opponent
+		move, target, power = find_best_move_active_foes(battle, name)
+
+		# get the sum of the opponent's scores against us
+		foes_score = []
+		for foe in battle.foes:
+			foe_score = []
+			foe_types = pokedex[get_formatted_name(foe)]['types']
+			for foe_type in foe_types:
+				# NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
+				damage = ai_settings.ai_bp * 1.5 * get_type_effectiveness(foe_type, pokedex[name]['types'])
+				foe_score.append(damage)
+
+			index, value = max(enumerate(foe_score), key=itemgetter(1))
+			foes_score.append(value)
+		foes_total_score = np.sum(foes_score)
+
+		ratio = power / foes_total_score
+	return ratio
 
 
 def format_switch_name(pokemon_name):

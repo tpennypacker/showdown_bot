@@ -48,6 +48,9 @@ async def startup_ops(ws):
 	if (bot_settings.ionext):
 		await senders.ionext(ws)
 
+	if (len(bot_settings.auto_join_room) > 0):
+		await senders.join_room(ws)
+
 
 # gets called once at the start of the battle
 async def on_battle_start(ws, battles, battletag):

@@ -11,6 +11,10 @@ async def change_avatar(ws):
 	await ws.send("|/avatar " + bot_settings.avatar)
 	print("Your avatar has been changed to " + bot_settings.avatar + ".\n")
 
+async def join_room(ws):
+	await ws.send("|/join " + bot_settings.auto_join_room)
+	print("Joining the " + bot_settings.auto_join_room + " room\n")
+
 async def timer(ws, battletag):
 	await ws.send(battletag + "|/timer on")
 	print("Timer started for match: " + battletag + "\n")
@@ -50,6 +54,7 @@ async def blockchallenges(ws):
 async def accept_challenge(ws, challenger):
 	await ws.send("|/utm " + bot_settings.bot_team)
 	await ws.send("|/accept " + challenger)
+	print("Accepting challenge from " + challenger + " in " + bot_settings.play_tier + "\n")
 
 
 async def send_login_msg(ws, msg):
