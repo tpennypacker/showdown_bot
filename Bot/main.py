@@ -94,10 +94,8 @@ async def parse_response(ws, msg):
 		battle = funcs.get_battle(battles, battletag)
 		battle.my_side = msg_arr[2]
 		if ("clearpoke\n" in msg_arr):
-			#print(msg_arr)
-			battle.initialise_teams("boobs")
-			print(battle.my_team)
-			print(battle.foe_team)
+			battle.initialise_teams(msg_arr)
+			battle.print_teams()
 
 async def connect_to_ps():
 	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
@@ -112,5 +110,5 @@ async def connect_to_ps():
 			await parse_response(ws, msg)
 
 #os.system('cls') # windows
-#os.system('clear') # mac
+os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

@@ -19,10 +19,9 @@ class Battle:
 		self.trick_room = 0
 
 
-	def initialise_teams(msg):
+	def initialise_teams(self, msg_arr):
 		
-		msg_arr = msg.split('|')
-		for i in range(len(msg_arr)):
+		for i in range(3, len(msg_arr)):
 			if (msg_arr[i-3] == "poke"):
 				# get name/id of pokemon and if has item
 				id = msg_arr[i-1].split(',')[0]
@@ -33,3 +32,18 @@ class Battle:
 					self.my_team.append(Pokemon(id, has_item))
 				else:
 					self.foe_team.append(Pokemon(id, has_item))
+
+
+
+	def print_teams(self):
+		print("MY TEAM:")
+		for pokemon in self.my_team:
+			pokemon.print()
+
+		print("_________________\n")
+		print("THEIR TEAM:")
+
+		for pokemon in self.foe_team:
+			pokemon.print()
+
+		print("\n")
