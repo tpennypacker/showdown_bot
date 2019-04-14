@@ -77,15 +77,15 @@ def find_best_move_active_foes(battle, user):
 		moves_damage = find_best_move_against_foe(battle, user, foe)
 		possible_moves.append(moves_damage)
 
-	# deal with spread moves which only hit opponents (e.g. Muddy Water)
-	if (len(possible_moves) > 1):
-		for i in range (len(possible_moves[0])):
-			move = possible_moves[0][i]
-			if (is_spread_move(move[0])):
+# deal with spread moves which only hit opponents (e.g. Muddy Water)
+	for i in range (len(possible_moves[0])):
+		move = possible_moves[0][i]
+		if (is_spread_move(move[0])):
+			possible_moves[0][i][1] = 3 # indicate that target is both foes
+			if (len(possible_moves) > 1): # apply spread calculations if both foes alive
 				possible_moves[0][i][2] += possible_moves[1][i][2] # add base power against second target
 				possible_moves[0][i][2] *= 0.75 # apply spread reduction factor
-				possible_moves[0][i][1] = 3 # indicate that target is both foes
-				possible_moves[1].pop(i) # pop the second instance of the spread move
+				possible_moves[1][i][2] = 0
 
 	# combine lists of moves against each foe into single list of possible moves
 	possible_moves = [move for sublist in possible_moves for move in sublist]
