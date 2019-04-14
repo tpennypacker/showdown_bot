@@ -10,6 +10,7 @@ from settings import bot_settings
 from helper_functions import funcs
 from helper_functions import team_reader
 from battle import Battle
+from pokemon import Pokemon
 
 battles = []
 bot_team = team_reader.read_team()
@@ -81,12 +82,22 @@ async def parse_response(ws, msg):
 		battle = funcs.get_battle(battles, battletag)
 		battle.opponent_name = msg_arr[3]
 		await funcs.on_battle_start(ws, battles, battletag)
+		if ("clearpoke\n" in msg_arr):
+			print(msg_arr)
+			battle.initialise_teams(msg_arr)
+			print(battle.my_team)
+			print(battle.foe_team)
 
 	# triggers when can identify bot's side
 	elif ('>battle' in msg_arr[0] and msg_arr[1] == 'player' and msg_arr[3].lower() == bot_settings.username.lower()):
 		battletag = funcs.get_battletag(msg_arr)
 		battle = funcs.get_battle(battles, battletag)
 		battle.my_side = msg_arr[2]
+		if ("clearpoke\n" in msg_arr):
+			#print(msg_arr)
+			battle.initialise_teams("boobs")
+			print(battle.my_team)
+			print(battle.foe_team)
 
 async def connect_to_ps():
 	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
