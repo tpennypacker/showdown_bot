@@ -8,25 +8,25 @@ from string import printable
 import ai
 from settings import bot_settings
 from helper_functions import funcs
+from helper_functions import team_reader
 from battle import Battle
 
 battles = []
+bot_team = team_reader.read_team()
 
 async def parse_response(ws, msg):
 	msg_arr = msg.split('|')
 
-	# triggers when a battle ends
+	# triggers when a battle ends, checks if bot won and sends appropriate message
 	if ("|win|" in msg):
 		battletag = funcs.get_battletag(msg_arr)
 		win_str = "|win|" + bot_settings.username.lower()
-		if (win_str in msg.lower()): # see who won, and give appropriate response
-			await funcs.on_battle_end(ws, battles, battletag, 1)
-		else:
-			await funcs.on_battle_end(ws, battles, battletag, 0)
+		bot_won = (win_str in msg.lower())
+		await funcs.on_battle_end(ws, battles, battletag, 1)
 
-	elif (msg_arr[1] == "updatechallenges"):
-		if (bot_settings.accept_challenges == True):
-			await funcs.handle_challenges(ws, msg_arr)
+	# checks if challenges to be accepted
+	elif (msg_arr[1] == "updatechallenges" and bot_settings.accept_challenges == True):
+		await funcs.handle_challenges(ws, msg_arr, bot_team)
 
 	elif (len(msg_arr) < 3):
 		pass

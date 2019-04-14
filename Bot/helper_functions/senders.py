@@ -51,8 +51,8 @@ async def blockchallenges(ws):
 		await ws.send("|/unblockchallenges")
 		print("Unblocked challenges")
 
-async def accept_challenge(ws, challenger):
-	await ws.send("|/utm " + bot_settings.bot_team)
+async def accept_challenge(ws, challenger, bot_team):
+	await ws.send("|/utm " + bot_team)
 	await ws.send("|/accept " + challenger)
 	print("Accepting challenge from " + challenger + " in " + bot_settings.play_tier + "\n")
 

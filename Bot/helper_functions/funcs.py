@@ -65,7 +65,7 @@ async def on_battle_start(ws, battles, battletag):
 # gets called once at the end of the battle
 async def on_battle_end(ws, battles, battletag, winner):
 	battle = get_battle(battles, battletag)
-	if (winner == 1):
+	if (winner == True):
 		phrase = bot_settings.win_txt.replace("<opponent_name>", battle.opponent_name)
 	else:
 		phrase = bot_settings.lose_txt.replace("<opponent_name>", battle.opponent_name)
@@ -76,12 +76,12 @@ async def on_battle_end(ws, battles, battletag, winner):
 
 
 # accept challenges if in correct tier
-async def handle_challenges(ws, msg_arr):
+async def handle_challenges(ws, msg_arr, bot_team):
 	challenges = json.loads(msg_arr[2])
 	challengers = challenges["challengesFrom"].keys()
 	for challenger in challengers:
 		if (challenges["challengesFrom"][challenger] == bot_settings.play_tier):
-			await senders.accept_challenge(ws, challenger)
+			await senders.accept_challenge(ws, challenger, bot_team)
 
 
 # updates foes/allies in the associated battle object

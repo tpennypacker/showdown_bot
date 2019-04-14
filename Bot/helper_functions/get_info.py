@@ -284,6 +284,9 @@ def calculate_score_ratio_single(battle, name):
 		# get the sum of the opponent's scores against us
 		foes_score = []
 		for foe in battle.foes:
+			if (foe == ""): # ignore dead foes
+				continue
+
 			foe_score = []
 			foe_types = pokedex[get_formatted_name(foe)]['types']
 			for foe_type in foe_types:
