@@ -1,9 +1,9 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "Ask Key"
+username = "yodabot"
 
-password = "ascii"
+password = "password2798"
 
 ionext = False
 
@@ -16,7 +16,7 @@ win_txt = "gg <opponent_name>"
 
 lose_txt = "Time to drown my sorrows in cheeseburgers"
 
-auto_join_room = "smogon doubles" # bot will join this room when turned on, if "" then won't join any
+auto_join_room = "smogon doubles" # bot will join this room when turned on, if "" then won't join any, e.g. "smogon doubles"
 
 autosearch = False
 
