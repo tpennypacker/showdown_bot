@@ -1,3 +1,5 @@
+from helper_functions import formatting
+
 from pokemon import Pokemon
 import ai
 import json
@@ -121,7 +123,13 @@ class Battle:
 			old_mon = next((mon for mon in pokemons if mon.active == position))
 			old_mon.switch_out()
 		# make new pokemon active
-		new_mon = next((mon for mon in pokemons if mon.id == pokemon_name))
+		print("Side: " + side)
+		print("Foe team: ")
+		print(self.foe_team)
+		print("Pokemon name: " + pokemon_name)
+		formatted_name = formatting.get_formatted_name(pokemon_name)
+		print("Formatted name: " + formatted_name)
+		new_mon = next(mon for mon in pokemons if formatting.get_formatted_name(mon.id) == formatting.get_formatted_name(pokemon_name))
 		new_mon.switch_in(position)
 
 

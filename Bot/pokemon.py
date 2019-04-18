@@ -8,7 +8,8 @@ def infos_for_pokemon(pkm_name):
     :param pkm_name: Pokemon's name
     :return: Dict. {types, possibleAbilities, baseStats}
     """
-    pkm_name = pkm_name.lower().replace('-', '').replace(' ', '').replace('%', '').replace('\'', '').replace('.', '')
+    #pkm_name = pkm_name.lower().replace('-', '').replace(' ', '').replace('%', '').replace('\'', '').replace('.', '')
+    pkm_name = formatting.get_formatted_name(pkm_name)
     res = {
         "types": [],
         "possibleAbilities": [],
@@ -51,7 +52,7 @@ class Pokemon:
             "spe": [0, 1],
             "accuracy": [0, 1],
             "evasion": [0, 1]
-            }
+        }
 
         self.load_stats()  # load types, base stats, possible abilities from pokedex
 
