@@ -24,7 +24,7 @@ async def parse_response(ws, msg):
 
 	# if get message from whitelisted username take command (currently only to exit program)
 	if (msg_arr[1] == "pm"):
-		sender = msg_arr[2].strip().lower()
+		sender = msg_arr[2].strip().lower().replace(" ", "")
 		if (sender in bot_settings.bot_owners.split(",")):
 			if (msg_arr[4] == "$quit" or msg_arr[4] == "$quirt"):
 				print("Received quit message from {}, now exiting program".format(sender))
@@ -98,6 +98,6 @@ async def connect_to_ps():
 			#print("_____________________________\n", file=logfile)
 			await parse_response(ws, msg)
 
-os.system('cls') # windows
-#os.system('clear') # mac
+#os.system('cls') # windows
+os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

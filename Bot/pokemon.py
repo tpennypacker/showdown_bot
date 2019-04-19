@@ -1,5 +1,6 @@
 import json
 from helper_functions import formatting
+from helper_functions import predict_foe_sets
 
 
 def infos_for_pokemon(pkm_name):
@@ -44,7 +45,10 @@ class Pokemon:
         self.base_ability = None  # known base ability
         self.active_ability = None  # actual ability could be different from skill swap/role play/entrainment
 
-        self.moves = []  # list of move names, e.g. "earthpower"
+        if (side == "foe"):
+            self.moves = predict_foe_sets.get_likely_set(id)
+        elif (side == "bot"):
+            self.moves = []  # list of move names, e.g. "earthpower"
         self.active_info = None  # information about possible moves and if trapped etc for active pokemon
 
         self.has_item = has_item  # true or false

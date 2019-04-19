@@ -210,11 +210,35 @@ class Battle:
 			if (pokemon.can_protect > 0):
 				pokemon.can_protect -= 1
 
-
 	# print stuff for debugging here, will be called before making move at start of each turn
 	def debug_prints(self):
 
 		#print(self.entry_hazards)
-		#print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
-		#[print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
+		print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
+		[print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
 		[print("Pokemon {} has {} status and {}% HP".format(pokemon.id, pokemon.status, pokemon.health_percentage)) for pokemon in self.my_team]
+		for pokemon in self.my_team:
+			print(pokemon.buff)
+		# for pokemon in self.foe_team:
+		# 	print(pokemon.id + " has the following moves: ")
+		# 	print(pokemon.moves)
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
