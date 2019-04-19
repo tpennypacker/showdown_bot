@@ -30,19 +30,29 @@ class Pokemon:
         self.id = id  # species of Pokemon, e.g. Manectric or Manectric-Mega
         self.side = side  # will be "bot" or "foe"
         self.active = 0  # 0 for not active, 1 or 2 means active and gives slot
-        self.health = 100  # percentage of hp left
-        self.fainted = False
-        self.status = None
+
+        self.health_percentage = 100  # percentage of hp left, integer
+        self.health_points = None  # actual hp, will only know for our pokemon, string, e.g. "234/435"
+        self.fainted = False  # true if fainted
+        self.status = None  # could be "brn", "psn", "tox" etc
+
         self.types = []  # list of types, e.g. ["Grass","Poison"]
         self.base_stats = {}  # dictionary e.g. {"hp":45,"atk":49,"def":49,"spa":65,"spd":65,"spe":45}
         self.stats = {}  # dictionary of actual stat numbers for pokemon
         self.possible_abilities = []  # list of possible abilities for pokemon species, e.g. ["Overgrow", "Chlorophyll"]
+
         self.base_ability = None  # known base ability
         self.active_ability = None  # actual ability could be different from skill swap/role play/entrainment
+
         self.moves = []  # list of move names, e.g. "earthpower"
         self.active_info = None  # information about possible moves and if trapped etc for active pokemon
+
         self.has_item = has_item  # true or false
         self.item = None  # e.g. "magoberry"
+
+        self.can_fake_out = True  # false after making a move, reset on switch
+        self.can_protect = 0  # 0 if can protect, above 0 means it can't (will be 2 on turn of use, 1 on the following turn), reset on switch
+
         # stat changes, values from -6 to 6
         self.buff = {  # first number boost from -6 to 6, second number is equivalent modifier
             "atk": [0, 1],
@@ -78,6 +88,9 @@ class Pokemon:
 
         # reset boosts
         self.clear_boosts()
+        # reset ability to use fake out and protect
+        self.can_fake_out = True
+        self.can_protect = 0
         # make inactive
         self.active = 0
 

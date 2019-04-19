@@ -1,28 +1,32 @@
 from battle import Battle
+from helper_functions import formatting
 
-
-pos_dict = {"a": 1, "b": 2}  # converts letter position to number, e.g. (p1)a is first pokemon
+# status = ["brn", "frz", "par", "psn", "tox", "slp"]
+# pos_dict = {"a": 1, "b": 2}  # converts letter position to number, e.g. (p1)a is first pokemon
 # will also have other dictionary converting player to side, e.g. p1 is bot p2 is foe
 # side_dict = {battle.my_side: "bot", battle.foe_side: "foe"}
 
 
 def major_actions(battle: Battle, split_line, side_dict):
+    status = ["brn", "frz", "par", "psn", "tox", "slp"]
+    pos_dict = {"a": 1, "b": 2}
+    # move, used to decide that a pokemon can't fake out anymore
     if split_line[0] == "move":
-        pass
+        side = side_dict[split_line[1][0:2]]
+        position = pos_dict[split_line[1][2]]
+        move = formatting.format_move(split_line[2])  # unused
+        pokemon = battle.get_pokemon(side, position)
+        pokemon.can_fake_out = False
     # switch
     elif split_line[0] == "switch":
+        side = side_dict[split_line[1][0:2]]
         pokemon_id = split_line[2].split(',')[0]
         position = pos_dict[split_line[1][2]]
-        if (split_line[1][0:2] == battle.my_side):
-            battle.update_switch("bot", pokemon_id, position)
-        else:
-            battle.update_switch("foe", pokemon_id, position)
+        battle.update_switch(side, pokemon_id, position)
     # swap i.e. ally switch
     elif split_line[0] == "swap":
-        if (split_line[1][0:2] == battle.my_side):
-            pokemon1, pokemon2 = battle.active_pokemon("bot")
-        else:
-            pokemon1, pokemon2 = battle.active_pokemon("foe")
+        side = side_dict[split_line[1][0:2]]
+        pokemon1, pokemon2 = battle.active_pokemon(side)
         pokemon1.active, pokemon2.active = pokemon2.active, pokemon1.active
     # details change i.e. mega evolution
     elif split_line[0] == "detailschange":
@@ -32,7 +36,7 @@ def major_actions(battle: Battle, split_line, side_dict):
             battle.form_change("bot", position, new_id)
         else:
             battle.form_change("foe", position, new_id)
-    # includes flinches
+    # includes flinches - use for stomping tantrum boost?
     elif split_line[0] == "cant":
         pass
     # pokemon fainting, currently do for bot team with team_data anyways
@@ -41,7 +45,7 @@ def major_actions(battle: Battle, split_line, side_dict):
         side = side_dict[split_line[1][0:2]]
         pokemon = battle.get_pokemon(side, position)
         pokemon.fainted = True
-    # pokemon on team at preview, currently handled otherwise with battle.initialise_teams()
+    # pokemon on team at preview, currently handled otherwise with battle.initialise_teams() called from main
     elif split_line[0] == "poke":
         pass
         '''
@@ -49,57 +53,64 @@ def major_actions(battle: Battle, split_line, side_dict):
             pkm = split_line[2].split(', ')
             battle.update_enemy(pkm[0], pkm[1][1:] if len(pkm) > 1 and 'L' in pkm[1] else '100', 100)
         '''
+    # indicates updating counter for things like tr/tw/weather/terrain
     elif split_line[0] == "upkeep":
-        pass
+        battle.upkeep_counters()
     # new turn, if turn 1 then start switching out old pokemon on new switches
     elif split_line[0] == "turn":
         if (split_line[1] == "1"):
-            battle.team_preview = False
+            battle.at_team_preview = False
+        print("Turn {}".format(split_line[1]))  # print turn number
     else:
         pass
 
 
 def minor_actions(battle: Battle, split_line, side_dict):
+    status_list = ["brn", "frz", "par", "psn", "tox", "slp"]
+    pos_dict = {"a": 1, "b": 2}
+    # if move fails, e.g. protect
     if split_line[0] == "-fail":
         pass
-    # pokemon takes damage (not just from attacks but also recoil, etc)
-    elif split_line[0] == "-damage":
-        position = pos_dict[split_line[1][2]]
+    # pokemon takes damage (not just from attacks but also recoil, etc), do for foe only
+    elif split_line[0] == "-damage" or split_line[0] == "-heal":
         side = side_dict[split_line[1][0:2]]
         # currently only updates foes' health
-        if (side == battle.foe_side):
+        if (side == "foe"):
+            position = pos_dict[split_line[1][2]]
             pokemon = battle.get_pokemon(side, position)
-            if ("fnt" not in split_line[2]):
-                pokemon.health = int(split_line[2].split("/"))
+            condition = split_line[2].strip("\n")
+            if (condition[-3:] == "fnt"): # fainted
+                pokemon.health_percentage = 0
+                pokemon.has_fainted = True
+                pokemon.status = "fnt"
             else:
-                pokemon.health = 0
-    # pokemon heals hp (does same as damage)
+                # set status, should get with -status anyways apart from natural cure!
+                if (condition[-3:] in status_list):
+                    pokemon.status = condition[-3:]
+                    condition = condition[:-4]
+                else:
+                    pokemon.status = None
+                pokemon.health_percentage = int(split_line[2].split("/")[0])
+    # pokemon heals hp (does same as damage so deal with above)
     elif split_line[0] == "-heal":
+        pass
+    # status, only do for foes
+    elif split_line[0] == "-status":
         position = pos_dict[split_line[1][2]]
         side = side_dict[split_line[1][0:2]]
-        # currently only updates foes' health
-        if (side == battle.foe_side):
+        status = split_line[2].strip("\n")
+        if (side == "foe"):
             pokemon = battle.get_pokemon(side, position)
-            if ("fnt" not in split_line[2]):
-                pokemon.health = int(split_line[2].split("/"))
-            else:
-                pokemon.health = 0
-    elif split_line[0] == "-status":
-        pass
-        '''
-        if battle.player_id in split_line[1]:
-            battle.update_status(battle.bot_team.active(), split_line[2])
-        else:
-            battle.update_status(battle.enemy_team.active(), split_line[2])
-        '''
+            pokemon.status = status
+    # status, only do for foes
     elif split_line[0] == "-curestatus":
-        pass
-        '''
-        if battle.player_id in split_line[1]:
-            battle.update_status(battle.bot_team.active())
-        else:
-            battle.update_status(battle.enemy_team.active())
-        '''
+        side = side_dict[split_line[1][0:2]]
+        if (side == "foe"):
+            pokemons = battle.foe_team
+            pokemon_name = split_line[1].split(":")[1].strip()
+            pokemon = next(mon for mon in pokemons if formatting.get_formatted_name(mon.id) == formatting.get_formatted_name(pokemon_name))
+            pokemon.status = None
+    # status, heal bell uses above and doesn't actually have this tag
     elif split_line[0] == "-cureteam":
         pass
     # stat boost
@@ -116,12 +127,6 @@ def minor_actions(battle: Battle, split_line, side_dict):
         stat = split_line[2]
         amount = -int(split_line[3])  # unboost so negative
         battle.add_buff(side, position, stat, amount)
-        '''
-        if (split_line[1][0:2] == battle.my_side):
-            battle.add_buff("bot", position, stat, amount)
-        else:
-            battle.add_buff("foe", position, stat, amount)
-        '''
     # includes belly drum
     elif split_line[0] == "-setboost":
         side = side_dict[split_line[1][0:2]]
@@ -138,28 +143,53 @@ def minor_actions(battle: Battle, split_line, side_dict):
         # reset boosts for all active pokemon
         pokemons = battle.active_pokemon("both")
         [pokemon.clear_boosts() for pokemon in pokemons]
-    # weather
-    elif split_line[0] == "-weather":
+    # weather, ignore on upkeep messages
+    elif split_line[0] == "-weather" and len(split_line) >= 3 and split_line[2].strip("\n") != "[upkeep]":
         if (split_line[1][0:4] == "none"):
             battle.weather = None
+            battle.weather_turns_left = 0
         else:
-            battle.weather = split_line[1]
-    # terrain start
+            battle.weather = formatting.format_move(split_line[1])
+            battle.weather_turns_left = 5
+    # terrain, trick room start
     elif split_line[0] == "-fieldstart":
-        battle.terrain = split_line[1][6:]
-    # terrain end
+        move = formatting.format_move(split_line[1])
+        if (move == "trickroom"):
+            battle.trick_room = 5
+        elif ("terrain" in move):
+            battle.terrain = move
+            battle.terrain_turns_left = 5
+    # terrain, trick room end
     elif split_line[0] == "-fieldend":
-        battle.terrain = None
-    # includes screens, entry hazards
+        move = formatting.format_move(split_line[1])
+        if (move == "trickroom"):
+            battle.trick_room = 0
+        elif ("terrain" in move):
+            battle.terrain = None
+            battle.terrain_turns_left = 0
+    # includes screens, entry hazards, tailwind
     elif split_line[0] == "-sidestart":
-        pass
+        side = side_dict[split_line[1][0:2]]
+        move = formatting.format_move(split_line[2])
+        print(move)
+        print(battle.entry_hazards[side].keys())
+        if (move == "tailwind"): # tailwind
+            battle.tailwind[side] = 4
+        elif (move in battle.entry_hazards[side].keys()): # entry hazards
+            battle.entry_hazards[side][move] += 1
         '''
         if "Reflect" in split_line[2] or "Light Screen" in split_line[2]:
             battle.screens[split_line[2].split(":")[1].lower().replace(" ", "")] = True
             print("** " + battle.screens)
         '''
+    # includes screens, entry hazards, tailwind
     elif split_line[0] == "-sideend":
-        pass
+        side = side_dict[split_line[1][0:2]]
+        move = formatting.format_move(split_line[2])
+        if (move == "tailwind"): # tailwind
+            battle.tailwind[side] = 0
+        elif (move in battle.entry_hazards[side].keys()): # entry hazards
+            battle.entry_hazards[side][move] = 0
         '''
         if "Reflect" in split_line[2] or "Light Screen" in split_line[2]:
             battle.screens[split_line[2].split(":")[1].lower().replace(" ", "")] = False
@@ -207,8 +237,13 @@ def minor_actions(battle: Battle, split_line, side_dict):
         pass
     # includes protect
     elif split_line[0] == "-singleturn":
-        pass
-    # includes making substitute, protect, heal bell
+        side = side_dict[split_line[1][0:2]]
+        position = pos_dict[split_line[1][2]]
+        move = formatting.format_move(split_line[2])
+        if (move == "protect"):
+            pokemon = battle.get_pokemon(side, position)
+            pokemon.can_protect = 2
+    # includes making substitute, protect, heal bell, skill swap (if between opponent and us get info about both abilities, if between foes get nothing)
     elif split_line[0] == "-activate":
         pass
     # includes substitute breaking

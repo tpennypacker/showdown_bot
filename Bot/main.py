@@ -3,6 +3,7 @@ import websockets
 import requests
 import json
 import os
+import sys
 from string import printable
 
 import ai
@@ -21,11 +22,19 @@ bot_team = team_reader.read_team()
 async def parse_response(ws, msg):
 	msg_arr = msg.split('|')
 
+	# if get message from whitelisted username take command (currently only to exit program)
+	if (msg_arr[1] == "pm"):
+		sender = msg_arr[2].strip().lower()
+		if (sender in bot_settings.bot_owners.split(",")):
+			if (msg_arr[4] == "$quit" or msg_arr[4] == "$quirt"):
+				print("Received quit message from {}, now exiting program".format(sender))
+				sys.exit()
+
 	# triggers when a battle ends, checks if bot won and sends appropriate message
 	if ("win" in msg_arr):
 		battletag = funcs.get_battletag(msg_arr)
 		win_id = msg_arr.index("win") + 1
-		bot_won = (msg_arr[win_id].strip("\n") == bot_settings.username.lower())
+		bot_won = (msg_arr[win_id].strip("\n").lower() == bot_settings.username.lower())
 		await funcs.on_battle_end(ws, battles, battletag, bot_won)
 
 	# checks if challenges to be accepted
@@ -89,6 +98,6 @@ async def connect_to_ps():
 			#print("_____________________________\n", file=logfile)
 			await parse_response(ws, msg)
 
-#os.system('cls') # windows
-os.system('clear') # mac
+os.system('cls') # windows
+#os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

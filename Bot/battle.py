@@ -10,21 +10,25 @@ class Battle:
 	def __init__(self, battletag):
 
 		self.next_team_data = None  # data from request message to be parsed
-		self.my_team = [] # list of pokemon objects
+		self.my_team = []  # list of pokemon objects
 		self.foe_team = []
-		self.team_data = None
+		self.team_data = None  # data from request message
 		self.battletag = battletag
 		self.my_side = None  # p1 or p2
 		self.foe_side = None  # p1 or p2
-		self.opponent_name = None  # string of opponent's name, used for sending messages
-		self.team_preview = True  # true at team preview, otherwise false, used for switches
+		self.opponent_name = "opponent"  # string of opponent's name, used for sending messages
+		self.at_team_preview = True  # true at team preview, otherwise false, used for switches
 		self.terrain = None  # e.g. "Electric Terrain"
+		self.terrain_turns_left = 0
 		self.weather = None  # e.g. "RainDance"
-		self.my_tailwind = 0  # number of turns field conditions have left
-		self.foe_tailwind = 0  # 0 if not active
+		self.weather_turns_left = 0
+		self.tailwind = {"bot": 0, "foe": 0}  # number of turns field conditions have left, 0 if inactive
 		self.trick_room = 0
+		# dictionary of dictionary of entry hazards, e.g. battle.entry_hazards["bot"]["stealthrock"] would return 0, note "bot" means hazards bot has up on opponent's side
+		self.entry_hazards = {"bot": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}, "foe": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}}
 
 
+	# load pokemon into teams from team preview
 	def initialise_teams(self, msg_arr):
 
 		for i in range(3, len(msg_arr)):
@@ -40,13 +44,16 @@ class Battle:
 					self.foe_team.append(Pokemon(id, has_item, "foe"))
 
 
+	# load data from request message about team, and prompt any appropriate decision from ai
 	async def load_team_data(self, ws):
 
 		# load data
 		json_obj = json.loads(self.next_team_data)
 		have_active = "active" in json_obj.keys() # each true or false
-		at_team_preview = "teamPreview" in json_obj.keys()
+		have_team_preview = "teamPreview" in json_obj.keys()
 		have_switch = "forceSwitch" in json_obj.keys()
+		# list of status abbreviations
+		status_list = ["brn", "frz", "par", "psn", "tox", "slp"]
 		# for each pokemon, update with new data
 		for i, mon_data in enumerate(json_obj["side"]["pokemon"], 1):
 			pokemon = next((mon for mon in self.my_team if mon.id == mon_data["details"].split(",")[0]))
@@ -54,16 +61,27 @@ class Battle:
 			if (i <= 2 and have_active):
 				pokemon.active_info = json_obj["active"][i-1]
 			# set if each pokemon is active
-			if (i <= 2 and not at_team_preview):
+			if (i <= 2 and not have_team_preview):
 				pokemon.active = i
 			else:
 				pokemon.active = 0
 			# update health
-			if ("fnt" not in mon_data["condition"]):
-				pokemon.health = int(mon_data["condition"].split("/")[0])
-			else:
-				pokemon.health = 0
+			condition = mon_data["condition"]
+			if (condition[-3:] == "fnt"): # fainted
+				pokemon.health_points = "0"
+				pokemon.health_percentage = 0
 				pokemon.has_fainted = True
+				pokemon.status = "fnt"
+			else:
+				# set status
+				if (condition[-3:] in status_list):
+					pokemon.status = condition[-3:]
+					condition = condition[:-4]
+				else:
+					pokemon.status = None
+				pokemon.health_points = condition
+				hp1, hp2 = condition.split("/")
+				pokemon.health_percentage = round(100*int(hp1)/int(hp2), 1)
 			# update stats, moves, items, ability
 			pokemon.stats = mon_data["stats"]
 			pokemon.moves = mon_data["moves"]
@@ -72,13 +90,15 @@ class Battle:
 			pokemon.active_ability = mon_data["ability"]
 		# prompt appropriate decision if needed
 		if (have_active):  # move
+			self.debug_prints()
 			await ai.choose_moves(ws, self)
 		elif (have_switch):  # switch
 			await ai.choose_switch(ws, self, json_obj["forceSwitch"])
-		elif (at_team_preview):  # leads
+		elif (have_team_preview):  # leads
 			await ai.choose_leads(ws, self)
 
 
+	# return the pokemon object in a given position and side
 	def get_pokemon(self, side, position):
 
 		# get list of bot or foe's pokemon
@@ -90,6 +110,7 @@ class Battle:
 		return next((mon for mon in pokemons if mon.active == position))
 
 
+	# get list of active pokemon for either or both sides
 	def active_pokemon(self, side):
 
 		active_mons = []
@@ -111,6 +132,7 @@ class Battle:
 		return active_mons
 
 
+	# complete a switch, updating old and new pokemon
 	def update_switch(self, side, pokemon_name, position):
 
 		# get list of bot or foe's pokemon
@@ -119,20 +141,21 @@ class Battle:
 		elif (side == "foe"):
 			pokemons = self.foe_team
 		# make previous active pokemon (if exists) inactive
-		if (self.team_preview == False):
+		if (self.at_team_preview == False):
 			old_mon = next((mon for mon in pokemons if mon.active == position))
 			old_mon.switch_out()
 		# make new pokemon active
-		print("Side: " + side)
-		print("Foe team: ")
-		print(self.foe_team)
-		print("Pokemon name: " + pokemon_name)
+		#print("Side: " + side)
+		#print("Foe team: ")
+		#[print(pokemon.id) for pokemon in self.foe_team]
+		#print("Pokemon name: " + pokemon_name)
 		formatted_name = formatting.get_formatted_name(pokemon_name)
-		print("Formatted name: " + formatted_name)
+		#print("Formatted name: " + formatted_name)
 		new_mon = next(mon for mon in pokemons if formatting.get_formatted_name(mon.id) == formatting.get_formatted_name(pokemon_name))
 		new_mon.switch_in(position)
 
 
+	# add buff (stat change) to pokemon
 	def add_buff(self, side, position, stat, quantity):
 
 		# get pokemon
@@ -155,6 +178,7 @@ class Battle:
 		pokemon.buff[stat] = [buff, modifs[str(buff)]]
 
 
+	# update form change (e.g. mega)
 	def form_change(self, side, position, new_id):
 
 		# get pokemon
@@ -162,3 +186,35 @@ class Battle:
 		# change to new id, and update types/abilities/stats from pokedex
 		pokemon.id = new_id
 		pokemon.load_stats()
+
+
+	# update counters for things like tr/tw/terrain/weather
+	def upkeep_counters(self):
+
+		# trick room
+		if (self.trick_room > 0):
+			self.trick_room -= 1
+		# tailwind
+		if (self.tailwind["bot"] > 0):
+			self.tailwind["bot"] -= 1
+		if (self.tailwind["foe"] > 0):
+			self.tailwind["foe"] -= 1
+		# terrain
+		if (self.terrain_turns_left > 0):
+			self.terrain_turns_left -= 1
+		# weather
+		if (self.weather_turns_left > 0):
+			self.weather_turns_left -= 1
+		# protect
+		for pokemon in self.active_pokemon("both"):
+			if (pokemon.can_protect > 0):
+				pokemon.can_protect -= 1
+
+
+	# print stuff for debugging here, will be called before making move at start of each turn
+	def debug_prints(self):
+
+		#print(self.entry_hazards)
+		#print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
+		#[print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
+		[print("Pokemon {} has {} status and {}% HP".format(pokemon.id, pokemon.status, pokemon.health_percentage)) for pokemon in self.my_team]

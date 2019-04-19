@@ -22,7 +22,7 @@ async def choose_moves(ws, battle):
 	decisions = []
 	# for each active pokemon
 	for i, pokemon in enumerate(allies):
-		if (not pokemon.fainted): # only consider alive pokemon
+		if (not pokemon.fainted): # only need move for alive pokemon
 			# get best (strongest) move and ratio score
 			move, target, bp = get_info.find_best_move_active_foes(battle, pokemon)
 			my_ratio = get_info.calculate_score_ratio_single(battle, pokemon)
@@ -40,15 +40,11 @@ async def choose_moves(ws, battle):
 			else:
 				decisions.append(funcs.attack(move, target, mega_dic[can_mega]))
 
-		# if the slot is fainted, don't send a command for it
-		else:
-			decisions.append("")
-
 	# combine moves
-	if (allies[0] != "" and allies[1] != ""):
+	if (len(decisions) > 1):
 		command_str = battle.battletag + "|/choose " + decisions[0] + ", " + decisions[1]
 	else:
-		command_str = battle.battletag + "|/choose " + decisions[0] + decisions[1]
+		command_str = battle.battletag + "|/choose " + decisions[0]
 	# send turn decision
 	await senders.send_turn_decision(ws, command_str)
 
