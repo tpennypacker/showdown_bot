@@ -3,22 +3,8 @@ import random
 from operator import itemgetter
 from settings import ai_settings
 from helper_functions import formatting
+from helper_functions import calc
 import numpy as np
-
-
-# attack_type is a string, ie "Fire"
-# target_types is an array, ie ["Fire"] or ["Fire, Flying"]
-def get_type_effectiveness(attack_type, target_types):
-	mult = 1.0
-	with open('data/typechart.json') as typechart_file:
-		typechart = json.load(typechart_file)
-		for target_type in target_types:
-			x = typechart[target_type]["damageTaken"][attack_type]
-			if (x == 1): mult *= 2 # super effective
-			elif (x == 2): mult *= 0.5 # not very effective
-			elif (x == 3): mult *= 0 # doesn't affect
-
-	return mult
 
 
 # find best move for a given pokemon against the active foes
@@ -81,88 +67,15 @@ def find_best_move_against_foe(battle, user, foe):
 		for move in my_moves:
 			if (move == ""): # don't consider disabled moves
 				continue
-			move_category = moves[move]["category"]
-			move_type = moves[move]["type"]
-			base_power = moves[move]["basePower"]
-			effective_bp = base_power * get_stab_effectiveness(move_type, my_types, my_ability) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.active_pokemon("foe"), foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
+			# move_category = moves[move]["category"]
+			# move_type = moves[move]["type"]
+			# base_power = moves[move]["basePower"]
+			# effective_bp = base_power * get_stab_effectiveness(move_type, my_types) * get_type_effectiveness(move_type, foe_types) * get_ability_effectiveness(my_ability, move_type, battle.active_pokemon("foe"), foe) * get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types)
+			effective_bp = calc.calc_damage (move, user, foe, battle)
 			possible_moves.append([move, foe_index, effective_bp])
 
 	# return (move name, target index, effective bp) of each move
 	return possible_moves
-
-
-# calculate STAB bonus
-def get_stab_effectiveness(move_type, my_types, my_ability):
-	if (move_type in my_types):
-		if (my_ability == "adaptability"):
-			return 2
-		else:
-			return 1.5
-	else:
-		return 1
-
-
-absorbable_types = {"Fire":["Flash Fire"], "Water":["Dry Skin", "Water Absorb", "Storm Drain"], "Grass":["Sap Sipper"], "Electric":["Volt Absorb", "Lightning Rod", "Motor Drive"], "Ground":["Levitate"]}
-redirectable_types = {"Water":"Storm Drain", "Electric":"Lightning Rod"}
-
-# consider absorbing abilities
-def get_ability_effectiveness(my_ability, move_type, foes, target):
-	with open('data/pokedex.json') as pokedex_file:
-		pokedex = json.load(pokedex_file)
-		# if don't have ability ignoring ability, and absorbable move type, then check for abilities
-		if (my_ability != "terravolt" and my_ability != "turboblaze" and my_ability != "moldbreaker"):
-			if (move_type in redirectable_types.keys()):
-				# get both foes abilities need to consider, list of all possiblities in one big list
-				alive_foes = [foe for foe in foes if not foe.fainted]  # only consider alive foes
-				foes_abilities = [foe.possible_abilities for foe in alive_foes]  # get possible abilities
-				foes_abilities = [item for sublist in foes_abilities for item in sublist]  # combine to single list
-				# if foes have ability then return 0
-				if redirectable_types[move_type] in foes_abilities:
-					return 0
-
-			if (move_type in absorbable_types.keys()):
-				# get possible abilities for targeted foe
-				target_abilities = target.possible_abilities
-				# if foe has ability then return 0
-				for foe_ability in target_abilities:
-					if foe_ability in absorbable_types[move_type]:
-						return 0
-	# if opponent can't have any absorbing abilities, then return 1
-	return 1
-
-
-# get modifier from weather/terrain
-def get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe, foe_types):
-	# each True or False
-	user_flying = ("Flying" in my_types or my_ability == "levitate")
-	target_flying = ("Flying" in foe_types or "Levitate" in foe.possible_abilities)
-	mult = 1
-	# rock sp def boost in sand
-	if (battle.weather == "Sandstorm" and "Rock" in foe_types and  move_category == "Special"):
-		mult *= 2/3
-	# sun/rain effects
-	elif (move_type == "Fire"):
-		if (battle.weather == "SunnyDay"):
-			mult *= 1.5
-		elif (battle.weather == "RainDance"):
-			mult *= 0.5
-	elif (move_type == "Water"):
-		if (battle.weather == "SunnyDay"):
-			mult *= 0.5
-		elif (battle.weather == "RainDance"):
-			mult *= 1.5
-	# terrain
-	if (move_type == "Dragon"):
-		if (battle.terrain == "Misty Terrain" and target_flying == False):
-			mult *= 0.5
-	elif (user_flying == False):
-		if (move_type == "Electric" and battle.terrain == "Electric Terrain"):
-			mult *= 1.5
-		if (move_type == "Psychic" and battle.terrain == "Psychic Terrain"):
-			mult *= 1.5
-		if (move_type == "Grass" and battle.terrain == "Grassy Terrain"):
-			mult *= 1.5
-	return mult
 
 
 # calculate scores used for switching, uses strongest move for each available pokemon
@@ -188,26 +101,33 @@ def calculate_score_ratio_switches(battle):
 def calculate_score_ratio_single(battle, pokemon):
 	# get pokemon's "score" against the opponent
 	move, target, power = find_best_move_active_foes(battle, pokemon)
+
 	# get the sum of the opponent's scores against us
-	foes_score = []
-	foes = battle.active_pokemon("foe")
-	for foe in foes:
-		if (foe.fainted): # ignore dead foes
-			continue
+	with open('data/moves.json') as moves_file:
+		all_moves = json.load(moves_file)
+		foes_score = []
+		foes = battle.active_pokemon("foe")
+		for foe in foes:
+			if (foe.fainted): # ignore dead foes
+				continue
 
-		foe_score = []
-		foe_types = foe.types
-		for foe_type in foe_types:
-			# NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
-			damage = ai_settings.ai_bp * 1.5 * get_type_effectiveness(foe_type, pokemon.types)
-			foe_score.append(damage)
+			foe_score = []
+			for move in foe.moves:
+				# move_data = all_moves[move]
+				# bp = move_data["basePower"]
+				# move_type = move_data["type"]
+				# stab = get_stab_effectiveness(move_type, foe.types)
+				# # NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
+				# damage = bp * stab * get_type_effectiveness(move_type, pokemon.types)
+				damage = calc.calc_damage (move, foe, pokemon, battle)
+				foe_score.append(damage)
 
-		index, value = max(enumerate(foe_score), key=itemgetter(1))
-		foes_score.append(value)
-	foes_total_score = np.sum(foes_score)
+			index, value = max(enumerate(foe_score), key=itemgetter(1))
+			foes_score.append(value)
+		foes_total_score = np.sum(foes_score)
 
-	ratio = power / foes_total_score
-	return ratio
+		ratio = power / foes_total_score
+		return ratio
 
 
 def is_spread_move(formatted_move):
