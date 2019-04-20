@@ -44,7 +44,6 @@ def find_best_move_against_foe(battle, user, foe):
 		moves = json.load(moves_file)
 		user_index = user.active
 		my_types = user.types
-		my_ability = user.active_ability
 		foe_types = foe.types
 		possible_moves = [] # list of possible moves in format [move, target, effective bp]
 

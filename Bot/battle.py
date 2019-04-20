@@ -86,8 +86,7 @@ class Battle:
 			pokemon.stats = mon_data["stats"]
 			pokemon.moves = mon_data["moves"]
 			pokemon.item = mon_data["item"]
-			pokemon.base_ability = mon_data["baseAbility"]
-			pokemon.active_ability = mon_data["ability"]
+			pokemon.abilities = [mon_data["ability"]]
 		# prompt appropriate decision if needed
 		if (have_active):  # move
 			self.debug_prints()
@@ -212,7 +211,6 @@ class Battle:
 
 	# print stuff for debugging here, will be called before making move at start of each turn
 	def debug_prints(self):
-		return
 
 		#print(self.entry_hazards)
 		# print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
@@ -221,6 +219,9 @@ class Battle:
 		# for pokemon in self.my_team:
 		# 	print(pokemon.buff)
 		# for pokemon in self.foe_team:
+		# 	print(pokemon.abilities)
+		# for pokemon in self.my_team:
+		# 	print(pokemon.abilities)
 		# 	print(pokemon.id + " has the following moves: ")
 		# 	print(pokemon.moves)
 

@@ -39,14 +39,14 @@ absorbable_types = {"Fire":["Flash Fire"], "Water":["Dry Skin", "Water Absorb", 
 redirectable_types = {"Water":"Storm Drain", "Electric":"Lightning Rod"}
 
 # consider absorbing / redirecting abilities
-def get_ability_effectiveness(user_ability, move_type, foes, target):
+def get_ability_effectiveness(user_abilities, move_type, foes, target):
 
 	# if don't have ability ignoring ability, and absorbable move type, then check for abilities
-	if (user_ability != "teravolt" and user_ability != "turboblaze" and user_ability != "moldbreaker"):
+	if (not ("teravolt" in user_abilities) and not ("turboblaze" in user_abilities) and not ("moldbreaker" in user_abilities)):
 		if (move_type in redirectable_types.keys()):
 			# get both foes abilities need to consider, list of all possiblities in one big list
 			alive_foes = [foe for foe in foes if not foe.fainted]  # only consider alive foes
-			foes_abilities = [foe.possible_abilities for foe in alive_foes]  # get possible abilities
+			foes_abilities = [foe.abilities for foe in alive_foes]  # get possible abilities
 			foes_abilities = [item for sublist in foes_abilities for item in sublist]  # combine to single list
 			# if foes have ability then return 0
 			if redirectable_types[move_type] in foes_abilities:
@@ -54,7 +54,7 @@ def get_ability_effectiveness(user_ability, move_type, foes, target):
 
 		if (move_type in absorbable_types.keys()):
 			# get possible abilities for targeted foe
-			target_abilities = target.possible_abilities
+			target_abilities = target.abilities
 			# if foe has ability then return 0
 			for foe_ability in target_abilities:
 				if foe_ability in absorbable_types[move_type]:
@@ -63,11 +63,11 @@ def get_ability_effectiveness(user_ability, move_type, foes, target):
 	return 1
 
 # get modifier from weather/terrain
-def get_field_modifier(battle, my_types, my_ability, move_type, move_category, foe):
+def get_field_modifier(battle, my_types, my_abilities, move_type, move_category, foe):
 
 	# each True or False
-	user_flying = ("flying" in my_types or my_ability == "levitate")
-	target_flying = ("flying" in foe.types or "levitate" in foe.possible_abilities)
+	user_flying = ("flying" in my_types or "levitate" in my_abilities)
+	target_flying = ("flying" in foe.types or "levitate" in foe.abilities)
 	mult = 1
 	# rock sp def boost in sand
 	if (battle.weather == "sandstorm" and "rock" in foe.types and  move_category == "Special"):
@@ -126,8 +126,8 @@ def calc_damage (move, user, target, battle):
 				return 0
 			stab = get_stab_effectiveness(all_moves[move]["type"], user.types)
 			type_eff = get_type_effectiveness(all_moves[move]["type"], target.types)
-			ability_eff = 1# get_ability_effectiveness(user.active_ability, all_moves[move]["type"], )
-			field_mult = get_field_modifier(battle, user.types, user.active_ability, all_moves[move]["type"], all_moves[move]["category"], target)
+			ability_eff = get_ability_effectiveness(user.abilities, all_moves[move]["type"], battle.foe_team, target)
+			field_mult = get_field_modifier(battle, user.types, user.abilities, all_moves[move]["type"], all_moves[move]["category"], target)
 			crit = 1
 			random = 1 # actually between 0.85 and 1
 			burn = 1

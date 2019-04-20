@@ -28,8 +28,7 @@ def get_moves_from_line(line):
 
 
 def get_likely_set(name):
-#name = input("Enter pokemon name: ")
-#print("Getting all moves with probability >=" + str(ai_settings.alpha) + "%")
+	print("Getting likely moves for " + name)
 	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
 	request = requests.get(site)
 	text = request.text

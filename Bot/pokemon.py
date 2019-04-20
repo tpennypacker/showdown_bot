@@ -40,10 +40,7 @@ class Pokemon:
         self.types = []  # list of types, e.g. ["Grass","Poison"]
         self.base_stats = {}  # dictionary e.g. {"hp":45,"atk":49,"def":49,"spa":65,"spd":65,"spe":45}
         self.stats = {}  # dictionary of actual stat numbers for pokemon
-        self.possible_abilities = []  # list of possible abilities for pokemon species, e.g. ["Overgrow", "Chlorophyll"]
-
-        self.base_ability = None  # known base ability
-        self.active_ability = None  # actual ability could be different from skill swap/role play/entrainment
+        self.abilities = []  # list of possible abilities for pokemon species, e.g. ["Overgrow", "Chlorophyll"]
 
         if (side == "foe"):
             self.moves = predict_foe_sets.get_likely_set(id)
@@ -77,7 +74,7 @@ class Pokemon:
         """
         infos = infos_for_pokemon(formatting.get_formatted_name(self.id))
         self.types = infos["types"]
-        self.possible_abilities = infos["possibleAbilities"]
+        self.abilities = infos["possibleAbilities"]
         self.base_stats = infos["baseStats"]
 
 
