@@ -19,28 +19,33 @@ def infos_for_pokemon(pkm_name):
     with open('data/pokedex.json') as data_file:
         pokemon = json.load(data_file)[pkm_name]
     res["types"] = pokemon["types"]
-    res["possibleAbilities"] = list(pokemon["abilities"].values())
+    res["possibleAbilities"] = [formatting.get_formatted_name(ability) for ability in list(pokemon["abilities"].values())]
     res["baseStats"] = pokemon["baseStats"]
     return res
 
 
 class Pokemon:
 
-    def __init__(self, id, has_item, side):
+    def __init__(self, side, id, has_item, level, gender):
 
         self.id = id  # species of Pokemon, e.g. Manectric or Manectric-Mega
         self.side = side  # will be "bot" or "foe"
         self.active = 0  # 0 for not active, 1 or 2 means active and gives slot
 
-        self.health_percentage = 100  # percentage of hp left, integer
+        self.level = level  # integer, usually 100
+        self.gender = gender  # "M", "F", or None
+        #self.shiny = shiny  # true or false, could get from when pokemon is switched out, but not from team preview
+
+        self.health_percentage = 100  # percentage of hp left
         self.health_points = None  # actual hp, will only know for our pokemon, string, e.g. "234/435"
         self.fainted = False  # true if fainted
         self.status = None  # could be "brn", "psn", "tox" etc
 
         self.types = []  # list of types, e.g. ["Grass","Poison"]
+        self.original_types = []  # before any soak etc. shenanigans, pokemon.types reset to this on switching out
         self.base_stats = {}  # dictionary e.g. {"hp":45,"atk":49,"def":49,"spa":65,"spd":65,"spe":45}
         self.stats = {}  # dictionary of actual stat numbers for pokemon
-        self.abilities = []  # list of possible abilities for pokemon species, e.g. ["Overgrow", "Chlorophyll"]
+        self.abilities = []  # list of possible abilities for pokemon species, e.g. ["overgrow", "chlorophyll"]
 
         if (side == "foe"):
             self.moves = predict_foe_sets.get_likely_set(id)
@@ -74,6 +79,7 @@ class Pokemon:
         """
         infos = infos_for_pokemon(formatting.get_formatted_name(self.id))
         self.types = infos["types"]
+        self.original_types = infos["types"]
         self.abilities = infos["possibleAbilities"]
         self.base_stats = infos["baseStats"]
 
@@ -92,6 +98,8 @@ class Pokemon:
         # reset ability to use fake out and protect
         self.can_fake_out = True
         self.can_protect = 0
+        # reset types
+        self.types = self.original_types
         # make inactive
         self.active = 0
 

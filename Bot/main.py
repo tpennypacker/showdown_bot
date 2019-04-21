@@ -11,27 +11,25 @@ from settings import bot_settings
 from helper_functions import funcs
 from helper_functions import team_reader
 from helper_functions import battlelog_parser
+from helper_functions import pm_commands
 from battle import Battle
 from pokemon import Pokemon
 
 
 battles = []
-bot_team = team_reader.read_team()
-
 
 async def parse_response(ws, msg):
 	msg_arr = msg.split('|')
 
-	# if get message from whitelisted username take command (currently only to exit program)
-	if (msg_arr[1] == "pm"):
+	# if get message from whitelisted username starting with $ then take command
+	if (msg_arr[1] == "pm" and msg_arr[4][0] == "$"):
 		sender = msg_arr[2].strip().lower().replace(" ", "")
-		if (sender in bot_settings.bot_owners.split(",")):
-			if (msg_arr[4] == "$quit" or msg_arr[4] == "$quirt"):
-				print("Received quit message from {}, now exiting program".format(sender))
-				sys.exit()
+		whitelist = [username.lower().strip() for username in bot_settings.bot_owners.split(",")]
+		if (sender in whitelist):
+			await pm_commands.parse_command(ws, msg_arr[4], sender)
 
 	# triggers when a battle ends, checks if bot won and sends appropriate message
-	if ("win" in msg_arr):
+	if (msg_arr[0][0:7] == ">battle" and "win" in msg_arr):
 		battletag = funcs.get_battletag(msg_arr)
 		win_id = msg_arr.index("win") + 1
 		bot_won = (msg_arr[win_id].strip("\n").lower() == bot_settings.username.lower())
@@ -39,7 +37,7 @@ async def parse_response(ws, msg):
 
 	# checks if challenges to be accepted
 	elif (msg_arr[1] == "updatechallenges" and bot_settings.accept_challenges == True):
-		await funcs.handle_challenges(ws, msg_arr, bot_team)
+		await funcs.handle_challenges(ws, msg_arr)
 
 	# triggers on any request message, adds team_data from it to battle
 	elif (msg_arr[1] == "request"):
@@ -98,6 +96,6 @@ async def connect_to_ps():
 			#print("_____________________________\n", file=logfile)
 			await parse_response(ws, msg)
 
-#os.system('cls') # windows
-os.system('clear') # mac
+os.system('cls') # windows
+#os.system('clear') # mac
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

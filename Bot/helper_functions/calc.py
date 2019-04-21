@@ -14,11 +14,15 @@ def get_move_bp(move, all_moves):
 
 
 # calculate STAB bonus
-def get_stab_effectiveness(move_type, my_types):
+def get_stab_effectiveness(move_type, my_types, abilities):
 	if (move_type in my_types):
-		return 1.5
+		if ("adaptability" in abilities):
+			return 2
+		else:
+			return 1.5
 	else:
 		return 1
+
 
 # attack_type is a string, ie "Fire"
 # target_types is an array, ie ["Fire"] or ["Fire, Flying"]
@@ -35,11 +39,11 @@ def get_type_effectiveness(attack_type, target_types):
 	return mult
 
 
-absorbable_types = {"Fire":["Flash Fire"], "Water":["Dry Skin", "Water Absorb", "Storm Drain"], "Grass":["Sap Sipper"], "Electric":["Volt Absorb", "Lightning Rod", "Motor Drive"], "Ground":["Levitate"]}
-redirectable_types = {"Water":"Storm Drain", "Electric":"Lightning Rod"}
+absorbable_types = {"Fire":["flashfire"], "Water":["dryskin", "waterabsorb", "stormdrain"], "Grass":["sapsipper"], "Electric":["voltabsorb", "lightningrod", "motordrive"], "Ground":["levitate"]}
+redirectable_types = {"Water":"stormdrain", "Electric":"lightningrod"}
 
 # consider absorbing / redirecting abilities
-def get_ability_effectiveness(user_abilities, move_type, foes, target):
+def get_ability_effectiveness(user_abilities, move_type, foes, target, type_eff):
 
 	# if don't have ability ignoring ability, and absorbable move type, then check for abilities
 	if (not ("teravolt" in user_abilities) and not ("turboblaze" in user_abilities) and not ("moldbreaker" in user_abilities)):
@@ -59,6 +63,10 @@ def get_ability_effectiveness(user_abilities, move_type, foes, target):
 			for foe_ability in target_abilities:
 				if foe_ability in absorbable_types[move_type]:
 					return 0
+		# wonder guard
+		if (type_eff <= 1 and "wonderguard" in target.abilities):
+			return 0
+
 	# if opponent can't have any absorbing abilities, then return 1
 	return 1
 
@@ -98,7 +106,7 @@ def get_field_modifier(battle, my_types, my_abilities, move_type, move_category,
 
 
 # Currently based on base stats. Should be based on actual stats in the future.
-# Still need to take into account moves like psyshock
+# Still need to take into account moves like psyshock, secret sword
 def get_stat_ratio(category, user, target):
 	stat_ratio = 1
 	if (category == "Physical"):
@@ -112,6 +120,23 @@ def get_stat_ratio(category, user, target):
 	return stat_ratio
 
 
+def get_burn_modifier(move_name, move_category, status, abilities):
+	facade_status = ["brn", "psn", "tox", "par"]
+	mult = 1
+	# double facade bp
+	if (move_name == "facade" and status in facade_status):
+		mult *= 2
+	# burn halves physical damage, unless have guts or using facade
+	if (status == "brn" and move_category == "Physical"):
+		if ("guts" in abilities):
+			mult *= 1.5
+		elif (move_name == "facade"):
+			mult *= 1
+		else:
+			mult *= 0.5
+	return mult
+
+
 # move is the move ID (string)
 # user and target are pokemon objects
 # battle is a battle object
@@ -122,19 +147,23 @@ def calc_damage (move, user, target, battle):
 			pokedex = json.load(pokedex_file)
 
 			power, spread = get_move_bp(move, all_moves) #includes spread damage mult
-			if (power == 0): 
+			if (power == 0):
 				return 0
-			stab = get_stab_effectiveness(all_moves[move]["type"], user.types)
-			type_eff = get_type_effectiveness(all_moves[move]["type"], target.types)
-			ability_eff = get_ability_effectiveness(user.abilities, all_moves[move]["type"], battle.foe_team, target)
-			field_mult = get_field_modifier(battle, user.types, user.abilities, all_moves[move]["type"], all_moves[move]["category"], target)
+
+			move_type = all_moves[move]["type"]
+			move_category = all_moves[move]["category"]
+
+			stab = get_stab_effectiveness(move_type, user.types, user.abilities)
+			type_eff = get_type_effectiveness(move_type, target.types)
+			ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.foe_team, target, type_eff)
+			field_mult = get_field_modifier(battle, user.types, user.abilities, move_type, move_category, target)
 			crit = 1
 			random = 1 # actually between 0.85 and 1
-			burn = 1
+			burn = get_burn_modifier(move, move_category, user.status, user.abilities)
 
 			modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff
 
-			level = 100
+			level = user.level
 			stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)
 
 			damage = ((2 * level / 5) * power * stat_ratio / 50 + 2) * modifier
@@ -142,5 +171,3 @@ def calc_damage (move, user, target, battle):
 			#print("Damage of " + user.id + "'s " + move + " against " + target.id + ": " + str(damage))
 
 			return damage
-
-

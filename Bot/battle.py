@@ -1,4 +1,5 @@
 from helper_functions import formatting
+from helper_functions import predict_foe_sets
 
 from pokemon import Pokemon
 import ai
@@ -18,9 +19,9 @@ class Battle:
 		self.foe_side = None  # p1 or p2
 		self.opponent_name = "opponent"  # string of opponent's name, used for sending messages
 		self.at_team_preview = True  # true at team preview, otherwise false, used for switches
-		self.terrain = None  # e.g. "Electric Terrain"
+		self.terrain = None  # e.g. "electricterrain"
 		self.terrain_turns_left = 0
-		self.weather = None  # e.g. "RainDance"
+		self.weather = None  # e.g. "raindance"
 		self.weather_turns_left = 0
 		self.tailwind = {"bot": 0, "foe": 0}  # number of turns field conditions have left, 0 if inactive
 		self.trick_room = 0
@@ -34,14 +35,22 @@ class Battle:
 		for i in range(3, len(msg_arr)):
 			if (msg_arr[i-3] == "poke"):
 				# get name/id of pokemon and if has item
-				id = msg_arr[i-1].split(',')[0]
+				split_msg = [i.strip() for i in msg_arr[i-1].split(',')]
+				id = split_msg[0]
 				has_item = (msg_arr[i] == "item\n")
+				# look for level, gender
+				level, gender, shiny = 100, None, False  # values if not given
+				for part in split_msg[1:]:
+					if (part[0] == "L"):  # level
+						level = int(part[1:])
+					elif (part == "M" or part == "F"):  # gender
+						gender = part
 
 				# add to appropriate team
 				if (msg_arr[i-2] == self.my_side):
-					self.my_team.append(Pokemon(id, has_item, "bot"))
+					self.my_team.append(Pokemon("bot", id, has_item, level, gender))
 				else:
-					self.foe_team.append(Pokemon(id, has_item, "foe"))
+					self.foe_team.append(Pokemon("foe", id, has_item, level, gender))
 
 
 	# load data from request message about team, and prompt any appropriate decision from ai
@@ -107,6 +116,14 @@ class Battle:
 			pokemons = self.foe_team
 		# return pokemon in desired position
 		return next((mon for mon in pokemons if mon.active == position))
+
+
+	# return single list of all pokemon in battle, on both teams
+	def both_teams(self):
+
+		both_teams =self.my_team[:]
+		both_teams.extend(self.foe_team)
+		return both_teams
 
 
 	# get list of active pokemon for either or both sides
@@ -185,6 +202,9 @@ class Battle:
 		# change to new id, and update types/abilities/stats from pokedex
 		pokemon.id = new_id
 		pokemon.load_stats()
+		# update likely moves from usage
+		if (pokemon.side == "foe"):
+			pokemon.moves = predict_foe_sets.get_likely_set(pokemon.id)
 
 
 	# update counters for things like tr/tw/terrain/weather
@@ -212,6 +232,7 @@ class Battle:
 	# print stuff for debugging here, will be called before making move at start of each turn
 	def debug_prints(self):
 
+		pass
 		#print(self.entry_hazards)
 		# print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
 		# [print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
@@ -220,27 +241,9 @@ class Battle:
 		# 	print(pokemon.buff)
 		# for pokemon in self.foe_team:
 		# 	print(pokemon.abilities)
-		# for pokemon in self.my_team:
-		# 	print(pokemon.abilities)
-		# 	print(pokemon.id + " has the following moves: ")
-		# 	print(pokemon.moves)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+		#[print("{} has types {}".format(pokemon.id, pokemon.types)) for pokemon in self.active_pokemon("foe")]
+		#[print(pokemon.level,pokemon.gender) for pokemon in self.foe_team]
+		#for pokemon in self.foe_team:
+			#print(pokemon.abilities)
+			#print(pokemon.id + " has the following types: ")
+			#print(pokemon.moves)

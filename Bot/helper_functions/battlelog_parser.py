@@ -246,9 +246,35 @@ def minor_actions(battle: Battle, split_line, side_dict):
     # includes making substitute, protect, heal bell, skill swap (if between opponent and us get info about both abilities, if between foes get nothing)
     elif split_line[0] == "-activate":
         pass
+    # includes type change from moves like soak/burn up/conversion
+    elif split_line[0] == "-start":
+        side = side_dict[split_line[1][0:2]]
+        position = pos_dict[split_line[1][2]]
+        pokemon = battle.get_pokemon(side, position)
+        if (split_line[2] == "typeadd"):
+            type = split_line[3].strip("\n")
+            pokemon.types.append(type)
+        elif (split_line[2] == "typechange"):
+            if ("[from]" not in split_line[3]):
+                types = split_line[3].split("/")
+                types = [type.strip("\n") for type in types if type.strip("\n") != "???"]
+                pokemon.types = types
+            else:  # deal with reflect type differently
+                copy_side = side_dict[split_line[4][5:7]]
+                copy_position = pos_dict[split_line[4][7]]
+                copy_pokemon = battle.get_pokemon(copy_side, copy_position)
+                if (len(copy_pokemon.types) > 0):  # if target is only ??? then move fails, so don't change type
+                    pokemon.types = copy_pokemon.types
     # includes substitute breaking
     elif split_line[0] == "-end":
         pass
+
+    # using the move transform
+    elif split_line[0] == "-transform":
+        pass
+    elif split_line[0] == "-hitcount":
+        pass
+    # forewarn and anticipation maybe?
     elif split_line[0] == "-hint":
         pass
     elif split_line[0] == "-center":

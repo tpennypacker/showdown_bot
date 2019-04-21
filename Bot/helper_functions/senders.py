@@ -56,10 +56,13 @@ async def accept_challenge(ws, challenger, bot_team):
 	await ws.send("|/accept " + challenger)
 	print("Accepting challenge from " + challenger + " in " + bot_settings.play_tier + "\n")
 
-
 async def send_login_msg(ws, msg):
 	await ws.send(msg)
 	print("Logging in")
+
+async def send_pm(ws, msg, user):
+	await ws.send("|/pm {}, {}".format(user,msg))
+	#print("Sending following message to user {}: {}".format(user, msg))
 
 
 async def send_lead_decision(ws, leads, battletag):

@@ -1,8 +1,11 @@
-from settings import bot_settings
 import requests
 import json
+import os
+
+from settings import bot_settings
 from helper_functions import get_info
 from helper_functions import senders
+from helper_functions import team_reader
 
 
 def attack(move, foe, mega):
@@ -38,6 +41,12 @@ async def log_in(ws, msg_arr):
 # this gets called once when the user logs in
 async def startup_ops(ws):
 	print("You have successfully logged in as " + bot_settings.username + "\n")
+
+	bot_settings.all_bot_teams = team_reader.read_all_teams(os.listdir("teams"))
+	bot_settings.active_bot_team = bot_settings.all_bot_teams[bot_settings.team_file]
+
+	if (bot_settings.accept_challenges):
+		print("Using team {} for accepting challenges in tier {}".format(bot_settings.team_file, bot_settings.play_tier))
 
 	await senders.blockpms(ws)
 	await senders.blockchallenges(ws)
@@ -76,9 +85,9 @@ async def on_battle_end(ws, battles, battletag, winner):
 
 
 # accept challenges if in correct tier
-async def handle_challenges(ws, msg_arr, bot_team):
+async def handle_challenges(ws, msg_arr):
 	challenges = json.loads(msg_arr[2])
 	challengers = challenges["challengesFrom"].keys()
 	for challenger in challengers:
 		if (challenges["challengesFrom"][challenger] == bot_settings.play_tier):
-			await senders.accept_challenge(ws, challenger, bot_team)
+			await senders.accept_challenge(ws, challenger, bot_settings.active_bot_team)

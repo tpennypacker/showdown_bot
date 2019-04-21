@@ -19,7 +19,7 @@ mons_with_useless_forms = ['gastrodon', 'shellos', 'florges', 'genesect',
 							'magearna', 'minior']
 
 def get_formatted_name(pokemon_name):
-	formatted = pokemon_name.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "").strip("\n")
+	formatted = pokemon_name.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "").replace("*","").strip("\n")
 
 	for mon in mons_with_useless_forms:
 		if mon in formatted:

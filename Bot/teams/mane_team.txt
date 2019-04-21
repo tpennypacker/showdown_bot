@@ -1,4 +1,4 @@
-# Enter team importable here, starting on 3rd line, and MAKE SURE TO HAVE TWO EMPTY LINES at bottom of file. Tier of team can be set in bot_settings.py
+# Enter team importable here, starting on line 3, with at least two blank lines after team. Tier to accept challenges can be set in bot_settings.py
 
 Manectric-Mega @ Manectite
 Ability: Lightning Rod
@@ -57,4 +57,6 @@ Jolly Nature
 - Smart Strike
 - Sacred Sword
 - Razor Leaf
+
+
 

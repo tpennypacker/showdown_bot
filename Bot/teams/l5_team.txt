@@ -1,0 +1,19 @@
+# Enter team importable here, starting on line 3, with at least two blank lines after team. Tier to accept challenges can be set in bot_settings.py
+
+Meowth  
+Ability: Pickup  
+Level: 5  
+EVs: 44 Def  
+- Seed Bomb  
+- Knock Off  
+
+Aipom  
+Ability: Run Away  
+Level: 5  
+EVs: 116 Def  
+- Seed Bomb  
+- Knock Off  
+
+
+
+

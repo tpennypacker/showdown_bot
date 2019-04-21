@@ -9,10 +9,26 @@ def clean_move(move):
     return move.lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "").replace("[","").replace("]","")
 
 
+def read_all_teams(file_names):
 
-def read_team():
-    with open("settings/team.txt", "r") as team_file:
-        x = team_file.readlines()[2:]
+    teams = {}  # dictionary of team: message to send for team
+
+    for file_name in file_names:
+        team_name = file_name[:-4]  # remove .txt
+        teams[team_name] = read_team(file_name)
+
+    return teams
+
+
+def read_team(team_file):
+    read_location = "teams/" + team_file
+    #with open("settings/team.txt", "r") as team_file:
+    with open(read_location, "r") as read_file:
+        x = read_file.readlines()[2:]
+
+    # remove unnecessary blank lines at end
+    while (x[-2] == x[-1] == "\n"):
+        x.pop()
 
     stats_list = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"]
     packed_team = ""
@@ -88,6 +104,8 @@ def read_team():
         if (clean_up(x[i])[-6:] == "Nature"):
             nature = clean_up(x[i])[:-7]
             i += 1
+        else:
+            nature = ""
 
         # IVs
         if (x[i][:3] == "IVs"):
