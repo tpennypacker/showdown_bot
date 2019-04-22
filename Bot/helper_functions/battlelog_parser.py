@@ -171,8 +171,6 @@ def minor_actions(battle: Battle, split_line, side_dict):
     elif split_line[0] == "-sidestart":
         side = side_dict[split_line[1][0:2]]
         move = formatting.format_move(split_line[2])
-        print(move)
-        print(battle.entry_hazards[side].keys())
         if (move == "tailwind"): # tailwind
             battle.tailwind[side] = 4
         elif (move in battle.entry_hazards[side].keys()): # entry hazards

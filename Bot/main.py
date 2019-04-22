@@ -34,6 +34,10 @@ async def parse_response(ws, msg):
 		win_id = msg_arr.index("win") + 1
 		bot_won = (msg_arr[win_id].strip("\n").lower() == bot_settings.username.lower())
 		await funcs.on_battle_end(ws, battles, battletag, bot_won)
+		# remove finished battle
+		battle = funcs.get_battle(battles, battletag)
+		remove_id = battles.index(battle)
+		battles.pop(remove_id)
 
 	# checks if challenges to be accepted
 	elif (msg_arr[1] == "updatechallenges" and bot_settings.accept_challenges == True):
