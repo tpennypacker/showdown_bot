@@ -27,6 +27,7 @@ def get_moves_from_line(line):
 	return (likely_moves)
 
 
+# get the likely sets of just one pokemon
 def get_likely_set(name):
 	print("Getting likely moves for " + name)
 	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
@@ -46,5 +47,49 @@ def get_likely_set(name):
 				if ("Moves" in line):
 					moves = get_moves_from_line(line)
 					return moves
+
+	return ["tackle"]
+
+
+
+
+#  get likely sets for the entire opposing team
+def update_likely_sets(battle):
+	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
+	request = requests.get(site)
+	text = request.text
+
+	pokedex = '\n'.join(text.split('\n')[1:])
+	pokedex = pokedex.split("+----------------------------------------+ \n +----------------------------------------+")
+
+
+	for foe_pokemon in battle.foe_team:
+		print("Getting likely moves for " + foe_pokemon.id)
+		for pokemon in pokedex:
+			if (formatting.get_formatted_name(foe_pokemon.id) == formatting.get_formatted_name(pokemon.split("|")[1])):
+				condensed_pokemon = pokemon.replace("   ", "").replace("|", "")
+				pokemon_info = condensed_pokemon.split("+----------------------------------------+")
+
+				for line in pokemon_info:
+					if ("Moves" in line):
+						moves = get_moves_from_line(line)
+						foe_pokemon.moves = moves
+		if (foe_pokemon.moves == []):
+			foe_pokemon.moves = ["tackle"]
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 				
 

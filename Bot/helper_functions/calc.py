@@ -1,16 +1,35 @@
 import json
+from battle import Battle
+from helper_functions import formatting
+
 
 
 def get_move_bp(move, all_moves):
 	move_data = all_moves[move]
 	power = move_data["basePower"]
+	return power
 
-	spread = 1
-	target = move_data["target"]
-	if (target == "allAdjacent" or target == "allAdjacentFoes"):
-		spread = 0.75
+def get_spread_mult(move, all_moves, target, battle):
+	move_data = all_moves[move]
+	attack_type = move_data["target"]
 
-	return power, spread
+	alive_foes = [mon for mon in battle.active_pokemon('foe') if not mon.fainted]
+	alive_friends = [mon for mon in battle.active_pokemon('bot') if not mon.fainted]
+	alive_all = [mon for mon in battle.active_pokemon('both') if not mon.fainted]
+
+	# moves that hit all pokemon on field
+	if (attack_type == "allAdjacent" and len(alive_all) > 2):
+		return 0.75
+
+	# if there's only 1 target, spread mult is automatically 1
+	if ((target.side == 'foe' and len(alive_foes) == 1) or (target.side == 'bot' and len(alive_friends) == 1)):
+		return 1
+
+	# if spread move
+	if (attack_type == "allAdjacentFoes"):
+		return 0.75
+
+	return 1
 
 
 # calculate STAB bonus
@@ -146,13 +165,14 @@ def calc_damage (move, user, target, battle):
 			all_moves = json.load(moves_file)
 			pokedex = json.load(pokedex_file)
 
-			power, spread = get_move_bp(move, all_moves) #includes spread damage mult
+			power = get_move_bp(move, all_moves)
 			if (power == 0):
 				return 0
 
 			move_type = all_moves[move]["type"]
 			move_category = all_moves[move]["category"]
 
+			spread = get_spread_mult(move, all_moves, target, battle)
 			stab = get_stab_effectiveness(move_type, user.types, user.abilities)
 			type_eff = get_type_effectiveness(move_type, target.types)
 			ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.foe_team, target, type_eff)
@@ -167,7 +187,5 @@ def calc_damage (move, user, target, battle):
 			stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)
 
 			damage = ((2 * level / 5) * power * stat_ratio / 50 + 2) * modifier
-
-			#print("Damage of " + user.id + "'s " + move + " against " + target.id + ": " + str(damage))
 
 			return damage

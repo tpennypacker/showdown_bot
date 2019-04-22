@@ -47,10 +47,7 @@ class Pokemon:
         self.stats = {}  # dictionary of actual stat numbers for pokemon
         self.abilities = []  # list of possible abilities for pokemon species, e.g. ["overgrow", "chlorophyll"]
 
-        if (side == "foe"):
-            self.moves = predict_foe_sets.get_likely_set(id)
-        elif (side == "bot"):
-            self.moves = []  # list of move names, e.g. "earthpower"
+        self.moves = []
         self.active_info = None  # information about possible moves and if trapped etc for active pokemon
 
         self.has_item = has_item  # true or false

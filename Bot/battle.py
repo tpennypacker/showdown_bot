@@ -52,6 +52,8 @@ class Battle:
 				else:
 					self.foe_team.append(Pokemon("foe", id, has_item, level, gender))
 
+		predict_foe_sets.update_likely_sets(self)
+
 
 	# load data from request message about team, and prompt any appropriate decision from ai
 	async def load_team_data(self, ws):

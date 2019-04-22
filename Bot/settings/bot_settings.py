@@ -1,9 +1,9 @@
 # make sure your True and False start with a capital letter
 # if you don't want to say anything at the start or end of the match, just leave hello/goodbye as empty quotes ""
 
-username = "yodabot"
+username = "Ask Key"
 
-password = "password2798"
+password = "ascii"
 
 # list of usernames who can give commands to bot, separated by commas (can be uppercase and have spaces)
 bot_owners = "Yoda2798, fespy, trojanidiot"
