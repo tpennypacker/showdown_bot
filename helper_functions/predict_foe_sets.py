@@ -32,6 +32,7 @@ nature_matrix = {"atk": ["lonely", "brave", "adamant", "naughty"],
 		   "spa": ["modest", "mild", "quiet", "rash"],
 		   "spd": ["calm", "gentle", "sassy", "careful"],
 		   "spe": ["timid", "hasty", "jolly", "naive"]}
+minus_speed_natures = ["brave", "relaxed", "quiet", "sassy"]
 def get_spread_from_line(line):
 	spreads_arr = line.split('\n')[2:]
 	highest_evs = {"hp":0,"atk":0,"def":0,"spa":0,"spd":0,"spe":0}
@@ -65,6 +66,15 @@ def get_spread_from_line(line):
 		for nature in natures:
 			if nature in possible_natures:
 				nature_buffs[stat] = 1.1
+
+	# check for minus speed stuff
+	num_min_speed_natures = 0 
+	for nature in possible_natures:
+		if nature.lower().replace(' ', '') in minus_speed_natures:
+			num_min_speed_natures += 1
+
+	if num_min_speed_natures > 1:
+		nature_buffs["spe"] = 0.9
 
 	return highest_evs, nature_buffs
 

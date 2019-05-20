@@ -89,6 +89,9 @@ class Pokemon:
         self.stats["hp"] = int( (2*self.base_stats["hp"] + 31 + self.evs["hp"]/4) * self.level/100 + self.level + 10)
         for stat in ["atk", "def", "spa", "spd", "spe"]:
             self.stats[stat] = int( ( (2*self.base_stats[stat] + 31 + self.evs[stat]/4) * self.level/100 + 5) * self.nature_buffs[stat])
+        if self.nature_buffs["spe"] < 1: # if determined to be min speed
+            self.stats["spe"] = int( ( (2*self.base_stats[stat] + 0 + 0) * self.level/100 + 5) * self.nature_buffs[stat])
+            print(self.stats["spe"])
 
     def clear_boosts(self):
 
