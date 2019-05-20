@@ -4,6 +4,7 @@ from helper_functions import predict_foe_sets
 from pokemon import Pokemon
 import ai
 import json
+from operator import itemgetter
 
 
 class Battle:
@@ -27,6 +28,7 @@ class Battle:
 		self.trick_room = 0
 		# dictionary of dictionary of entry hazards, e.g. battle.entry_hazards["bot"]["stealthrock"] would return 0, note "bot" means hazards bot has up on opponent's side
 		self.entry_hazards = {"bot": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}, "foe": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}}
+		self.move_order = []  # list of [side, position] e.g. ["bot", 2] for alive, active pokemon in order they will move (from first to last)
 
 
 	# load pokemon into teams from team preview
@@ -52,7 +54,7 @@ class Battle:
 				else:
 					self.foe_team.append(Pokemon("foe", id, has_item, level, gender))
 
-		predict_foe_sets.update_likely_sets(self)
+		predict_foe_sets.update_likely_sets(self, self.foe_team)
 
 
 	# load data from request message about team, and prompt any appropriate decision from ai
@@ -81,6 +83,7 @@ class Battle:
 			if (condition[-3:] == "fnt"): # fainted
 				pokemon.health_points = "0"
 				pokemon.health_percentage = 0
+				hp2 = -1
 				pokemon.has_fainted = True
 				pokemon.status = "fnt"
 			else:
@@ -95,11 +98,13 @@ class Battle:
 				pokemon.health_percentage = round(100*int(hp1)/int(hp2), 1)
 			# update stats, moves, items, ability
 			pokemon.stats = mon_data["stats"]
+			pokemon.stats["hp"] = int(hp2)
 			pokemon.moves = mon_data["moves"]
 			pokemon.item = mon_data["item"]
 			pokemon.abilities = [mon_data["ability"]]
 		# prompt appropriate decision if needed
 		if (have_active):  # move
+			self.calc_move_order()
 			self.debug_prints()
 			await ai.choose_moves(ws, self)
 		elif (have_switch):  # switch
@@ -111,6 +116,8 @@ class Battle:
 	# return the pokemon object in a given position and side
 	def get_pokemon(self, side, position):
 
+		#if (position not in [1,2]):
+			#return None
 		# get list of bot or foe's pokemon
 		if (side == "bot"):
 			pokemons = self.my_team
@@ -123,7 +130,7 @@ class Battle:
 	# return single list of all pokemon in battle, on both teams
 	def both_teams(self):
 
-		both_teams =self.my_team[:]
+		both_teams = self.my_team[:]
 		both_teams.extend(self.foe_team)
 		return both_teams
 
@@ -204,9 +211,10 @@ class Battle:
 		# change to new id, and update types/abilities/stats from pokedex
 		pokemon.id = new_id
 		pokemon.load_stats()
-		# update likely moves from usage
+		# update likely moves/spread from usage
 		if (pokemon.side == "foe"):
-			pokemon.moves = predict_foe_sets.get_likely_set(pokemon.id)
+			#pokemon.moves = predict_foe_sets.get_likely_set(pokemon.id)
+			predict_foe_sets.update_likely_sets(self, [pokemon])
 
 
 	# update counters for things like tr/tw/terrain/weather
@@ -231,6 +239,48 @@ class Battle:
 			if (pokemon.can_protect > 0):
 				pokemon.can_protect -= 1
 
+
+	# calculate order pokemon should move, returning list of lists in form [side, position, pokemon id, effective speed]
+	# considers tw, weather, tr (reverses order), doesn't consider items (scarf), or unburden/quick feet/slow start
+	def calc_move_order(self):
+
+		# add pokemon id (name) and effective speed to list for each alive, active pokemon
+		move_order = []
+		for pokemon in self.active_pokemon("both"):
+			if (not pokemon.fainted):
+				speed = pokemon.stats["spe"]
+				# stat buff
+				speed *= pokemon.buff["spe"][1]
+				# paralysis
+				if (pokemon.status == "par"):
+					speed /= 2
+				speed = int(speed)  # round speed stat down after above
+				# tailwind
+				if (self.tailwind[pokemon.side] > 0):
+					speed *= 2
+				# weather
+				if ("chlorophyll" in pokemon.abilities and self.weather == "sunnyday"):
+					speed *= 2
+				elif ("swiftswim" in pokemon.abilities and self.weather == "raindance"):
+					speed *= 2
+				elif ("sandrush" in pokemon.abilities and self.weather == "sandstorm"):
+					speed *= 2
+				elif ("slushrush" in pokemon.abilities and self.weather == "hail"):
+					speed *= 2
+				# surge surfer
+				elif ("surgesurfer" in pokemon.abilities and self.terrain == "electricterrain"):
+					speed *= 2
+				# add [pokemon_id, speed stat] to list
+				move_order.append([pokemon.side, pokemon.active, pokemon.id, speed])
+		# order by speed in descending order
+		move_order = sorted(move_order, key=itemgetter(3), reverse=True)
+		# reverse order if trick room active
+		if (self.trick_room > 0):
+			move_order = move_order[::-1]
+		# update battle's move_order
+		self.move_order = move_order
+
+
 	# print stuff for debugging here, will be called before making move at start of each turn
 	def debug_prints(self):
 		#pass
@@ -241,10 +291,14 @@ class Battle:
 		# for pokemon in self.my_team:
 		# 	print(pokemon.buff)
 		for pokemon in self.foe_team:
-			print("evs for " + pokemon.id)
-			print(pokemon.evs)
-			print("nature buffs for " + pokemon.id)
-			print(pokemon.nature_buffs)
+			#print("evs for " + pokemon.id)
+			#print(pokemon.evs)
+			#print("nature buffs for " + pokemon.id)
+			#print(pokemon.nature_buffs)
+			print("stats for " + pokemon.id, end = ": ")
+			print(pokemon.stats)
+		print("Move order for this turn: ", end="")
+		print(self.move_order)
 		#[print("{} has types {}".format(pokemon.id, pokemon.types)) for pokemon in self.active_pokemon("foe")]
 		#[print(pokemon.level,pokemon.gender) for pokemon in self.foe_team]
 		#for pokemon in self.foe_team:

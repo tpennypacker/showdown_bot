@@ -26,6 +26,7 @@ def get_moves_from_line(line):
 
 	return (likely_moves)
 
+
 nature_matrix = {"atk": ["lonely", "brave", "adamant", "naughty"],
 		   "def": ["bold", "relaxed", "impish", "lax"],
 		   "spa": ["modest", "mild", "quiet", "rash"],
@@ -68,35 +69,8 @@ def get_spread_from_line(line):
 	return highest_evs, nature_buffs
 
 
-
-# get the likely sets of just one pokemon
-def get_likely_set(name):
-	print("Getting likely moves for " + name)
-	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
-	request = requests.get(site)
-	text = request.text
-
-	pokedex = '\n'.join(text.split('\n')[1:])
-	pokedex = pokedex.split("+----------------------------------------+ \n +----------------------------------------+")
-
-	#print("Getting sets for " + name)
-	for pokemon in pokedex:
-		if (formatting.get_formatted_name(name) == formatting.get_formatted_name(pokemon.split("|")[1])):
-			condensed_pokemon = pokemon.replace("   ", "").replace("|", "")
-			pokemon_info = condensed_pokemon.split("+----------------------------------------+")
-
-			for line in pokemon_info:
-				if ("Moves" in line):
-					moves = get_moves_from_line(line)
-					return moves
-
-	return ["tackle"]
-
-
-
-
 #  get likely sets for the entire opposing team
-def update_likely_sets(battle):
+def update_likely_sets(battle, pokemon):
 	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
 	request = requests.get(site)
 	text = request.text
@@ -105,7 +79,7 @@ def update_likely_sets(battle):
 	pokedex = pokedex.split("+----------------------------------------+ \n +----------------------------------------+")
 
 
-	for foe_pokemon in battle.foe_team:
+	for foe_pokemon in pokemon:
 
 		print("Getting likely moves for " + foe_pokemon.id)
 		for pokemon in pokedex:
@@ -113,7 +87,7 @@ def update_likely_sets(battle):
 			if (formatting.get_formatted_name(foe_pokemon.id) == formatting.get_formatted_name(pokemon.split("|")[1])):
 				condensed_pokemon = pokemon.replace("   ", "").replace("|", "")
 				pokemon_info = condensed_pokemon.split("+----------------------------------------+")
-				
+
 
 				for line in pokemon_info:
 					if ("Moves" in line):
@@ -124,27 +98,13 @@ def update_likely_sets(battle):
 						highest_evs, nature_buffs = get_spread_from_line(line)
 						foe_pokemon.evs = highest_evs
 						foe_pokemon.nature_buffs = nature_buffs
+						foe_pokemon.calc_stats()
 
+				continue  # once found pokemon then move onto next one
 
+		# default moves/stats if don't find in usage
 		if (foe_pokemon.moves == []):
 			foe_pokemon.moves = ["tackle"]
-
-
-		
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-				
-
+			foe_pokemon.evs = {"hp":252,"atk":252,"def":252,"spa":252,"spd":252,"spe":252}
+			foe_pokemon.nature_buffs = {"hp":1.0,"atk":1.0,"def":1.0,"spa":1.0,"spd":1.0,"spe":1.0}
+			foe_pokemon.calc_stats()

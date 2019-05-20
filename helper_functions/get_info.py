@@ -125,6 +125,9 @@ def calculate_score_ratio_single(battle, pokemon):
 			foes_score.append(value)
 		foes_total_score = np.sum(foes_score)
 
+		if (foes_total_score == 0):  # avoid division by zero
+			foes_total_score = 1
+
 		ratio = power / foes_total_score
 		return ratio
 

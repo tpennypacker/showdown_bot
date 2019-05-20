@@ -40,6 +40,8 @@ async def choose_moves(ws, battle):
 			else:
 				decisions.append(funcs.attack(move, target, mega_dic[can_mega]))
 
+			print("{}'s strongest move is {} against target {} for {}% damage".format(pokemon.id, move, target, bp))
+
 	# combine moves
 	if (len(decisions) > 1):
 		command_str = battle.battletag + "|/choose " + decisions[0] + ", " + decisions[1]

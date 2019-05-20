@@ -129,12 +129,12 @@ def get_field_modifier(battle, my_types, my_abilities, move_type, move_category,
 def get_stat_ratio(category, user, target):
 	stat_ratio = 1
 	if (category == "Physical"):
-		attack = user.base_stats["atk"] * user.buff["atk"][1]
-		defense = target.base_stats["def"] * user.buff["def"][1]
+		attack = user.stats["atk"] * user.buff["atk"][1]
+		defense = target.stats["def"] * target.buff["def"][1]
 		stat_ratio = attack / defense
 	elif (category == "Special"):
-		spatk = user.base_stats["spa"] * user.buff["spa"][1]
-		spdef = target.base_stats["spd"] * user.buff["spd"][1]
+		spatk = user.stats["spa"] * user.buff["spa"][1]
+		spdef = target.stats["spd"] * target.buff["spd"][1]
 		stat_ratio = spatk / spdef
 	return stat_ratio
 
@@ -186,6 +186,9 @@ def calc_damage (move, user, target, battle):
 			level = user.level
 			stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)
 
-			damage = ((2 * level / 5) * power * stat_ratio / 50 + 2) * modifier
+			damage = int( ((2 * level / 5 + 2) * power * stat_ratio / 50 + 2) * modifier )
+			#print(target.stats)
+			# convert to percentage (can still be >100) and round to 1 decimal place e.g. 50.7
+			damage_percent = round (damage / target.stats["hp"] * 100, 1)
 
-			return damage
+			return damage_percent

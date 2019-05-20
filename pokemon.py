@@ -44,7 +44,7 @@ class Pokemon:
         self.types = []  # list of types, e.g. ["Grass","Poison"]
         self.original_types = []  # before any soak etc. shenanigans, pokemon.types reset to this on switching out
         self.base_stats = {}  # dictionary e.g. {"hp":45,"atk":49,"def":49,"spa":65,"spd":65,"spe":45}
-        self.stats = {}  # dictionary of actual stat numbers for pokemon
+        self.stats = {}  # dictionary of actual stat numbers for pokemon, here hp is maximum hp
         self.abilities = []  # list of possible abilities for pokemon species, e.g. ["overgrow", "chlorophyll"]
         self.EVs = {} # dictionary e.g. {"hp":252, "atk":252, "def":4, "spa":252, "spd":100, "spe":252} (note: does not have to add up to 508/510, since it's based on conservative predictions)
         self.nature_buffs = {} # dictionary of buffs for possible natures e.g. {"hp":1.0, "atk":1.1, "def": 1.1, "spa":1.0, "spd":1.0 "spe":1.1} ("hp" for filler)
@@ -82,6 +82,13 @@ class Pokemon:
         self.abilities = infos["possibleAbilities"]
         self.base_stats = infos["baseStats"]
 
+
+    def calc_stats(self):
+
+        # calculate actual stat numbers, assume 31 IVs, use int() to round down
+        self.stats["hp"] = int( (2*self.base_stats["hp"] + 31 + self.evs["hp"]/4) * self.level/100 + self.level + 10)
+        for stat in ["atk", "def", "spa", "spd", "spe"]:
+            self.stats[stat] = int( ( (2*self.base_stats[stat] + 31 + self.evs[stat]/4) * self.level/100 + 5) * self.nature_buffs[stat])
 
     def clear_boosts(self):
 

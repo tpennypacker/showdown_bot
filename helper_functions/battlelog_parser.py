@@ -60,7 +60,7 @@ def major_actions(battle: Battle, split_line, side_dict):
     elif split_line[0] == "turn":
         if (split_line[1] == "1"):
             battle.at_team_preview = False
-        print("Turn {}".format(split_line[1]))  # print turn number
+        print("\nTurn {}".format(split_line[1]))  # print turn number
     else:
         pass
 
@@ -144,8 +144,8 @@ def minor_actions(battle: Battle, split_line, side_dict):
         pokemons = battle.active_pokemon("both")
         [pokemon.clear_boosts() for pokemon in pokemons]
     # weather, ignore on upkeep messages
-    elif split_line[0] == "-weather" and len(split_line) >= 3 and split_line[2].strip("\n") != "[upkeep]":
-        if (split_line[1][0:4] == "none"):
+    elif split_line[0] == "-weather" and len(split_line) == 2: #and len(split_line) >= 3 and split_line[2].strip("\n") != "[upkeep]":
+        if (split_line[1].strip("\n") == "none"):
             battle.weather = None
             battle.weather_turns_left = 0
         else:
@@ -289,7 +289,7 @@ def battlelog_parsing(battle: Battle, msg):
     side_dict = {battle.my_side: "bot", battle.foe_side: "foe"}
 
     lines = msg.split("\n")[1:-1]  # split by line, ignore first and last
-    split_lines = [line.split('|')[1:] for line in lines]  # split line by "|"
+    split_lines = [line.split('|')[1:] for line in lines]  # split line by "|", ignore empty first entry
     split_lines = [line for line in split_lines if (len(line) > 0 and len(line[0]) > 0)]  # ignore empty lines
     for split_line in split_lines:
         if split_line[0][0] != "-":

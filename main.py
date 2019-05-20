@@ -4,6 +4,7 @@ import requests
 import json
 import os
 import sys
+import platform
 from string import printable
 
 import ai
@@ -100,6 +101,11 @@ async def connect_to_ps():
 			#print("_____________________________\n", file=logfile)
 			await parse_response(ws, msg)
 
-#os.system('cls') # windows
-os.system('clear') # mac
+
+# clear screen
+if (platform.system() == "Windows"):
+	os.system('cls') # windows
+else:
+	os.system('clear') # mac
+
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

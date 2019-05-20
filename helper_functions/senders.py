@@ -61,9 +61,11 @@ async def send_login_msg(ws, msg):
 	print("Logging in")
 
 async def send_pm(ws, msg, user):
-	await ws.send("|/pm {}, {}".format(user,msg))
+	await ws.send("|/pm {}, {}".format(user, msg))
 	#print("Sending following message to user {}: {}".format(user, msg))
 
+async def send_command(ws, msg):
+	await ws.send(msg)
 
 async def send_lead_decision(ws, leads, battletag):
 	command_str = battletag + "|/choose team " + "".join(leads)
