@@ -3,6 +3,7 @@ import os
 import time
 
 from helper_functions import senders
+from helper_functions import logging
 from settings import bot_settings
 
 
@@ -19,7 +20,7 @@ async def parse_command(ws, message, sender):
         "changeteam": "Change active team, example usage '$changeteam mane_team'",
         "sendcommand": "Manually send a command to PS, use $/ instead of |, e.g. $sendcommand $//pm yoda2798, yoda is bad",
         "restart": "Restart program, with updated code; may need extra code finishing up before restarting"
-        }
+    }
 
     # quit
     if (message == "$quit" or message == "$quirt"):

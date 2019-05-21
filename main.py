@@ -13,6 +13,7 @@ from helper_functions import funcs
 from helper_functions import team_reader
 from helper_functions import battlelog_parser
 from helper_functions import pm_commands
+from helper_functions import logging
 from battle import Battle
 from pokemon import Pokemon
 
@@ -37,6 +38,8 @@ async def parse_response(ws, msg):
 		await funcs.on_battle_end(ws, battles, battletag, bot_won)
 		# remove finished battle
 		battle = funcs.get_battle(battles, battletag)
+		battle.did_bot_win = bot_won
+		logging.record_battle(battle)
 		remove_id = battles.index(battle)
 		battles.pop(remove_id)
 
@@ -81,6 +84,8 @@ async def parse_response(ws, msg):
 			battle.my_side = msg_arr[2]
 		else: # note foe's name, side, and send greeting message
 			battle.opponent_name = msg_arr[3]
+			battle.opponent_elo, battle.opponent_gxe = logging.get_rank(battle.opponent_name)
+			battle.my_elo, battle.my_gxe = logging.get_rank(bot_settings.username)
 			battle.foe_side = msg_arr[2]
 			await funcs.on_battle_start(ws, battles, battletag)
 		# if message contains team preview, read in teams and prompt leads
@@ -108,4 +113,5 @@ if (platform.system() == "Windows"):
 else:
 	os.system('clear') # mac
 
+logging.start_trial()
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

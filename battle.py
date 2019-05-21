@@ -4,6 +4,7 @@ from helper_functions import predict_foe_sets
 from pokemon import Pokemon
 import ai
 import json
+import datetime
 from operator import itemgetter
 
 
@@ -19,6 +20,10 @@ class Battle:
 		self.my_side = None  # p1 or p2
 		self.foe_side = None  # p1 or p2
 		self.opponent_name = "opponent"  # string of opponent's name, used for sending messages
+		self.opponent_elo = 0
+		self.opponent_gxe = 0
+		self.my_elo = 0
+		self.my_gxe = 0
 		self.at_team_preview = True  # true at team preview, otherwise false, used for switches
 		self.terrain = None  # e.g. "electricterrain"
 		self.terrain_turns_left = 0
@@ -29,6 +34,8 @@ class Battle:
 		# dictionary of dictionary of entry hazards, e.g. battle.entry_hazards["bot"]["stealthrock"] would return 0, note "bot" means hazards bot has up on opponent's side
 		self.entry_hazards = {"bot": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}, "foe": {"spikes": 0, "stealthrock": 0, "stickyweb": 0, "toxicspikes": 0}}
 		self.move_order = []  # list of [side, position] e.g. ["bot", 2] for alive, active pokemon in order they will move (from first to last)
+		self.start_datetime = str(datetime.datetime.now())
+		self.did_bot_win = False
 
 
 	# load pokemon into teams from team preview
