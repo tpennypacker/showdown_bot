@@ -113,5 +113,6 @@ if (platform.system() == "Windows"):
 else:
 	os.system('clear') # mac
 
-logging.start_trial()
+if (bot_settings.is_trial_mode):
+	logging.start_trial()
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

@@ -19,7 +19,8 @@ async def parse_command(ws, message, sender):
         "listteams": "List name of all available teams",
         "changeteam": "Change active team, example usage '$changeteam mane_team'",
         "sendcommand": "Manually send a command to PS, use $/ instead of |, e.g. $sendcommand $//pm yoda2798, yoda is bad",
-        "restart": "Restart program, with updated code; may need extra code finishing up before restarting"
+        "restart": "Restart program, with updated code; may need extra code finishing up before restarting",
+        "endtrial": "Stop logging the results of each battle"
     }
 
     # quit
@@ -67,6 +68,11 @@ async def parse_command(ws, message, sender):
         #os.system("python main.py")
         #os.execl(sys.executable, 'python', __file__)
         os.execlp('python', 'python', 'main.py')
+    # end trial
+    elif (message == "$endtrial"):
+        await senders.send_pm(ws, "Ending trial now...", sender)
+        logging.end_trial()
+        await senders.send_pm(ws, "Trial ended!", sender)
     # invalid command
     else:
         await senders.send_pm(ws, "Error: Invalid command, use $help for assistance", sender)

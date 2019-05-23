@@ -39,3 +39,5 @@ block_challenges = False
 all_bot_teams = {}
 
 active_bot_team = ""
+
+is_trial_mode = True
