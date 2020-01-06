@@ -22,44 +22,47 @@ def read_all_teams(file_names):
 
 def read_team(team_file):
     read_location = "teams/" + team_file
-    #with open("settings/team.txt", "r") as team_file:
     with open(read_location, "r") as read_file:
-        x = read_file.readlines()[2:]
+        x = read_file.readlines()
+        x = [line.strip() for line in x]  # remove new line characters
 
-    # remove unnecessary blank lines at end
-    while (x[-2] == x[-1] == "\n"):
+    # ensure in format with no blank lines at start, and exactly one at end
+    while (x[0] == "" or x[0][0] == "#"):
+        x.pop(0)
+    while (x[-2] == x[-1] == ""):
         x.pop()
+    if (x[-1] != ""):
+        x.append("")
 
     stats_list = ["HP", "Atk", "Def", "SpA", "SpD", "Spe"]
     packed_team = ""
-    no_of_pokemon = x.count("\n")
+    no_of_pokemon = x.count("")
     i = 0  # position of line currently reading
+
+    #print(x)
 
     for j in range(no_of_pokemon):
         # item
         if ("@" in x[i]):
             x[i], item = x[i].split("@")
-            item = clean_up(item).lower()
+            item = clean_up(item).lower().replace(" ","")
         else:
             item = ""
 
-        # species
-        species_search = re.findall("(?<=\()\w\w+(?=\))", x[i])
-        if (len(species_search) > 0):
-            species = species_search[0]
-            l = len(species) + 2
-            name = x[i].strip()[:-l].strip()
-        else:
-            name = clean_up(x[i])
-            species = ""
-
         # gender
-        if ("(M)" in x[i]):
-            gender = "M"
-        elif ("(F)" in x[i]):
-            gender = "F"
+        x_split = x[i].split("(")
+        if (x_split[-1].replace(")","").strip() in ["M","F"]):
+            gender = x_split.pop().replace(")","").strip()
         else:
             gender = ""
+
+        # name/species
+        if (len(x_split) > 1):
+            species = x_split.pop().replace(")","").strip()
+            name = "(".join(x_split).strip()
+        else:
+            species = ""
+            name = clean_up(x_split[0])
         i += 1
 
         # ability
@@ -123,7 +126,7 @@ def read_team(team_file):
         # moves
         moves = []
         while True:
-            if (x[i] == "\n"):
+            if (x[i] == ""):
                 i += 1
                 break
             move = clean_up(x[i])
@@ -137,5 +140,5 @@ def read_team(team_file):
         # character at end of each pokemon apart from last
         if (j < no_of_pokemon - 1):
             packed_team += "]"
-
+    #print("\n" + packed_team)
     return packed_team

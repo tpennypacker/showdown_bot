@@ -68,7 +68,7 @@ def get_spread_from_line(line):
 				nature_buffs[stat] = 1.1
 
 	# check for minus speed stuff
-	num_min_speed_natures = 0 
+	num_min_speed_natures = 0
 	for nature in possible_natures:
 		if nature.lower().replace(' ', '') in minus_speed_natures:
 			num_min_speed_natures += 1
@@ -81,7 +81,8 @@ def get_spread_from_line(line):
 
 #  get likely sets for the entire opposing team
 def update_likely_sets(battle, pokemon):
-	site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
+	#site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
+	site = "https://www.smogon.com/stats/2019-11/moveset/gen8doublesou-1500.txt"
 	request = requests.get(site)
 	text = request.text
 

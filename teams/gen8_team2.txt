@@ -1,0 +1,49 @@
+Whimsicott @ Focus Sash
+Ability: Prankster
+EVs: 252 HP / 4 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Energy Ball
+- Moonblast
+- Tailwind
+
+Dracovish @ Choice Band
+Ability: Strong Jaw
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Fishious Rend
+
+Arcanine @ Sitrus Berry
+Ability: Intimidate
+EVs: 252 Atk / 4 Def / 252 Spe
+Jolly Nature
+- Flare Blitz
+- Wild Charge
+- Close Combat
+- Extreme Speed
+
+Corviknight @ Leftovers
+Ability: Mirror Armor
+EVs: 252 HP / 48 Atk / 208 Spe
+Adamant Nature
+- Brave Bird
+- Body Press
+- Bulk Up
+- Roost
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+EVs: 252 HP / 40 Def / 44 SpA / 172 Spe
+Timid Nature
+IVs: 0 Atk
+- Volt Switch
+- Hydro Pump
+- Will-O-Wisp
+- Protect
+
+Sylveon @ Choice Specs
+Ability: Pixilate
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Hyper Voice

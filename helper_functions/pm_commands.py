@@ -3,7 +3,7 @@ import os
 import time
 
 from helper_functions import senders
-from helper_functions import logging
+#from helper_functions import logging
 from settings import bot_settings
 
 
@@ -18,9 +18,10 @@ async def parse_command(ws, message, sender):
         "quit": "Exit program",
         "listteams": "List name of all available teams",
         "changeteam": "Change active team, example usage '$changeteam mane_team'",
-        "sendcommand": "Manually send a command to PS, use $/ instead of |, e.g. $sendcommand $//pm yoda2798, yoda is bad",
+        "sendcommand": "Manually send a command to PS, use $/ instead of |, e.g. '$sendcommand $//pm yoda2798, yoda is bad'",
         "restart": "Restart program, with updated code; may need extra code finishing up before restarting",
-        "endtrial": "Stop logging the results of each battle"
+        "endtrial": "Stop logging the results of each battle",
+        "autosearch": "Change setting for bot to automatically search for a new battle, e.g. '$autosearch true'"
     }
 
     # quit
@@ -44,7 +45,7 @@ async def parse_command(ws, message, sender):
         await senders.send_pm(ws, "Available teams: {}".format(format_list(team_names)), sender)
     # change team
     elif (message[:11] == "$changeteam"):
-        if (len(message) < 13 or message[12:] not in bot_settings.all_bot_teams.keys()):
+        if (len(message) < 13 or message[12:] not in bot_settings.all_bot_teams.keys() ):
             await senders.send_pm(ws, "Error: Invalid team, use $listteams for available teams", sender)
         else:
             target_team = message[12:]
@@ -52,7 +53,7 @@ async def parse_command(ws, message, sender):
             await senders.send_pm(ws, "Active team has been successfully changed", sender)
             print("Now using team {} for accepting challenges, as commanded by {}".format(target_team, sender))
     # send command
-    elif (message[:12] == "$sendcommand"):
+    elif (message[:12] == "$sendcommand" or message.split()[0] == "$sndcmd"):
         if (len(message) < 14):
             await senders.send_pm(ws, "Error: Invalid command, use $sendcommand for assistance", sender)
         else:
@@ -71,8 +72,25 @@ async def parse_command(ws, message, sender):
     # end trial
     elif (message == "$endtrial"):
         await senders.send_pm(ws, "Ending trial now...", sender)
-        logging.end_trial()
+        #logging.end_trial()
         await senders.send_pm(ws, "Trial ended!", sender)
+    # autosearch setting
+    elif (message.split()[0] in ["$autosearch", "$autosrch"]):
+        if ( message.split()[1].lower() in ["true", "t", "on", "go"] ):
+            already_searching = bot_settings.autosearch
+            if (not already_searching): # start searching for game
+                bot_settings.autosearch = True
+                await senders.send_pm(ws, "Bot autosearch setting succesfully turned on", sender)
+                await senders.search_for_battle(ws)
+            else:
+                await senders.send_pm(ws, "Bot autosearch setting already turned on", sender)
+            print("Bot autosearch setting switched on by {}".format(sender))
+        elif( message.split()[1].lower() in ["false", "f", "off", "stop"] ):
+            bot_settings.autosearch = False
+            await senders.send_pm(ws, "Bot autosearch setting succesfully turned off", sender)
+            print("Bot autosearch setting switched off by {}".format(sender))
+        else:
+            await senders.send_pm(ws, "Error: Invalid command, use '$autosearch true' or '$autosearch false'", sender)
     # invalid command
     else:
         await senders.send_pm(ws, "Error: Invalid command, use $help for assistance", sender)

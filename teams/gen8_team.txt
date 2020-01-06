@@ -1,0 +1,53 @@
+# Enter team importable here, starting on line 3, with at least two blank lines after team. Tier to accept challenges can be set in bot_settings.py
+
+Tyranitar @ Weakness Policy
+Ability: Sand Stream
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Rock Slide
+- Crunch
+- Dragon Dance
+- Protect
+
+Excadrill @ Life Orb
+Ability: Sand Rush
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Iron Head
+- High Horsepower
+- Rock Slide
+- Protect
+
+Braviary (M) @ Lum Berry
+Ability: Defiant
+EVs: 252 HP / 4 Atk / 252 Spe
+Adamant Nature
+- Brave Bird
+- Close Combat
+- Tailwind
+- Protect
+
+Sylveon @ Choice Specs
+Ability: Pixilate
+EVs: 4 HP / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Hyper Voice
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+EVs: 252 HP / 40 SpA / 216 Spe
+Timid Nature
+IVs: 0 Atk
+- Volt Switch
+- Hydro Pump
+- Will-O-Wisp
+- Protect
+
+Whimsicott @ Focus Sash
+Ability: Prankster
+EVs: 252 HP / 4 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Moonblast
+- Tailwind

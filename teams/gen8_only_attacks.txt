@@ -1,0 +1,48 @@
+Tyranitar @ Weakness Policy
+Ability: Sand Stream
+EVs: 252 Atk / 4 Def / 252 Spe
+Adamant Nature
+- Rock Slide
+- Crunch
+- Fire Punch
+
+Excadrill @ Life Orb
+Ability: Sand Rush
+EVs: 4 HP / 252 Atk / 252 Spe
+Jolly Nature
+- Iron Head
+- High Horsepower
+- Rock Slide
+
+Braviary (M) @ Lum Berry
+Ability: Defiant
+EVs: 252 HP / 4 Atk / 252 Spe
+Adamant Nature
+- Brave Bird
+- Close Combat
+
+Sylveon @ Choice Specs
+Ability: Pixilate
+EVs: 4 HP / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Hyper Voice
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+EVs: 252 HP / 40 SpA / 216 Spe
+Timid Nature
+IVs: 0 Atk
+- Volt Switch
+- Hydro Pump
+- Electroweb
+
+Dragapult @ Life Orb
+Ability: Clear Body
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Dragon Pulse
+- Shadow Ball
+- Fire Blast
+- Thunderbolt

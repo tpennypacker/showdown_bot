@@ -7,13 +7,13 @@ import sys
 import platform
 from string import printable
 
-import ai
+from ai_modules import ai_damage_calc as ai
 from settings import bot_settings
 from helper_functions import funcs
 from helper_functions import team_reader
 from helper_functions import battlelog_parser
 from helper_functions import pm_commands
-from helper_functions import logging
+#from helper_functions import logging
 from battle import Battle
 from pokemon import Pokemon
 
@@ -21,17 +21,27 @@ from pokemon import Pokemon
 battles = []
 
 async def parse_response(ws, msg):
+
 	msg_arr = msg.split('|')
 
-	# if get message from whitelisted username starting with $ then take command
-	if (msg_arr[1] == "pm" and msg_arr[4][0] == "$"):
-		sender = msg_arr[2].strip().lower().replace(" ", "")
+	# ignore short messages
+	if ( len(msg_arr) == 1 ):
+		print("length 1 message: " + msg)
+
+	# display error messages
+	elif (msg_arr[1] == "error" or msg_arr[1] == "popup"):
+		print(msg)
+
+	#  display PMs received, handle command messages from whitelisted users
+	elif (msg_arr[1] == "pm"):
+		print(msg)
+		sender = msg_arr[2].strip().lower().replace(" ", "").replace("≧◡≦","")
 		whitelist = [username.lower().strip() for username in bot_settings.bot_owners.split(",")]
-		if (sender in whitelist):
+		if (msg_arr[4][0] == "$" and sender in whitelist):
 			await pm_commands.parse_command(ws, msg_arr[4], sender)
 
 	# triggers when a battle ends, checks if bot won and sends appropriate message
-	if (msg_arr[0][0:7] == ">battle" and "win" in msg_arr):
+	elif (msg_arr[0][0:7] == ">battle" and "win" in msg_arr):
 		battletag = funcs.get_battletag(msg_arr)
 		win_id = msg_arr.index("win") + 1
 		bot_won = (msg_arr[win_id].strip("\n").lower() == bot_settings.username.lower())
@@ -39,12 +49,13 @@ async def parse_response(ws, msg):
 		# remove finished battle
 		battle = funcs.get_battle(battles, battletag)
 		battle.did_bot_win = bot_won
-		logging.record_battle(battle)
+		#logging.record_battle(battle)
 		remove_id = battles.index(battle)
 		battles.pop(remove_id)
 
 	# checks if challenges to be accepted
 	elif (msg_arr[1] == "updatechallenges" and bot_settings.accept_challenges == True):
+		#print(msg)
 		await funcs.handle_challenges(ws, msg_arr)
 
 	# triggers on any request message, adds team_data from it to battle
@@ -67,7 +78,7 @@ async def parse_response(ws, msg):
 		await funcs.log_in(ws, msg_arr)
 
 	# triggers when user first logs in
-	elif (msg_arr[1] == 'updateuser' and msg_arr[2].lower() == bot_settings.username.lower()):
+	elif (msg_arr[1] == 'updateuser' and msg_arr[2].lower().strip() == bot_settings.username.lower()):
 		await funcs.startup_ops(ws)
 
 	# triggers when battle initialises
@@ -84,8 +95,8 @@ async def parse_response(ws, msg):
 			battle.my_side = msg_arr[2]
 		else: # note foe's name, side, and send greeting message
 			battle.opponent_name = msg_arr[3]
-			battle.opponent_elo, battle.opponent_gxe = logging.get_rank(battle.opponent_name)
-			battle.my_elo, battle.my_gxe = logging.get_rank(bot_settings.username)
+			#battle.opponent_elo, battle.opponent_gxe = logging.get_rank(battle.opponent_name)
+			#battle.my_elo, battle.my_gxe = logging.get_rank(bot_settings.username)
 			battle.foe_side = msg_arr[2]
 			await funcs.on_battle_start(ws, battles, battletag)
 		# if message contains team preview, read in teams and prompt leads
@@ -113,6 +124,5 @@ if (platform.system() == "Windows"):
 else:
 	os.system('clear') # mac
 
-if (bot_settings.is_trial_mode):
-	logging.start_trial()
+
 asyncio.get_event_loop().run_until_complete(connect_to_ps())

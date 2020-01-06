@@ -2,7 +2,7 @@ from helper_functions import formatting
 from helper_functions import predict_foe_sets
 
 from pokemon import Pokemon
-import ai
+from ai_modules import ai_damage_calc as ai
 import json
 import datetime
 from operator import itemgetter
@@ -181,9 +181,11 @@ class Battle:
 		#print("Foe team: ")
 		#[print(pokemon.id) for pokemon in self.foe_team]
 		#print("Pokemon name: " + pokemon_name)
-		formatted_name = formatting.get_formatted_name(pokemon_name)
+		#formatted_name = formatting.get_formatted_name(pokemon_name)
 		#print("Formatted name: " + formatted_name)
-		new_mon = next(mon for mon in pokemons if formatting.get_formatted_name(mon.id) == formatting.get_formatted_name(pokemon_name))
+		#print(pokemon_name)
+		#print([mon.id for mon in pokemons])
+		new_mon = next(mon for mon in pokemons if formatting.get_formatted_name(mon.id.split("-")[0]) == formatting.get_formatted_name(pokemon_name.split("-")[0]))
 		new_mon.switch_in(position)
 
 
@@ -290,22 +292,25 @@ class Battle:
 
 	# print stuff for debugging here, will be called before making move at start of each turn
 	def debug_prints(self):
-		#pass
+		pass
+		#print("My Pokemon: {}, {}\nFoe's Pokemon: {}, {}".format(self.my_team[0].id, self.my_team[1].id, self.foe_team[0].id, self.foe_team[1].id) )
+		#for i, mon in enumerate(self.active_pokemon("foe")):
+			#print("{}: {}".format(i+1, mon.id))
 		#print(self.entry_hazards)
 		# print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
 		# [print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
 		# [print("Pokemon {} has {} status and {}% HP".format(pokemon.id, pokemon.status, pokemon.health_percentage)) for pokemon in self.my_team]
 		# for pokemon in self.my_team:
 		# 	print(pokemon.buff)
-		for pokemon in self.foe_team:
+		#for pokemon in self.foe_team:
 			#print("evs for " + pokemon.id)
 			#print(pokemon.evs)
 			#print("nature buffs for " + pokemon.id)
 			#print(pokemon.nature_buffs)
-			print("stats for " + pokemon.id, end = ": ")
-			print(pokemon.stats)
-		print("Move order for this turn: ", end="")
-		print(self.move_order)
+			#print("stats for " + pokemon.id, end = ": ")
+			#print(pokemon.stats)
+		#print("Move order for this turn: ", end="")
+		#print(self.move_order)
 		#[print("{} has types {}".format(pokemon.id, pokemon.types)) for pokemon in self.active_pokemon("foe")]
 		#[print(pokemon.level,pokemon.gender) for pokemon in self.foe_team]
 		#for pokemon in self.foe_team:

@@ -1,6 +1,8 @@
 import requests
 import json
 import os
+import random
+import time
 
 from settings import bot_settings
 from helper_functions import get_info
@@ -8,11 +10,11 @@ from helper_functions import senders
 from helper_functions import team_reader
 
 
-def attack(move, foe, mega):
+def attack(move, foe, mega, dynamax):
 	if foe != None and foe != 3: # make sure there is a foe, and that the move is not a spread move
-		return ("move " + str(move) + mega + " " + str(foe))
+		return ("move " + str(move) + mega + dynamax + " " + str(foe))
 	else:
-		return ("move " + str(move) + mega)
+		return ("move " + str(move) + mega + dynamax)
 
 
 def get_battle(battles, battletag):
@@ -60,13 +62,16 @@ async def startup_ops(ws):
 	if (len(bot_settings.auto_join_room) > 0):
 		await senders.join_room(ws)
 
+	if (bot_settings.autosearch):
+		await senders.search_for_battle(ws)
+
 
 # gets called once at the start of the battle
 async def on_battle_start(ws, battles, battletag):
 	battle = get_battle(battles, battletag)
 	if (bot_settings.ionext):
 		await senders.ionext(ws)
-	await senders.hello(ws, battletag, bot_settings.hello.replace("<opponent_name>", battle.opponent_name))
+	await senders.hello(ws, battletag, random.choice(bot_settings.hello).replace("<opponent_name>", battle.opponent_name).replace("<username>", bot_settings.username))
 	if (bot_settings.timer):
 		await senders.timer(ws, battletag)
 
@@ -74,14 +79,26 @@ async def on_battle_start(ws, battles, battletag):
 # gets called once at the end of the battle
 async def on_battle_end(ws, battles, battletag, winner):
 	battle = get_battle(battles, battletag)
+	# send win/lose text
 	if (winner == True):
-		phrase = bot_settings.win_txt.replace("<opponent_name>", battle.opponent_name)
+		phrase = random.choice(bot_settings.win_txt).replace("<opponent_name>", battle.opponent_name).replace("<username>", bot_settings.username)
 	else:
-		phrase = bot_settings.lose_txt.replace("<opponent_name>", battle.opponent_name)
-	await senders.goodbye(ws, battletag, phrase)
+		phrase = random.choice(bot_settings.lose_txt).replace("<opponent_name>", battle.opponent_name).replace("<username>", bot_settings.username)
+	await senders.goodbye(ws, battletag, phrase, winner)
+	# save replay
+	await senders.save_replay(ws, battletag)
+	with open("replays.txt", 'a') as outfile:
+		battle = get_battle(battles, battletag)
+		win_dict = {True: "Win", False: "Loss"}
+		opp_team = [mon.id for mon in battle.foe_team]
+		opp_name = ''.join( [ ch for ch in battle.opponent_name if ch.isalnum() ])
+		out_text = "https://replay.pokemonshowdown.com/" + battletag.split("battle-")[-1] + " | " + win_dict[winner] + " | " + opp_name + " | " + ", ".join(opp_team) + "\n"
+		outfile.write(out_text)
+	# leave battle and look for next
+	time.sleep(3)  # wait 1 second so replay saved before leaving
 	await senders.leave_battle(ws, battletag)
 	if(bot_settings.autosearch):
-		await senders.search_again(ws, battletag)
+		await senders.search_for_battle(ws)
 
 
 # accept challenges if in correct tier

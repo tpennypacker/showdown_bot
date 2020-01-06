@@ -17,10 +17,18 @@ def infos_for_pokemon(pkm_name):
         "baseStats": {}
     }
     with open('data/pokedex.json') as data_file:
-        pokemon = json.load(data_file)[pkm_name]
-    res["types"] = pokemon["types"]
-    res["possibleAbilities"] = [formatting.get_formatted_name(ability) for ability in list(pokemon["abilities"].values())]
-    res["baseStats"] = pokemon["baseStats"]
+        json_dict = json.load(data_file) # load json file
+    # if pokemon in file, use correct stats
+    if (pkm_name in json_dict.keys() ):
+        pokemon = json_dict[pkm_name]
+        res["types"] = pokemon["types"]
+        res["possibleAbilities"] = [formatting.get_formatted_name(ability) for ability in list(pokemon["abilities"].values())]
+        res["baseStats"] = pokemon["baseStats"]
+    else: # if unrecognised, assume Normal with with Illuminate (does nothing) and 70 BST in each stat
+        res["types"] = ["Normal"]
+        res["possibleAbilities"] = [ formatting.get_formatted_name("Illuminate") ]
+        res["baseStats"] = {"hp":70,"atk":70,"def":70,"spa":70,"spd":70,"spe":70}
+
     return res
 
 
@@ -91,7 +99,7 @@ class Pokemon:
             self.stats[stat] = int( ( (2*self.base_stats[stat] + 31 + self.evs[stat]/4) * self.level/100 + 5) * self.nature_buffs[stat])
         if self.nature_buffs["spe"] < 1: # if determined to be min speed
             self.stats["spe"] = int( ( (2*self.base_stats[stat] + 0 + 0) * self.level/100 + 5) * self.nature_buffs[stat])
-            print(self.stats["spe"])
+            #print(self.stats["spe"])
 
     def clear_boosts(self):
 

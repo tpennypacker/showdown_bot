@@ -97,38 +97,42 @@ def calculate_score_ratio_switches(battle):
 
 # calculate score ratio for a single pokemon object
 def calculate_score_ratio_single(battle, pokemon):
+	foes = battle.active_pokemon("foe")
+	# fail safe for if foe has no currently active pokemon
+	if (foes[0].fainted and foes[1].fainted):
+		return 1
+
 	# get pokemon's "score" against the opponent
 	move, target, power = find_best_move_active_foes(battle, pokemon)
 
 	# get the sum of the opponent's scores against us
 	with open('data/moves.json') as moves_file:
 		all_moves = json.load(moves_file)
-		foes_score = []
-		foes = battle.active_pokemon("foe")
-		for foe in foes:
-			if (foe.fainted): # ignore dead foes
-				continue
+	foes_score = []
+	for foe in foes:
+		if (foe.fainted): # ignore dead foes
+			continue
 
-			foe_score = []
-			for move in foe.moves:
-				# move_data = all_moves[move]
-				# bp = move_data["basePower"]
-				# move_type = move_data["type"]
-				# stab = get_stab_effectiveness(move_type, foe.types)
-				# # NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
-				# damage = bp * stab * get_type_effectiveness(move_type, pokemon.types)
-				damage = calc.calc_damage (move, foe, pokemon, battle)
-				foe_score.append(damage)
+		foe_score = []
+		for move in foe.moves:
+			# move_data = all_moves[move]
+			# bp = move_data["basePower"]
+			# move_type = move_data["type"]
+			# stab = get_stab_effectiveness(move_type, foe.types)
+			# # NEED TO TAKE INTO ACCOUNT WEATHER / TERRAIN / ABILITIES
+			# damage = bp * stab * get_type_effectiveness(move_type, pokemon.types)
+			damage = calc.calc_damage (move, foe, pokemon, battle)
+			foe_score.append(damage)
 
-			index, value = max(enumerate(foe_score), key=itemgetter(1))
-			foes_score.append(value)
-		foes_total_score = np.sum(foes_score)
+		index, value = max(enumerate(foe_score), key=itemgetter(1))
+		foes_score.append(value)
+	foes_total_score = np.sum(foes_score)
 
-		if (foes_total_score == 0):  # avoid division by zero
-			foes_total_score = 1
+	if (foes_total_score == 0):  # avoid division by zero
+		foes_total_score = 1
 
-		ratio = power / foes_total_score
-		return ratio
+	ratio = power / foes_total_score
+	return ratio
 
 
 def is_spread_move(formatted_move):
