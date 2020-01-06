@@ -5,4 +5,4 @@ This is a bot which battles in Smogon Doubles tiers (i.e. DOU), currently focuse
 
 The bot, when using the actual AI beyond just random/first move, will basically calculate what attack does the most damage (by %) and use that. Only attacks, including spread moves, will be used, no status moves. Manual switches are sometimes made, but very conservatively. Leads are always the first two Pokemon on the team, switches are decided using a ratio of damage dealt/received by the given Pokemon vs the active foes. In Gen 7 the bot will always Mega Evolve when possible but never use Z-moves; in Gen 8 it will only ever Dynamax with Braviary.
 
-To use, download the files, then run the file 'main.py' with Python. (If on Windows using command prompt with Python 3 installed, then typing the command "cd <containing folder>", followed by "python3 main.py" should work)
+To use, download the files, then run the file 'main.py' with Python. (If on Windows using command prompt with Python 3 installed, then typing the command "cd (containing folder)", followed by "python3 main.py" should work)
