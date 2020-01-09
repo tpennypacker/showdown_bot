@@ -41,16 +41,24 @@ async def search_for_battle(ws):
 	await ws.send("|/search " + mode)
 	print("Searching for a new {} match. \n".format(mode))
 
-async def blockpms(ws):
-	if (bot_settings.block_pms):
+async def blockpms(ws, blocked):
+	if (not blocked and not bot_settings.block_pms):
+		print("PMs already unblocked")
+	elif (blocked and bot_settings.block_pms):
+		print("PMs already blocked")
+	elif (not blocked):
 		await ws.send("|/blockpms")
 		print("Blocked PMs")
 	else:
 		await ws.send("|/unblockpms")
 		print("Unblocked PMs")
 
-async def blockchallenges(ws):
-	if (bot_settings.block_challenges):
+async def blockchallenges(ws, blocked):
+	if (not blocked and not bot_settings.block_challenges):
+		print("Challenges already unblocked")
+	elif (blocked and bot_settings.block_challenges):
+		print("Challenges already blocked")
+	elif (not blocked):
 		await ws.send("|/blockchallenges")
 		print("Blocked challenges")
 	else:

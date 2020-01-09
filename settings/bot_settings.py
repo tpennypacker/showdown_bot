@@ -10,7 +10,7 @@ bot_owners = "Yoda2798, fespy, trojanidiot"
 
 ionext = False
 
-timer = True
+timer = False
 
 # array of different text options from which one will be randomly chosen to be used each battle
 # can use <opponent_name> then opponent's name will be substituted in, <username> for bot name, \n for new line also works
@@ -38,7 +38,7 @@ team_file = "gen8_only_attacks"  # name of file to use team from e.g. "mane_team
 
 play_tier = "gen8doublesou"  # format to accept challenges in
 
-accept_challenges = False
+accept_challenges = True
 
 avatar = ""
 

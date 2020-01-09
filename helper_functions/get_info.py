@@ -25,6 +25,7 @@ def find_best_move_active_foes(battle, user):
 			possible_moves[0][i][1] = 3  # indicate that target is both foes
 			if (len(possible_moves) > 1):  # apply spread calculations if both foes alive
 				possible_moves[0][i][2] += possible_moves[1][i][2]  # add base power against second target
+				possible_moves[0][i][2] = round (possible_moves[0][i][2], 1)
 				possible_moves[1][i][2] = 0  # set second instance of spread move to 0 damage
 
 	# combine lists of moves against each foe into single list of possible moves

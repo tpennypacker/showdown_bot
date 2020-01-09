@@ -3,6 +3,7 @@ First Move AI
 Bot will choose leads and switches in original order of team (ignoring dead Pokemon)
 Bot will use first available move, targetting first enemy slot if target is required
 Bot will not use Mega evolution / Z-moves / Dynamax
+actually could just use /choose default whenever get request
 
 """
 

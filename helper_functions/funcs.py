@@ -41,7 +41,7 @@ async def log_in(ws, msg_arr):
 
 
 # this gets called once when the user logs in
-async def startup_ops(ws):
+async def startup_ops(ws, msg_arr):
 	print("You have successfully logged in as " + bot_settings.username + "\n")
 
 	bot_settings.all_bot_teams = team_reader.read_all_teams(os.listdir("teams"))
@@ -50,8 +50,10 @@ async def startup_ops(ws):
 	if (bot_settings.accept_challenges):
 		print("Using team {} for accepting challenges in tier {}".format(bot_settings.team_file, bot_settings.play_tier))
 
-	await senders.blockpms(ws)
-	await senders.blockchallenges(ws)
+	login_data = json.loads(msg_arr[-1])
+
+	await senders.blockpms(ws, login_data['blockPMs'])
+	await senders.blockchallenges(ws, login_data['blockChallenges'])
 
 	if (len(bot_settings.avatar) > 0):
 		await senders.change_avatar(ws)

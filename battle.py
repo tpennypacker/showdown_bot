@@ -2,7 +2,7 @@ from helper_functions import formatting
 from helper_functions import predict_foe_sets
 
 from pokemon import Pokemon
-from ai_modules import ai_damage_calc as ai
+from ai_modules import ai_simulate_turn as ai
 import json
 import datetime
 from operator import itemgetter
@@ -296,24 +296,6 @@ class Battle:
 		#print("My Pokemon: {}, {}\nFoe's Pokemon: {}, {}".format(self.my_team[0].id, self.my_team[1].id, self.foe_team[0].id, self.foe_team[1].id) )
 		#for i, mon in enumerate(self.active_pokemon("foe")):
 			#print("{}: {}".format(i+1, mon.id))
-		#print(self.entry_hazards)
-		# print("Turns of: TR: {}, bot TW: {}, foe TW: {}, terrain: {}, weather: {}".format(self.trick_room, self.tailwind["bot"], self.tailwind["foe"], self.terrain_turns_left, self.weather_turns_left))
-		# [print("Pokemon: {}, can_fake_out: {}, can_protect: {}".format(pokemon.id, pokemon.can_fake_out, pokemon.can_protect)) for pokemon in self.active_pokemon("both")]
-		# [print("Pokemon {} has {} status and {}% HP".format(pokemon.id, pokemon.status, pokemon.health_percentage)) for pokemon in self.my_team]
-		# for pokemon in self.my_team:
-		# 	print(pokemon.buff)
-		#for pokemon in self.foe_team:
-			#print("evs for " + pokemon.id)
-			#print(pokemon.evs)
-			#print("nature buffs for " + pokemon.id)
-			#print(pokemon.nature_buffs)
-			#print("stats for " + pokemon.id, end = ": ")
-			#print(pokemon.stats)
+		#[print("Pokemon {} has {} status and {}% HP".format(pokemon.id, pokemon.status, pokemon.health_percentage)) for pokemon in self.my_team]
 		#print("Move order for this turn: ", end="")
 		#print(self.move_order)
-		#[print("{} has types {}".format(pokemon.id, pokemon.types)) for pokemon in self.active_pokemon("foe")]
-		#[print(pokemon.level,pokemon.gender) for pokemon in self.foe_team]
-		#for pokemon in self.foe_team:
-			#print(pokemon.abilities)
-			#print(pokemon.id + " has the following types: ")
-			#print(pokemon.moves)

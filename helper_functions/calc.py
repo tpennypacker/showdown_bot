@@ -9,6 +9,7 @@ def get_move_bp(move, all_moves):
 	power = move_data["basePower"]
 	return power
 
+
 def get_spread_mult(move, all_moves, target, battle):
 	move_data = all_moves[move]
 	attack_type = move_data["target"]
@@ -161,34 +162,35 @@ def get_burn_modifier(move_name, move_category, status, abilities):
 # battle is a battle object
 def calc_damage (move, user, target, battle):
 	with open('data/moves.json') as moves_file:
-		with open('data/pokedex.json') as pokedex_file:
-			all_moves = json.load(moves_file)
-			pokedex = json.load(pokedex_file)
+		all_moves = json.load(moves_file)
+	with open('data/pokedex.json') as pokedex_file:
+		pokedex = json.load(pokedex_file)
 
-			power = get_move_bp(move, all_moves)
-			if (power == 0):
-				return 0
+	power = get_move_bp(move, all_moves)
+	if (power == 0):
+		return 0
 
-			move_type = all_moves[move]["type"]
-			move_category = all_moves[move]["category"]
+	move_type = all_moves[move]["type"]
+	move_category = all_moves[move]["category"]
 
-			spread = get_spread_mult(move, all_moves, target, battle)
-			stab = get_stab_effectiveness(move_type, user.types, user.abilities)
-			type_eff = get_type_effectiveness(move_type, target.types)
-			ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.foe_team, target, type_eff)
-			field_mult = get_field_modifier(battle, user.types, user.abilities, move_type, move_category, target)
-			crit = 1
-			random = 1 # actually between 0.85 and 1
-			burn = get_burn_modifier(move, move_category, user.status, user.abilities)
+	#spread = get_spread_mult(move, all_moves, target, battle)
+	spread = 1
+	stab = get_stab_effectiveness(move_type, user.types, user.abilities)
+	type_eff = get_type_effectiveness(move_type, target.types)
+	ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.foe_team, target, type_eff)
+	field_mult = get_field_modifier(battle, user.types, user.abilities, move_type, move_category, target)
+	crit = 1
+	random = 1 # actually between 0.85 and 1
+	burn = get_burn_modifier(move, move_category, user.status, user.abilities)
 
-			modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff
+	modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff
 
-			level = user.level
-			stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)
+	level = user.level
+	stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)
 
-			damage = int( ((2 * level / 5 + 2) * power * stat_ratio / 50 + 2) * modifier )
-			#print(target.stats)
-			# convert to percentage (can still be >100) and round to 1 decimal place e.g. 50.7
-			damage_percent = round (damage / target.stats["hp"] * 100, 1)
+	damage = int( ((2 * level / 5 + 2) * power * stat_ratio / 50 + 2) * modifier )
+	#print(target.stats)
+	# convert to percentage (can still be >100) and round to 1 decimal place e.g. 50.7
+	damage_percent = round (damage / target.stats["hp"] * 100, 1)
 
-			return damage_percent
+	return damage_percent
