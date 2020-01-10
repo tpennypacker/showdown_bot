@@ -61,7 +61,7 @@ class Pokemon:
         self.active_info = None  # information about possible moves and if trapped etc for active pokemon
 
         self.has_item = has_item  # true or false
-        self.item = None  # e.g. "magoberry"
+        self.item = []  # list of likely items e.g. ["magoberry"]
 
         self.can_fake_out = True  # false after making a move, reset on switch
         self.can_protect = 0  # 0 if can protect, above 0 means it can't (will be 2 on turn of use, 1 on the following turn), reset on switch
@@ -101,6 +101,7 @@ class Pokemon:
             self.stats["spe"] = int( ( (2*self.base_stats[stat] + 0 + 0) * self.level/100 + 5) * self.nature_buffs[stat])
             #print(self.stats["spe"])
 
+
     def clear_boosts(self):
 
         # reset boosts
@@ -125,3 +126,39 @@ class Pokemon:
 
         # make active in given slot
         self.active = position
+
+
+    def calc_speed(self, battle):
+
+        # speed stat and buff
+        speed = self.stats['spe'] * self.buff['spe'][1]
+        # choice scarf
+
+        if (self.has_item and 'choicescarf' in self.item):
+            speed *= 1.5
+
+        # paralysis
+        if (self.status == 'par'):
+            speed /= 2
+
+        speed = int(speed) # round down after above, everything else will give int
+
+        if (battle.tailwind[self.side] > 0):
+            speed *= 2
+
+        # surge surfer
+        if ("surgesurfer" in self.abilities and battle.terrain == "electricterrain"):
+            speed *= 2
+        # weather, can skip checks if none up
+        elif (battle.weather == None):
+            pass
+        elif ("chlorophyll" in self.abilities and battle.weather == "sunnyday"):
+            speed *= 2
+        elif ("swiftswim" in self.abilities and battle.weather == "raindance"):
+            speed *= 2
+        elif ("sandrush" in self.abilities and battle.weather == "sandstorm"):
+            speed *= 2
+        elif ("slushrush" in self.abilities and battle.weather == "hail"):
+            speed *= 2
+
+        return speed

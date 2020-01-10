@@ -8,7 +8,7 @@ import sys
 import platform
 from string import printable
 
-from ai_modules import ai_simulate_turn as ai # need to change in battle.py as well
+from ai_modules import ai_simulate_bot_turn as ai # need to change in battle.py as well
 from settings import bot_settings
 from helper_functions import funcs
 from helper_functions import team_reader

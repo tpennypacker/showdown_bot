@@ -2,7 +2,7 @@ from helper_functions import formatting
 from helper_functions import predict_foe_sets
 
 from pokemon import Pokemon
-from ai_modules import ai_simulate_turn as ai
+from ai_modules import ai_simulate_bot_turn as ai # need to change in main.py as well
 import json
 import datetime
 from operator import itemgetter
@@ -107,7 +107,7 @@ class Battle:
 			pokemon.stats = mon_data["stats"]
 			pokemon.stats["hp"] = int(hp2)
 			pokemon.moves = mon_data["moves"]
-			pokemon.item = mon_data["item"]
+			pokemon.item = [mon_data["item"]]
 			pokemon.abilities = [mon_data["ability"]]
 		# prompt appropriate decision if needed
 		if (have_active):  # move

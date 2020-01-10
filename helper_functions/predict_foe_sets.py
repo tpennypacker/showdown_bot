@@ -79,6 +79,24 @@ def get_spread_from_line(line):
 	return highest_evs, nature_buffs
 
 
+def get_items_from_line(line):
+	items_data = line.split("\n")[2:]
+	likely_items = []
+
+	for item in items_data:
+		for i in range (len(item)):
+			if (item[i].isdigit()):
+
+				probability = item[i:].split(".")[0]
+				if(int(probability) >= ai_settings.beta):
+					item_name = formatting.get_formatted_name(item[:i])
+					if (item_name != "nothing"):
+						likely_items.append(item_name)
+				break
+
+
+	return (likely_items)
+
 #  get likely sets for the entire opposing team
 def update_likely_sets(battle, pokemon):
 	#site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
@@ -92,7 +110,7 @@ def update_likely_sets(battle, pokemon):
 
 	for foe_pokemon in pokemon:
 
-		print("Getting likely moves for " + foe_pokemon.id)
+		print("Getting likely moveset for " + foe_pokemon.id)
 		for pokemon in pokedex:
 
 			if (formatting.get_formatted_name(foe_pokemon.id) == formatting.get_formatted_name(pokemon.split("|")[1])):
@@ -110,6 +128,10 @@ def update_likely_sets(battle, pokemon):
 						foe_pokemon.evs = highest_evs
 						foe_pokemon.nature_buffs = nature_buffs
 						foe_pokemon.calc_stats()
+
+					elif ("Items" in line):
+						items = get_items_from_line(line)
+						foe_pokemon.item = items
 
 				continue  # once found pokemon then move onto next one
 

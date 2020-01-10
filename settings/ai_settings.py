@@ -10,3 +10,8 @@ switch_mult = 3
 # >= alpha, then it is assumed the foe has that move
 # (based on usage stats)
 alpha = 20
+
+# if the probability of a foe's pokemon having a certain item is
+# >= beta, then it is assumed the foe has that item
+# (based on usage stats)
+beta = 10
