@@ -76,37 +76,6 @@ async def choose_moves(ws, battle):
 					moves.append( ["bot", pokemon.id, move['id'], 2,  moves_dex[move['id']]['priority'], speed] )
 
 			bot_choices.append(moves)
-	#print(bot_choices)
-	# combine into possible combinations
-	"""moves_1, moves_2 = bot_choices
-	bot_choices = []
-	for move_1 in moves_1:
-		for move_2 in moves_2:
-			decisions.append(move_1 + ", " + move_2)"""
-
-
-	"""# for foes
-	foe_choices = []
-	for pokemon in foes:
-		if pokemon.fainted: # for dead pokemon pass
-			foe_choices.append(['pass'])
-		else:
-			moves = []
-			speed = pokemon.stats['spe']
-			print(pokemon.id, pokemon.item)
-
-			# get each legal move
-			for move in pokemon.moves:
-				target = moves_dex[move]["target"]
-				if (target not in ['normal', 'any', 'adjacentFoe', 'adjacentAlly']):
-					moves.append( ["foe", pokemon.id, move, None,  moves_dex[move]['priority'], speed] )
-				elif (target == 'adjacentAlly'): # move targetting teammate (e.g. Helping Hand)
-					moves.append( ["foe", pokemon.id, move, -1,  moves_dex[move]['priority'], speed] )
-				else: # moves with an individual target (ignore targetting teammate)
-					moves.append( ["foe", pokemon.id, move, 1,  moves_dex[move]['priority'], speed] )
-					moves.append( ["foe", pokemon.id, move, 2,  moves_dex[move]['priority'], speed] )
-
-			foe_choices.append(moves)"""
 
 	best_choice = ""
 	best_state = None
@@ -119,19 +88,14 @@ async def choose_moves(ws, battle):
 	# simulate each possible user move combination
 	for move_1 in bot_choices[0]:
 		for move_2 in bot_choices[1]:
-			#foe_move_1 = foe_choices[0][0]
-			#foe_move_2 = foe_choices[1][0]
 			#ind += 1
 			#print("Simulation {}/{}".format(ind,pos))
-			#foe_move_1, foe_move_2 = foe_choices[0][0], foe_choices[1][0]
-			moves = [move_1, move_2] #, foe_move_1, foe_move_2]
+			moves = [move_1, move_2]
 			moves = [move for move in moves if move != "pass"] # remove moves from dead pokemon
 			moves = sorted(moves, key=lambda x: (x[-2], x[-1])) # sort by priority then by speed
 			battle_copy = copy.deepcopy(battle)
 			# while moves left
 			while ( len(moves) > 0 ):
-				# sort order after each move due to new speed mechanics (need to recalculate speeds first!)
-				#moves = sorted(unsorted, key=lambda x: (x[1], x[2]))
 				# get move and remove from list
 				move = moves.pop(0)
 				# currently only consider attacks by bot

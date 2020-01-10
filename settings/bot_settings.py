@@ -28,7 +28,7 @@ win_txt = ["gg ez", "get mished", "gg <opponent_name>", "well played", "hasta la
 
 lose_txt = ["Error: Battle lost", "time to go commit sudoko", "Time to drown my sorrows in cheeseburgers", "I'll be back", "oof yikes that's a mish", "Damn, I lost to <opponent_name>? I need to go home and rethink my life",
             "I was only operating at 10% efficiency anyways", "This is all fespy and Yoda2798's fault", "bruh moment", "Failure is the first step step to success", "*sigh*, haxed again",
-            "Impossible, how could I lose? It must have been those damn Russian bots *shakes fist*", "mish", "I may have lost, but at least I'm not <opponent_name>"]
+            "Impossible, how could I lose? It must have been those damn Russian bots\n*shakes fist*", "mish", "I may have lost, but at least I'm not <opponent_name>"]
 
 auto_join_room = "smogon doubles"  # bot will join this room when turned on, if "" then won't join any, e.g. "smogon doubles"
 

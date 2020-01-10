@@ -2,7 +2,7 @@ from helper_functions import formatting
 from helper_functions import predict_foe_sets
 
 from pokemon import Pokemon
-from ai_modules import ai_simulate_bot_turn as ai # need to change in main.py as well
+from ai_modules import ai_simulate_turn as ai # need to change in main.py as well
 import json
 import datetime
 from operator import itemgetter

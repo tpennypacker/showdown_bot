@@ -17,25 +17,36 @@ process:
 	- use move combination leading to highest state evalution
 
 TODO:
-include choice scarf (requires item stuff added), tw, weather in speed calcuations (use battle.get_turn_order() code)
 make protect work - add variable to pokemon object? this may also make bot protect when it does nothing
 make tailwind work - need to add to heuristic
 consider foe combinations - see how long it takes (~minute per turn right now, >1000 possibilities considered)
 quick calc by stab/typing or something to reduce options (for single target moves, only consider strongest one against each?)
 consider switching - maybe use ratio and only consider top 2 or something, and only for pokemon that have a losing matchup
 remove move options such as tailwind while up, protect if just did, fake out but not first turn, choice locked, only single target if 1 left
+have list of mons to consider dmax for
+use ratio thing or check if can be KOed/if will be outsped to determine if should consider a pokemon switching
+remember to make sure can't switch to same pokemon in both slots
 
 in set predictor, combine FIWAM berries into one
 in battlelog parser, add code to use -item for foe
 use items in calculations
 
 update calc to only factor in storm drain etc on active pokemon
+use item, choice items/lo
+factor in focus sash? - maybe only if certain
 split into quick calc and finish calc, first using aspects dependent on move, second one not? (for comparing move strengths)
+
+add 'last move' attribute to pokemon for choice lock (and encore) - maybe also fake out to replace other thing
+could combine the two separate things for getting moves into one
+also can abstract formatting move
+also, dealing damage (and fainting/removing move), as well as above abstraction of if statements as an attack
+activate berry in sim, sitrus, fiwm, lum (but not life orb unless sure?)
 """
 
 from helper_functions import calc
 from helper_functions import funcs
 from helper_functions import get_info
+from helper_functions import simulation
 from helper_functions import senders
 from helper_functions import formatting
 from battle import Battle
@@ -51,11 +62,19 @@ mega_dic = {True: ' mega', False: ''}
 dyna_dic = {True: ' dynamax', False: ''}
 
 
+# evaluates battle and returns a single number representing how 'good' it is
+def state_heuristic(battle):
+	score = 0
+	for pokemon in battle.my_team:
+		if ( not pokemon.fainted ):
+			score += 100 + pokemon.health_percentage
+	for pokemon in battle.foe_team:
+		if ( not pokemon.fainted ):
+			score -= 100 + pokemon.health_percentage
+	return score
+
 # gets called at the start of each turn
 async def choose_moves(ws, battle):
-
-	with open('data/moves.json') as moves_file:
-		moves_dex = json.load(moves_file)
 
 	# get active pokemon
 	allies = battle.active_pokemon("bot")
@@ -68,34 +87,8 @@ async def choose_moves(ws, battle):
 		if pokemon.fainted: # for dead pokemon pass
 			bot_choices.append(['pass'])
 		else:
-			moves = []
-			speed = pokemon.stats['spe']
-
-			# get each legal move, store in following format
-			# [user_id, move_id, target_slot, priority, user_speed]
-			for move in pokemon.active_info['moves']:
-				# ignore disabled moves
-				if ( 'disabled' in move.keys() and move['disabled'] ):
-					continue
-				if ( 'target' not in move.keys() or move['target'] not in ['normal', 'any', 'adjacentFoe', 'adjacentAlly'] ):
-					# moves with no target required
-					moves.append( ["bot", pokemon.id, move['id'], None,  moves_dex[move['id']]['priority'], speed] )
-				elif (move['target'] == 'adjacentAlly'):
-					# move targetting teammate (e.g. Helping Hand)
-					moves.append( ["bot", pokemon.id, move['id'], -1,  moves_dex[move['id']]['priority'], speed] )
-				else:
-					# moves with an individual target (ignore targetting teammate)
-					moves.append( ["bot", pokemon.id, move['id'], 1,  moves_dex[move['id']]['priority'], speed] )
-					moves.append( ["bot", pokemon.id, move['id'], 2,  moves_dex[move['id']]['priority'], speed] )
-
+			moves = simulation.get_possible_moves(pokemon, battle, 0)
 			bot_choices.append(moves)
-	#print(bot_choices)
-	# combine into possible combinations
-	"""moves_1, moves_2 = bot_choices
-	bot_choices = []
-	for move_1 in moves_1:
-		for move_2 in moves_2:
-			decisions.append(move_1 + ", " + move_2)"""
 
 
 	# for foes
@@ -104,104 +97,54 @@ async def choose_moves(ws, battle):
 		if pokemon.fainted: # for dead pokemon pass
 			foe_choices.append(['pass'])
 		else:
-			moves = []
-			speed = pokemon.stats['spe']
-
-			# get each legal move
-			for move in pokemon.moves:
-				target = moves_dex[move]["target"]
-				if (target not in ['normal', 'any', 'adjacentFoe', 'adjacentAlly']):
-					moves.append( ["foe", pokemon.id, move, None,  moves_dex[move]['priority'], speed] )
-				elif (target == 'adjacentAlly'): # move targetting teammate (e.g. Helping Hand)
-					moves.append( ["foe", pokemon.id, move, -1,  moves_dex[move]['priority'], speed] )
-				else: # moves with an individual target (ignore targetting teammate)
-					moves.append( ["foe", pokemon.id, move, 1,  moves_dex[move]['priority'], speed] )
-					moves.append( ["foe", pokemon.id, move, 2,  moves_dex[move]['priority'], speed] )
-
+			moves = simulation.get_possible_moves(pokemon, battle, 0)
 			foe_choices.append(moves)
 
 	best_choice = ""
 	best_state = None
 
-	player_dict = {"bot": "foe", "foe":"bot"}
+	player_dict = {"bot": "foe", "foe": "bot"}
+	with open('data/moves.json') as moves_file:
+		moves_dex = json.load(moves_file)
 
-	pos = len(bot_choices[0]) * len(bot_choices[1]) * len(foe_choices[0]) * len(foe_choices[1])
-	ind = 1
+	#pos = len(bot_choices[0]) * len(bot_choices[1]) #* len(foe_choices[0]) * len(foe_choices[1])
+	#ind = 0
 
 	# simulate each possible user move combination against foe's first option
 	for move_1 in bot_choices[0]:
 		for move_2 in bot_choices[1]:
-			for foe_move_1 in foe_choices[0]:
-				for foe_move_2 in foe_choices[1]:
-					ind += 1
-					print("Simulation {}/{}".format(ind,pos))
-					#foe_move_1, foe_move_2 = foe_choices[0][0], foe_choices[1][0]
-					moves = [move_1, move_2, foe_move_1, foe_move_2]
-					moves = [move for move in moves if move != "pass"] # remove moves from dead pokemon
-					moves = sorted(moves, key=lambda x: (x[-2], x[-1])) # sort by priority then by speed
-					battle_copy = copy.deepcopy(battle) # this needs to be an actual copy instead of reference to same thing as it is now
-					# while moves left
-					while ( len(moves) > 0 ):
-						# sort order after each move due to new speed mechanics (need to recalculate speeds first!)
-						#moves = sorted(unsorted, key=lambda x: (x[1], x[2]))
-						# get move and remove from list
-						move = moves.pop(0)
-						# currently only consider attacks by bot
-						if (moves_dex[move[2]]['category'] == 'Status' or move[0] == "foe"):
-							continue
-						# get user and targets to deal with attack
-						user = next((mon for mon in battle_copy.active_pokemon(move[0]) if mon.id == move[1]))
-						foes = battle_copy.active_pokemon(player_dict[move[0]])
-						if (foes[0].fainted and foes[1].fainted): # if both foes dead then no target
-							continue
-						elif (move[3] == None and not foes[0].fainted and not foes[1].fainted): # spread move against multiple targets
-							# calculate and deal damage (with spread reduction) against first target
-							dmg = calc.calc_damage(move[2], user, foes[0], battle)
-							foes[0].health_percentage -= 0.75 * dmg
-							# if below 0 hp, then faint Pokemon, and remove its move from action list
-							if (foes[0].health_percentage <= 0):
-								foes[0].fainted = True
-								moves = [i for i in moves if i[0] != move[0] or i[1] != move[1]]
-							# same for second target
-							dmg = calc.calc_damage(move[2], user, foes[1], battle)
-							foes[1].health_percentage -= 0.75 * dmg
-							if (foes[1].health_percentage <= 0):
-								foes[1].fainted = True
-								moves = [i for i in moves if i[0] != move[0] or i[1] != move[1]]
-						elif (foes[1].fainted or move[3] == 1): # target slot 1
-							dmg = calc.calc_damage(move[2], user, foes[0], battle)
-							foes[0].health_percentage -= dmg
-							if (foes[0].health_percentage <= 0):
-								foes[0].fainted = True
-								moves = [i for i in moves if i[0] != move[0] or i[1] != move[1]]
-						else: # target slot 2
-							dmg = calc.calc_damage(move[2], user, foes[1], battle)
-							foes[1].health_percentage -= dmg
-							if (foes[1].health_percentage <= 0):
-								foes[1].fainted = True
-								moves = [i for i in moves if i[0] != move[0] or i[1] != move[1]]
-					# moves done, would do end of turn effects here
-					# evaluate new state with heuristic function based on hp/alive pokemon
-					score = 0
-					for pokemon in battle_copy.my_team:
-						if ( not pokemon.fainted ):
-							score += 100 + pokemon.health_percentage
-					for pokemon in battle_copy.foe_team:
-						if ( not pokemon.fainted ):
-							score -= 100 + pokemon.health_percentage
-					# if better than current best choice, then update
-					if (best_state == None or score > best_state):
-						best_state = score
-						if (move_1 != 'pass' and move_2 != 'pass'): # both Pokemon alive
-							target1 = " {}".format(move_1[3]) if move_1[3] != None else ""
-							target2 = " {}".format(move_2[3]) if move_2[3] != None else ""
-							best_choice = "move " + move_1[2] + target1 + ", move " + move_2[2] + target2
-						elif (move_2 == 'pass'): # only 1st Pokemon alive
-							target1 = " {}".format(move_1[3]) if move_1[3] != None else ""
-							best_choice = "move " + move_1[2] + target1 + ", pass"
-						else: # only 2nd Pokemon alive
-							target2 = " {}".format(move_2[3]) if move_2[3] != None else ""
-							best_choice = "pass, move " + move_2[2] + target2
+			#for foe_move_1 in foe_choices[0]:
+				#for foe_move_2 in foe_choices[1]:
+			foe_move_1 = foe_choices[0][0]
+			foe_move_2 = foe_choices[1][0]
+			#ind += 1
+			#print("Simulation {}/{}".format(ind,pos))
+			#foe_move_1, foe_move_2 = foe_choices[0][0], foe_choices[1][0]
+			move_order = [move_1, move_2, foe_move_1, foe_move_2]
+			#print(move_order)
+			move_order = [move for move in move_order if move != "pass"] # remove moves from dead pokemon
+			move_order = sorted(move_order, key=lambda x: (x[-2], x[-1])) # sort by priority then by speed
+			battle_copy = copy.deepcopy(battle)
+			# while moves left
+			while ( len(move_order) > 0 ):
+				# sort order after each move due to new speed mechanics (need to recalculate speeds first!)
+				#moves = sorted(unsorted, key=lambda x: (x[1], x[2]))
+				# get move and remove from list
+				move = move_order.pop(0)
+				# currently only consider attacks by bot
+				if (moves_dex[move[2]]['category'] == 'Status' or move[0] == "foe"):
+					continue
+				# get user and targets to deal with attack
+				user = next((mon for mon in battle_copy.active_pokemon(move[0]) if mon.id == move[1]))
+				foes = battle_copy.active_pokemon(player_dict[move[0]])
+				simulation.simulate_attack(move, user, foes, battle_copy, move_order)
+			# moves done, would do end of turn effects here
+			# evaluate new state with heuristic function based on hp/alive pokemon
+			score = state_heuristic(battle_copy)
+			# if better than current best choice, then update
+			if (best_state == None or score > best_state):
+				best_state = score
+				best_choice = formatting.format_move_choice(move_1, move_2)
 
 	command_str = battle.battletag + "|/choose " + best_choice
 	# send turn decision
