@@ -15,33 +15,9 @@ process:
 	- if KO foe, then mark as fainted and remove from move queue
 	- after all moves completed, evaluate new battle state with heuristic (100 per alive mon, and 1 per % hp, + your team - foe's team)
 	- use move combination leading to highest state evalution
-
-TODO:
-make protect work - add variable to pokemon object? this may also make bot protect when it does nothing
-make tailwind work - need to add to heuristic
-consider foe combinations - see how long it takes (~minute per turn right now, >1000 possibilities considered)
-quick calc by stab/typing or something to reduce options (for single target moves, only consider strongest one against each?)
-consider switching - maybe use ratio and only consider top 2 or something, and only for pokemon that have a losing matchup
-remove move options such as tailwind while up, protect if just did, fake out but not first turn, choice locked, only single target if 1 left
-have list of mons to consider dmax for
-use ratio thing or check if can be KOed/if will be outsped to determine if should consider a pokemon switching
-remember to make sure can't switch to same pokemon in both slots
-
-in set predictor, combine FIWAM berries into one
-in battlelog parser, add code to use -item for foe
-use items in calculations
-
-update calc to only factor in storm drain etc on active pokemon
-use item, choice items/lo
-factor in focus sash? - maybe only if certain
-split into quick calc and finish calc, first using aspects dependent on move, second one not? (for comparing move strengths)
-
-add 'last move' attribute to pokemon for choice lock (and encore) - maybe also fake out to replace other thing
-could combine the two separate things for getting moves into one
-also can abstract formatting move
-also, dealing damage (and fainting/removing move), as well as above abstraction of if statements as an attack
-activate berry in sim, sitrus, fiwm, lum (but not life orb unless sure?)
 """
+
+
 
 from helper_functions import calc
 from helper_functions import funcs

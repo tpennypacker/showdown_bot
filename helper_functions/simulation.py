@@ -70,3 +70,62 @@ def simulate_attack(move, user, foes, battle, move_order):
         deal_damage(move, user, foes[0], battle, move_order, 1)
     else: # target slot 2
         deal_damage(move, user, foes[0], battle, move_order, 1)
+
+
+# probably should go in get_info?
+def get_max_move_bp(move_id):
+    # special move cases
+    if (move_id in ["crushgrip", "wringout", "magnitude", "doubleironbash"]):
+        return 140
+    elif(move_id in ["pinmissile", "powertrip", "punishment", "dragondarts", "dualchop", "electroball", "heatcrash", "bulletseed", "grassknot", "bonemerang", "bonerush", "fissure", "iciclespear", "sheercold", "weatherball", "tailslap", "guillotine", "horndrill", "flail", "return", "frustration", "endeavor", "naturalgift", "trumpcard", "storedpower", "rockblast", "geargrind", "gyroball", "heavyslam"]):
+        return 130
+    elif(move_id in ["doublehit", "spikecannon"]):
+        return 120
+    elif(move_id in ["twineedle", "beatup", "fling", "dragonrage", "nature'smadness", "nightshade", "cometpunch", "furyswipes", "sonicboom", "bide", "superfang", "present", "spitup", "psywave", "mirrorcoat", "metalburst", "lowkick", "reversal", "finalgambit"]):
+        return 100
+    elif(move_id in ["doublekick", "triplekick"]):
+        return 80
+    elif(move_id in ["counter", "seismictoss"]):
+        return 75
+
+    with open('data/moves.json') as moves_file:
+        moves_dex = json.load(moves_file)
+
+    move_type = moves_dex[move_id]['type']
+    move_bp = moves_dex[move_id]['basePower']
+
+    # fighting and poison (lower BPs)
+    if (move_type in ['Fighting', 'Poison']):
+        if (move_bp >= 150):
+            return 100
+        elif (move_bp >= 110):
+            return 95
+        elif (move_bp >= 75):
+            return 90
+        elif (move_bp >= 65):
+            return 85
+        elif (move_bp >= 55):
+            return 80
+        elif (move_bp >= 45):
+            return 75
+        elif (move_bp >= 10):
+            return 70
+    else: # any other type
+        if (move_bp >= 150):
+            return 150
+        elif (move_bp >= 110):
+            return 140
+        elif (move_bp >= 75):
+            return 130
+        elif (move_bp >= 65):
+            return 120
+        elif (move_bp >= 55):
+            return 110
+        elif (move_bp >= 45):
+            return 100
+        elif (move_bp >= 10):
+            return 90
+
+    # don't think this should happen
+    print("move with <10bp? ",move_id)
+    return 0
