@@ -286,13 +286,13 @@ def minor_actions(battle: Battle, split_line, side_dict):
 # takes a battle and message, and parses information which is used to update battle
 def battlelog_parsing(battle: Battle, msg):
     # dictionary converting e.g. p1 to bot
-    side_dict = {battle.my_side: "bot", battle.foe_side: "foe"}
+    side_dict = {battle.my_side: 'bot', battle.foe_side: 'foe'}
 
     lines = msg.split("\n")[1:-1]  # split by line, ignore first and last
     split_lines = [line.split('|')[1:] for line in lines]  # split line by "|", ignore empty first entry
     split_lines = [line for line in split_lines if (len(line) > 0 and len(line[0]) > 0)]  # ignore empty lines
     for split_line in split_lines:
-        if split_line[0][0] != "-":
+        if split_line[0][0] != '-':
             major_actions(battle, split_line, side_dict)
         else:
             minor_actions(battle, split_line, side_dict)

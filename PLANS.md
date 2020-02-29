@@ -1,3 +1,6 @@
+make other AIs work with new system of move dict
+
+
 TODO:
 consider foe combinations - see how long it takes (~minute per turn right now, >1000 possibilities considered)
 consider switching - maybe use ratio and only consider top 2 or something, and only for pokemon that have a losing matchup
@@ -5,6 +8,7 @@ remove move options such as tailwind while up, protect if just did, fake out but
 have list of mons to consider dmax for
 use ratio thing or check if can be KOed/if will be outsped to determine if should consider a pokemon switching
 remember to make sure can't switch to same pokemon in both slots
+look up lead percentages, weight by true usage? then weight by relative value to team and pick randomly?
 
 
 Sim:
@@ -15,6 +19,12 @@ add follow me/rage powder
 add end of turn effects (terrain, weather, status)
 if our pokemon tie with an opponent make ours 0.5 slower so assume they win tie?
 for multi-turn need to calculate switches for koes at end/start of turn (also volt switch/u-turn)
+make how moves are stored include slot e.g. p1a rather than just bot/foe
+
+make depth start at 0 and go up, and set max turn limit (1 for now)
+make possible to go higher depths, also make sure battle is used correctly going down but not changing for other branches
+make possible moves contain less info until later on where calc speed and do by species etc? also convert to dict so easier to understand
+fix stuff so don't have attacks inputted against empty slot or calced against something dead
 
 
 Calc:
@@ -36,13 +46,43 @@ use to prune possible abilities?
 
 Parser
 items (see below logs) -item
+moves
 
 
 Main:
 fix coming back from away (updateuser) breaking bot
+fix someone leaving and rejoining battle starting greeting lines
 
 
+Optimisation:
+currently getting possible foe decisions multiple times (each time branch in minimax for for possible bot decisions)
 
+   ncalls  tottime  percall  cumtime  percall filename:lineno(function)
+
+       46    0.000    0.000  464.084   10.089 main.py:109(connect_to_ps)
+       63    0.001    0.000  464.074    7.366 main.py:24(parse_response)
+
+       13    0.001    0.000  455.277   35.021 battle.py:74(load_team_data)
+
+        6    0.000    0.000  450.585   75.097 ai_simulate_turn.py:185(choose_moves)
+   2569/6    1.139    0.000  450.582   75.097 ai_simulate_turn.py:132(minimax)
+                    ~ 3 seconds in total in minimax logic itself
+     2480    1.070    0.000  447.514    0.180 simulation.py:95(simulate_turn)
+     9449    4.181    0.000  412.720    0.044 simulation.py:83(simulate_attack)
+    11188   13.065    0.001  408.539    0.037 simulation.py:71(deal_damage)
+35 s                            1 turn ~ 4 attacks (102%)
+4 s                            1 attack ~= 1.2 damage (119%)
+122 s (20)                            1 damage ~ 1.5 calc (148%)
+    11343    8.601    0.001  286.787    0.025 calc.py:163(calc_damage)
+287 s  (48)                  ~ 287 seconds in total in calc!!!!!!!!
+        3    0.000    0.000    4.690    1.563 ai_simulate_turn.py:277(choose_switch)
+        3    0.003    0.001    4.686    1.562 get_info.py:81(calculate_score_ratio_switches)
+        8    0.105    0.013    4.682    0.585 get_info.py:100(calculate_score_ratio_single)
+        1    0.001    0.001    3.636    3.636 battle.py:48(initialise_teams)
+        1    0.005    0.005    3.306    3.306 predict_foe_sets.py:101(update_likely_sets)
+
+NB: the difference in cumtime going down gives how much time is spent within that function in particular (in total)
+above for 6 turns (divide by 6 for per turn)
 
 
 Logs:

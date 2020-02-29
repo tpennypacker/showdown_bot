@@ -36,6 +36,16 @@ class Battle:
 		self.move_order = []  # list of [side, position] e.g. ["bot", 2] for alive, active pokemon in order they will move (from first to last)
 		self.start_datetime = str(datetime.datetime.now())
 		self.did_bot_win = False
+		self.gen = int(battletag.split("gen")[1][0])
+		print("ggen issss",self.gen)
+
+		# used for simulating turns
+		self.possible_bot_decisions = []
+		self.possible_foe_decisions = []
+		self.bot_decision = []
+		self.foe_decision = []
+
+		self.rqid = 0 # code to show which request message are responding to
 
 
 	# load pokemon into teams from team preview
@@ -72,6 +82,9 @@ class Battle:
 		have_active = "active" in json_obj.keys() # each true or false
 		have_team_preview = "teamPreview" in json_obj.keys()
 		have_switch = "forceSwitch" in json_obj.keys()
+
+		self.rqid = json_obj['rqid']
+
 		# list of status abbreviations
 		status_list = ["brn", "frz", "par", "psn", "tox", "slp"]
 		# for each pokemon, update with new data
@@ -111,7 +124,7 @@ class Battle:
 			pokemon.abilities = [mon_data["ability"]]
 		# prompt appropriate decision if needed
 		if (have_active):  # move
-			self.calc_move_order()
+			#self.calc_move_order()
 			self.debug_prints()
 			await ai.choose_moves(ws, self)
 		elif (have_switch):  # switch

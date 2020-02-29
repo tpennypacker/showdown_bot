@@ -86,7 +86,7 @@ async def send_command(ws, msg):
 	await ws.send(msg)
 
 async def send_lead_decision(ws, leads, battle, format_output=False):
-	command_str = battle.battletag + "|/choose team " + "".join(leads)
+	command_str = battle.battletag + "|/choose team " + "".join(leads) + "|" + str(battle.rqid)
 	await ws.send(command_str)
 	if not format_output:
 		print("\nSending lead decision: " + command_str)
@@ -98,6 +98,7 @@ async def send_lead_decision(ws, leads, battle, format_output=False):
 
 
 async def send_turn_decision(ws, command_str, battle, format_output=False):
+	command_str += "|" + str(battle.rqid)
 	await ws.send(command_str)
 	if not format_output:
 		print("Sending turn decision: " + command_str)
@@ -128,6 +129,7 @@ async def send_turn_decision(ws, command_str, battle, format_output=False):
 			print(out_string)
 
 async def send_forced_switch_decision(ws, command_str, battle, format_output=False):
+	command_str += "|" + str(battle.rqid)
 	await ws.send(command_str)
 	if not format_output:
 		print("\nSending forced switch: " + command_str)

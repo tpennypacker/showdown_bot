@@ -106,17 +106,10 @@ async def parse_response(ws, msg):
 			battle.initialise_teams(msg_arr)
 			await battle.load_team_data(ws)
 
-
 async def connect_to_ps():
-	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket") as ws:
-		#with open("text_files/bot_log.txt", "w") as logfile:
+	async with websockets.connect("ws://sim.smogon.com:8000/showdown/websocket", ping_interval=None) as ws:
 		while(True):
 			msg = await ws.recv()
-			#print(msg)
-			#print("_____________________\n")
-			#msg = msg.replace("\u2606", "*plyr*")
-			#print(msg, file=logfile)
-			#print("_____________________________\n", file=logfile)
 			await parse_response(ws, msg)
 
 
@@ -128,3 +121,4 @@ else:
 
 
 asyncio.get_event_loop().run_until_complete(connect_to_ps())
+#asyncio.get_event_loop().run_forever()

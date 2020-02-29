@@ -49,7 +49,156 @@ def state_heuristic(battle):
 			score -= 100 + pokemon.health_percentage
 	return score
 
+
+"""def minimax(battle, depth, alpha, beta, maximizingPlayer):
+	# simulate turn and return heuristic evaluation
+	if depth == 0: #or game over in position
+		return state_heuristic(battle)
+
+	if maximizingPlayer:
+		maxEval = float("-inf")
+		for foe_decision in get_possible_decisions(battle, depth, "bot"): #each child of position
+			evall = minimax(child, depth - 1, alpha, beta, False)
+			maxEval = max(maxEval, evall)
+			alpha = max(alpha, evall)
+			if beta <= alpha:
+				break
+		return maxEval
+
+	else: # for each
+		minEval = float("inf")
+		for foe_decision in get_possible_decisions(battle, depth, "foe"): #each child of position
+			evall = minimax(child, depth - 1, alpha, beta, True)
+			minEval = min(minEval, evall)
+			beta = min(beta, evall)
+			if beta <= alpha:
+				break
+		return minEval"""
+
+"""# alpha = best score for bot (highest) out of all explored
+# beta = best score for foe (lowest)
+def minimax(battle, depth, alpha, beta, maximising_player):
+	# simulate turn and return heuristic evaluation
+	if depth == 0: #or game over in position
+		return state_heuristic(battle), None
+
+	if maximising_layer: # bot (maximise)
+		max_eval = float("-inf")
+		best_decision = []
+
+		# for each possible decision by bot
+		for bot_decision in get_possible_decisions(battle, depth, "bot"): #each child of position
+			# get evaluation assuming foe plays best move to counter
+			battle.bot_decision = bot_decision
+			evall, best_foe_decision = minimax(battle, depth - 1, alpha, beta, False)
+
+			# if this is higher (better) than previous best move gives then update
+			if (evall > max_eval):
+				max_eval = evall
+				best_decision = bot_decision
+
+			alpha = max(alpha, evall)
+
+			if beta <= alpha:
+				break
+
+		return max_eval, best_decision
+
+	else: # foe (minimise)
+		min_eval = float("inf")
+		best_decision = []
+
+		# for each possible decision by foe
+		for foe_decision in get_possible_decisions(battle, depth, "foe"): #each child of position
+			# call self recursively which will simulate turn
+			battle.foe_decision = foe_decision
+			evall, best_bot_decision = minimax(battle, depth - 1, alpha, beta, True)
+
+			# if this is lower (better) than previous best move gives then update
+			if (evall < min_eval):
+				min_eval = evall
+				best_decision = foe_decision
+
+			beta = min(beta, evall)
+
+			if beta <= alpha:
+				break
+
+		return min_eval, best_decision"""
+
+
+# alpha = best score for bot (highest) out of all explored
+# beta = best score for foe (lowest)
+def minimax(battle, depth, alpha, beta, maximising_player):
+	# here would want to get decisions for either side and simulate turn on even numbers
+	# simulate turn and return heuristic evaluation
+	if depth == 0: #or game over in position
+		battle_copy = simulation.simulate_turn(battle)
+		return state_heuristic(battle_copy), None
+
+	if maximising_player: # bot (maximise)
+		max_eval = float("-inf")
+		best_decision = []
+
+		# for each possible decision by bot
+		for bot_decision in battle.possible_bot_decisions: # each child of position
+			# get evaluation assuming foe plays best move to counter
+			battle.bot_decision = bot_decision
+			evall, best_foe_decision = minimax(battle, depth - 1, alpha, beta, False)
+			#print("score of {:.1f} for {}".format(evall, bot_decision))
+
+			# if this is higher (better) than previous best move gives then update
+			if (evall > max_eval):
+				max_eval = evall
+				best_decision = bot_decision
+
+			alpha = max(alpha, evall)
+
+			if beta <= alpha:
+				break
+
+		return max_eval, best_decision
+
+	else: # foe (minimise)
+		min_eval = float("inf")
+		best_decision = []
+
+		# for each possible decision by foe
+		for foe_decision in battle.possible_foe_decisions: # each child of position
+			# call self recursively which will simulate turn
+			battle.foe_decision = foe_decision
+			evall, best_bot_decision = minimax(battle, depth - 1, alpha, beta, True)
+
+			# if this is lower (better) than previous best move gives then update
+			if (evall < min_eval):
+				min_eval = evall
+				best_decision = foe_decision
+
+			beta = min(beta, evall)
+
+			if beta <= alpha:
+				break
+
+		return min_eval, best_decision
+
+
 # gets called at the start of each turn
+async def choose_moves(ws, battle):
+
+	# should ideally do this in minimax
+	battle.possible_bot_decisions = simulation.get_possible_decisions(battle, 0, "bot")
+	battle.possible_foe_decisions = simulation.get_possible_decisions(battle, 0, "foe")
+
+	score, best_choice = minimax(battle, 2, float("-inf"), float("inf"), True)
+
+	best_choice = formatting.format_move_choice(best_choice[0], best_choice[1])
+
+	command_str = battle.battletag + "|/choose " + best_choice
+	# send turn decision
+	await senders.send_turn_decision(ws, command_str, battle)
+
+
+"""# gets called at the start of each turn
 async def choose_moves(ws, battle):
 
 	# get active pokemon
@@ -125,6 +274,7 @@ async def choose_moves(ws, battle):
 	command_str = battle.battletag + "|/choose " + best_choice
 	# send turn decision
 	await senders.send_turn_decision(ws, command_str, battle)
+	"""
 
 
 

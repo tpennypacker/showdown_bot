@@ -94,11 +94,11 @@ def get_ability_effectiveness(user_abilities, move_type, foes, target, type_eff)
 def get_field_modifier(battle, my_types, my_abilities, move_type, move_category, foe):
 
 	# each True or False
-	user_flying = ("flying" in my_types or "levitate" in my_abilities)
-	target_flying = ("flying" in foe.types or "levitate" in foe.abilities)
+	user_flying = ("Flying" in my_types or "levitate" in my_abilities)
+	target_flying = ("Flying" in foe.types or "levitate" in foe.abilities)
 	mult = 1
 	# rock sp def boost in sand
-	if (battle.weather == "sandstorm" and "rock" in foe.types and  move_category == "Special"):
+	if (battle.weather == "sandstorm" and "Rock" in foe.types and  move_category == "Special"):
 		mult *= 2/3
 	# sun/rain effects
 	elif (move_type == "Fire"):
@@ -115,13 +115,23 @@ def get_field_modifier(battle, my_types, my_abilities, move_type, move_category,
 	if (move_type == "Dragon"):
 		if (battle.terrain == "mistyterrain" and target_flying == False):
 			mult *= 0.5
+	# could combine below terrains and weather above
 	elif (user_flying == False):
 		if (move_type == "Electric" and battle.terrain == "electricterrain"):
-			mult *= 1.5
-		if (move_type == "Psychic" and battle.terrain == "psychicterrain"):
-			mult *= 1.5
-		if (move_type == "Grass" and battle.terrain == "grassyterrain"):
-			mult *= 1.5
+			if (battle.gen >= 8):
+				mult *= 1.5
+			else:
+				mult *= 1.3
+		elif (move_type == "Psychic" and battle.terrain == "psychicterrain"):
+			if (battle.gen >= 8):
+				mult *= 1.5
+			else:
+				mult *= 1.3
+		elif (move_type == "Grass" and battle.terrain == "grassyterrain"):
+			if (battle.gen >= 8):
+				mult *= 1.5
+			else:
+				mult *= 1.3
 	return mult
 
 
@@ -157,6 +167,20 @@ def get_burn_modifier(move_name, move_category, status, abilities):
 	return mult
 
 
+def get_item_modifier(has_item, item, move_type, move_category):
+	mult = 1
+	# double facade bp
+	if (not has_item):
+		pass
+	elif (move_category == "Physical" and 'choiceband' in item):
+		mult *= 1.5
+	elif (move_category == "Special" and 'choicespecs' in item):
+		mult *= 1.5
+	elif ('lifeorb' in item):
+		mult *= 1.3
+	return mult
+
+
 # move is the move ID (string)
 # user and target are pokemon objects
 # battle is a battle object
@@ -177,11 +201,12 @@ def calc_damage (move, user, target, battle):
 	spread = 1
 	stab = get_stab_effectiveness(move_type, user.types, user.abilities)
 	type_eff = get_type_effectiveness(move_type, target.types)
-	ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.foe_team, target, type_eff)
+	ability_eff = get_ability_effectiveness(user.abilities, move_type, battle.active_pokemon('foe'), target, type_eff)
 	field_mult = get_field_modifier(battle, user.types, user.abilities, move_type, move_category, target)
 	crit = 1
 	random = 1 # actually between 0.85 and 1
 	burn = get_burn_modifier(move, move_category, user.status, user.abilities)
+	item_mod = get_item_modifier(user.has_item, user.item, move_type, move_category)
 
 	modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff
 

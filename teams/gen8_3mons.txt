@@ -1,0 +1,25 @@
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+EVs: 252 HP / 40 SpA / 216 Spe
+Timid Nature
+IVs: 0 Atk
+- Volt Switch
+- Hydro Pump
+- Electroweb
+
+Dragapult @ Life Orb
+Ability: Clear Body
+EVs: 4 HP / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Dragon Pulse
+- Shadow Ball
+- Fire Blast
+- Thunderbolt
+
+Sylveon @ Choice Specs
+Ability: Pixilate
+EVs: 4 HP / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Hyper Voice

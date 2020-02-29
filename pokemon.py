@@ -22,12 +22,12 @@ def infos_for_pokemon(pkm_name):
     if (pkm_name in json_dict.keys() ):
         pokemon = json_dict[pkm_name]
         res["types"] = pokemon["types"]
-        res["possibleAbilities"] = [formatting.get_formatted_name(ability) for ability in list(pokemon["abilities"].values())]
+        res["possibleAbilities"] = [ formatting.get_formatted_name(ability) for ability in list(pokemon["abilities"].values()) ]
         res["baseStats"] = pokemon["baseStats"]
     else: # if unrecognised, assume Normal with with Illuminate (does nothing) and 70 BST in each stat
         res["types"] = ["Normal"]
         res["possibleAbilities"] = [ formatting.get_formatted_name("Illuminate") ]
-        res["baseStats"] = {"hp":70,"atk":70,"def":70,"spa":70,"spd":70,"spe":70}
+        res["baseStats"] = {"hp":70, "atk":70, "def":70, "spa":70, "spd":70, "spe":70}
 
     return res
 

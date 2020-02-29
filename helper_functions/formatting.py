@@ -48,13 +48,13 @@ def remove_hp_power(move_name):
 
 def format_move_choice(move_1, move_2):
 	if (move_1 != 'pass' and move_2 != 'pass'): # both Pokemon alive
-		target1 = " {}".format(move_1[3]) if move_1[3] != None else ""
-		target2 = " {}".format(move_2[3]) if move_2[3] != None else ""
-		best_choice = "move " + move_1[2] + target1 + ", move " + move_2[2] + target2
+		target1 = " {}".format(move_1['target']) if move_1['target'] != None else ""
+		target2 = " {}".format(move_2['target']) if move_2['target'] != None else ""
+		best_choice = "move " + move_1['move_id'] + target1 + ", move " + move_2['move_id'] + target2
 	elif (move_2 == 'pass'): # only 1st Pokemon alive
-		target1 = " {}".format(move_1[3]) if move_1[3] != None else ""
-		best_choice = "move " + move_1[2] + target1 + ", pass"
+		target1 = " {}".format(move_1['target']) if move_1['target'] != None else ""
+		best_choice = "move " + move_1['move_id'] + target1 + ", pass"
 	else: # only 2nd Pokemon alive
-		target2 = " {}".format(move_2[3]) if move_2[3] != None else ""
-		best_choice = "pass, move " + move_2[2] + target2
+		target2 = " {}".format(move_2['target']) if move_2['target'] != None else ""
+		best_choice = "pass, move " + move_2['move_id'] + target2
 	return best_choice

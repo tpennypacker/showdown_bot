@@ -100,7 +100,7 @@ def get_items_from_line(line):
 #  get likely sets for the entire opposing team
 def update_likely_sets(battle, pokemon):
 	#site = "https://www.smogon.com/stats/2019-03/moveset/gen7doublesou-1500.txt"
-	site = "https://www.smogon.com/stats/2019-11/moveset/gen8doublesou-1500.txt"
+	site = "https://www.smogon.com/stats/2020-01/moveset/gen8doublesou-1500.txt"
 	request = requests.get(site)
 	text = request.text
 
