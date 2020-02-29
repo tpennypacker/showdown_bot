@@ -144,7 +144,7 @@ def is_spread_move(formatted_move):
 
 
 
-# probably should go in get_info?
+# apparently special cases already have attribute gmax power in moves.json?
 def get_max_move_bp(move_id):
     # special move cases
     if (move_id in ["crushgrip", "wringout", "magnitude", "doubleironbash"]):

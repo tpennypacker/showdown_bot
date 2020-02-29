@@ -64,7 +64,8 @@ class Pokemon:
         self.item = []  # list of likely items e.g. ["magoberry"]
 
         self.can_fake_out = True  # false after making a move, reset on switch
-        self.can_protect = 0  # 0 if can protect, above 0 means it can't (will be 2 on turn of use, 1 on the following turn), reset on switch
+        self.can_protect = True  # if can use a guaranteed protect
+        self.dynamax = 0  # 0 if not dynamaxed, otherwise counts down turns left
 
         # stat changes, values from -6 to 6
         self.buff = {  # first number boost from -6 to 6, second number is equivalent modifier
@@ -115,11 +116,13 @@ class Pokemon:
         self.clear_boosts()
         # reset ability to use fake out and protect
         self.can_fake_out = True
-        self.can_protect = 0
+        self.can_protect = True
         # reset types
         self.types = self.original_types
         # make inactive
         self.active = 0
+        # remove Dynamax
+        self.dynamax = 0
 
 
     def switch_in(self, position):

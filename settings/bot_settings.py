@@ -34,7 +34,7 @@ auto_join_room = "smogon doubles"  # bot will join this room when turned on, if 
 
 autosearch = False # will start searching for ladder game, and will continue to do so when in no battles (i.e. last battle finished)
 
-team_file = "gen8_only_attacks"  # name of file to use team from e.g. "mane_team" , not including the .txt, can be changed while running using $listteams and $changeteam
+team_file = "gen8_sunrose_rain"  # name of file to use team from e.g. "mane_team" , not including the .txt, can be changed while running using $listteams and $changeteam
 
 play_tier = "gen8doublesou"  # format to accept challenges in
 

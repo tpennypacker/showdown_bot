@@ -1,0 +1,56 @@
+Drednaw-Gmax @ Life Orb
+Ability: Swift Swim
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Liquidation
+- Head Smash
+- Throat Chop
+- Protect
+
+Pelipper @ Focus Sash
+Ability: Drizzle
+EVs: 8 HP / 12 Def / 232 SpA / 4 SpD / 252 Spe
+Modest Nature
+- Hydro Pump
+- Hurricane
+- U-turn
+- Tailwind
+
+Ludicolo @ Life Orb
+Ability: Swift Swim
+EVs: 84 HP / 20 Def / 196 SpA / 24 SpD / 184 Spe
+Modest Nature
+IVs: 0 Atk
+- Scald
+- Hydro Pump
+- Energy Ball
+- Ice Beam
+
+Excadrill @ Focus Sash
+Ability: Mold Breaker
+Happiness: 160
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Iron Head
+- High Horsepower
+- Rock Slide
+- Protect
+
+Gothitelle @ Aguav Berry
+Ability: Shadow Tag
+EVs: 252 HP / 200 Def / 4 SpA / 52 SpD
+Calm Nature
+IVs: 0 Atk
+- Psychic
+- Taunt
+- Trick Room
+- Protect
+
+Snorlax-Gmax @ Iapapa Berry
+Ability: Gluttony
+EVs: 204 HP / 40 Atk / 224 Def / 40 SpD
+Impish Nature
+- Facade
+- Fire Punch
+- Curse
+- Recycle

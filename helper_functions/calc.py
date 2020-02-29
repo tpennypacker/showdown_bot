@@ -16,7 +16,8 @@ def get_spread_mult(move, all_moves, target, battle):
 
 	alive_foes = [mon for mon in battle.active_pokemon('foe') if not mon.fainted]
 	alive_friends = [mon for mon in battle.active_pokemon('bot') if not mon.fainted]
-	alive_all = [mon for mon in battle.active_pokemon('both') if not mon.fainted]
+	#alive_all = [mon for mon in battle.active_pokemon('both') if not mon.fainted]
+	alive_all = alive_foes + alive_friends
 
 	# moves that hit all pokemon on field
 	if (attack_type == "allAdjacent" and len(alive_all) > 2):
@@ -208,7 +209,7 @@ def calc_damage (move, user, target, battle):
 	burn = get_burn_modifier(move, move_category, user.status, user.abilities)
 	item_mod = get_item_modifier(user.has_item, user.item, move_type, move_category)
 
-	modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff
+	modifier = spread * field_mult * crit * random * stab * type_eff * burn * ability_eff * item_mod
 
 	level = user.level
 	stat_ratio = get_stat_ratio(all_moves[move]["category"], user, target)

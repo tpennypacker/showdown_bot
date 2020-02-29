@@ -1,5 +1,8 @@
 make other AIs work with new system of move dict
-
+problem where drednaw crit koed something with headsmash then bot thought was dead next turn? on bot's side
+add multihit factor, in future make work properly with contact damage/justified/sub
+still seems to be using worst move a lot, exca using rock slide vs kiss/mel????
+also separate from that, calc thought strongest move for ludi vs kiss was ib even though it had hydro and rain (and stab)
 
 TODO:
 consider foe combinations - see how long it takes (~minute per turn right now, >1000 possibilities considered)
@@ -103,3 +106,14 @@ Logs:
 
 ">battle-gen8doublesou-1045063230↵↵|↵|move|p1b: Excadrill|Max Guard||[still]↵|-fail|p1b: Excadrill↵|move|p2a: Dragapult|Dragon Pulse|p1a: Dusclops↵|-damage|p1a: Dusclops|0 fnt↵|-damage|p2a: Dragapult|91/100|[from] item: Life Orb↵|faint|p1a: Dusclops↵|move|p2b: Rotom|Volt Switch|p1b: Excadrill↵|-immune|p1b: Excadrill↵|↵|-end|p1b: Excadrill|Dynamax↵|-heal|p1b: Excadrill|168/362|[silent]↵|upkeep↵"
 """
+
+
+F|100/100↵|switch|p2b: Kyurem|Kyurem|100/100↵|-ability|p2b: Kyurem|Pressure↵|-fieldstart|move: Psychic Terrain|[from] ability: Psychic Surge|[of] p1a: Indeedee↵|turn|1↵|↵|move|p1a: Indeedee|Follow Me|p1a: Indeedee↵|-singleturn|p1a: Indeedee|move: Follow Me↵|move|p2a: Duraludon|Steel Beam|p1b: Hatterene↵|-supereffective|p1b: Hatterene↵|-enditem|p1b: Hatterene|Babiri Berry|[eat]↵|-enditem|p1b: Hatterene|Babiri Berry|[weaken]↵|-damage|p1b: Hatterene|34/100↵|-damage|p2a: Duraludon|50/100|[from] mindblown↵|-enditem|p2a: Duraludon|Sitrus Berry|[eat]↵|-heal|p2a: Duraludon|75/100|[from] item: Sitrus Berry↵|move|p2b: Kyurem|Glaciate|p1a: Indeedee|[spread] p1a,p1b↵|-damage|p1a: Indeedee|66/100↵|-damage|p1b: Hatterene|0 fnt↵|-unboost|p1a: Indeedee|spe|1↵|faint|p1b: Hatterene↵|↵|upkeep↵|inactive|
+ADD ABILITY FROM WEATHER/TERRAIN RECOGNITION, ALSO CHECK FOR ABSORB/REDIRECT WHAT LIKE
+|↵|switch|p1b: Torkoal|Torkoal, F|100/100↵|-weather|SunnyDay|[from] ability: Drought|[of] p1b: Torkoal↵|turn|2↵|↵|move|p1a: Indeedee|Helping Hand|p1b: Torkoal↵|-singleturn|p1b: Torkoal|Helping Hand|[of] p1a: Indeedee↵|move|p2a:
+FRISK
+|100/100↵|switch|p1b: Dusclops|Dusclops, M|100/100↵|-item|p2a: Dracovish|Choice Band|[from] ability: Frisk|[of] p1b: Dusclops|[identify]↵|-item|p2b: Kyurem|Choice Specs|[from] ability: Frisk|[of] p1b: Dusclops|[identify]↵|turn|4↵|↵|move|p1a: Butterfree|Rage Powder|p1a: Butterfree↵|-singleturn|p1a: Butterfree|move: Rage Powder↵|move|p2b: Kyurem|Glaciate|p1a: Butterfree|[spread] p1a,p1b↵|-supereffective|p1a: Butterfree↵|-enditem|p1a: Butterfree|Focus Sash↵|-damage|p1a: Butterfree|1/100↵|-damage|p1b:
+WP
+Kyurem↵|move|p2a: Dracovish|Max Geyser|p1a: Rhyperior↵|-supereffective|p1a: Rhyperior↵|-damage|p1a: Rhyperior|72/100↵|-enditem|p1a: Rhyperior|Weakness Policy↵|-boost|p1a: Rhyperior|atk|2|[from] item: Weakness Policy↵|-boost|p1a: Rhyperior|spa|2|[from] item: Weakness Policy↵|-weather
+PAIN SPLIT
+M|100/100↵|turn|8↵|↵|move|p1b: Dusclops|Pain Split|p2a: Vikavolt↵|-sethp|p2a: Vikavolt|69/100 brn|[from] move: Pain Split|[silent]↵|-sethp|p1b: Dusclops|87/100|[from] move: Pain Split↵|move|p1a: Rhyperior

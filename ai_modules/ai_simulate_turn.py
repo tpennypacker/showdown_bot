@@ -34,107 +34,22 @@ import random
 from operator import itemgetter
 
 
+# should be able to replace this with entry for mega/zmove/dmax in move dict and single line if statements in output function
 mega_dic = {True: ' mega', False: ''}
 dyna_dic = {True: ' dynamax', False: ''}
 
 
-# evaluates battle and returns a single number representing how 'good' it is
-def state_heuristic(battle):
-	score = 0
-	for pokemon in battle.my_team:
-		if ( not pokemon.fainted ):
-			score += 100 + pokemon.health_percentage
-	for pokemon in battle.foe_team:
-		if ( not pokemon.fainted ):
-			score -= 100 + pokemon.health_percentage
-	return score
-
-
-"""def minimax(battle, depth, alpha, beta, maximizingPlayer):
-	# simulate turn and return heuristic evaluation
-	if depth == 0: #or game over in position
-		return state_heuristic(battle)
-
-	if maximizingPlayer:
-		maxEval = float("-inf")
-		for foe_decision in get_possible_decisions(battle, depth, "bot"): #each child of position
-			evall = minimax(child, depth - 1, alpha, beta, False)
-			maxEval = max(maxEval, evall)
-			alpha = max(alpha, evall)
-			if beta <= alpha:
-				break
-		return maxEval
-
-	else: # for each
-		minEval = float("inf")
-		for foe_decision in get_possible_decisions(battle, depth, "foe"): #each child of position
-			evall = minimax(child, depth - 1, alpha, beta, True)
-			minEval = min(minEval, evall)
-			beta = min(beta, evall)
-			if beta <= alpha:
-				break
-		return minEval"""
-
-"""# alpha = best score for bot (highest) out of all explored
-# beta = best score for foe (lowest)
-def minimax(battle, depth, alpha, beta, maximising_player):
-	# simulate turn and return heuristic evaluation
-	if depth == 0: #or game over in position
-		return state_heuristic(battle), None
-
-	if maximising_layer: # bot (maximise)
-		max_eval = float("-inf")
-		best_decision = []
-
-		# for each possible decision by bot
-		for bot_decision in get_possible_decisions(battle, depth, "bot"): #each child of position
-			# get evaluation assuming foe plays best move to counter
-			battle.bot_decision = bot_decision
-			evall, best_foe_decision = minimax(battle, depth - 1, alpha, beta, False)
-
-			# if this is higher (better) than previous best move gives then update
-			if (evall > max_eval):
-				max_eval = evall
-				best_decision = bot_decision
-
-			alpha = max(alpha, evall)
-
-			if beta <= alpha:
-				break
-
-		return max_eval, best_decision
-
-	else: # foe (minimise)
-		min_eval = float("inf")
-		best_decision = []
-
-		# for each possible decision by foe
-		for foe_decision in get_possible_decisions(battle, depth, "foe"): #each child of position
-			# call self recursively which will simulate turn
-			battle.foe_decision = foe_decision
-			evall, best_bot_decision = minimax(battle, depth - 1, alpha, beta, True)
-
-			# if this is lower (better) than previous best move gives then update
-			if (evall < min_eval):
-				min_eval = evall
-				best_decision = foe_decision
-
-			beta = min(beta, evall)
-
-			if beta <= alpha:
-				break
-
-		return min_eval, best_decision"""
-
-
 # alpha = best score for bot (highest) out of all explored
 # beta = best score for foe (lowest)
+sim_depth = 1  # how many turns deep to simulate
 def minimax(battle, depth, alpha, beta, maximising_player):
 	# here would want to get decisions for either side and simulate turn on even numbers
 	# simulate turn and return heuristic evaluation
-	if depth == 0: #or game over in position
-		battle_copy = simulation.simulate_turn(battle)
-		return state_heuristic(battle_copy), None
+	if (depth == sim_depth * 2): #or game over in position
+		#battle_copy = simulation.simulate_turn(battle)
+		battle_copy = copy.deepcopy(battle)
+		simulation.simulate_turn(battle_copy)
+		return simulation.state_heuristic(battle_copy), None
 
 	if maximising_player: # bot (maximise)
 		max_eval = float("-inf")
@@ -144,7 +59,7 @@ def minimax(battle, depth, alpha, beta, maximising_player):
 		for bot_decision in battle.possible_bot_decisions: # each child of position
 			# get evaluation assuming foe plays best move to counter
 			battle.bot_decision = bot_decision
-			evall, best_foe_decision = minimax(battle, depth - 1, alpha, beta, False)
+			evall, best_foe_decision = minimax(battle, depth + 1, alpha, beta, False)
 			#print("score of {:.1f} for {}".format(evall, bot_decision))
 
 			# if this is higher (better) than previous best move gives then update
@@ -167,7 +82,7 @@ def minimax(battle, depth, alpha, beta, maximising_player):
 		for foe_decision in battle.possible_foe_decisions: # each child of position
 			# call self recursively which will simulate turn
 			battle.foe_decision = foe_decision
-			evall, best_bot_decision = minimax(battle, depth - 1, alpha, beta, True)
+			evall, best_bot_decision = minimax(battle, depth + 1, alpha, beta, True)
 
 			# if this is lower (better) than previous best move gives then update
 			if (evall < min_eval):
@@ -188,94 +103,15 @@ async def choose_moves(ws, battle):
 	# should ideally do this in minimax
 	battle.possible_bot_decisions = simulation.get_possible_decisions(battle, 0, "bot")
 	battle.possible_foe_decisions = simulation.get_possible_decisions(battle, 0, "foe")
+	#battle_2 = copy.deepcopy(battle)
 
-	score, best_choice = minimax(battle, 2, float("-inf"), float("inf"), True)
+	score, best_choice = minimax(battle, 0, float("-inf"), float("inf"), True)
 
 	best_choice = formatting.format_move_choice(best_choice[0], best_choice[1])
 
 	command_str = battle.battletag + "|/choose " + best_choice
 	# send turn decision
 	await senders.send_turn_decision(ws, command_str, battle)
-
-
-"""# gets called at the start of each turn
-async def choose_moves(ws, battle):
-
-	# get active pokemon
-	allies = battle.active_pokemon("bot")
-	foes = battle.active_pokemon("foe")
-
-	bot_choices = []
-
-	# get list of legal moves for each Pokemon
-	for pokemon in allies:
-		if pokemon.fainted: # for dead pokemon pass
-			bot_choices.append(['pass'])
-		else:
-			moves = simulation.get_possible_moves(pokemon, battle, 0)
-			bot_choices.append(moves)
-
-
-	# for foes
-	foe_choices = []
-	for pokemon in foes:
-		if pokemon.fainted: # for dead pokemon pass
-			foe_choices.append(['pass'])
-		else:
-			moves = simulation.get_possible_moves(pokemon, battle, 0)
-			foe_choices.append(moves)
-
-	best_choice = ""
-	best_state = None
-
-	player_dict = {"bot": "foe", "foe": "bot"}
-	with open('data/moves.json') as moves_file:
-		moves_dex = json.load(moves_file)
-
-	#pos = len(bot_choices[0]) * len(bot_choices[1]) #* len(foe_choices[0]) * len(foe_choices[1])
-	#ind = 0
-
-	# simulate each possible user move combination against foe's first option
-	for move_1 in bot_choices[0]:
-		for move_2 in bot_choices[1]:
-			#for foe_move_1 in foe_choices[0]:
-				#for foe_move_2 in foe_choices[1]:
-			foe_move_1 = foe_choices[0][0]
-			foe_move_2 = foe_choices[1][0]
-			#ind += 1
-			#print("Simulation {}/{}".format(ind,pos))
-			#foe_move_1, foe_move_2 = foe_choices[0][0], foe_choices[1][0]
-			move_order = [move_1, move_2, foe_move_1, foe_move_2]
-			#print(move_order)
-			move_order = [move for move in move_order if move != "pass"] # remove moves from dead pokemon
-			move_order = sorted(move_order, key=lambda x: (x[-2], x[-1])) # sort by priority then by speed
-			battle_copy = copy.deepcopy(battle)
-			# while moves left
-			while ( len(move_order) > 0 ):
-				# sort order after each move due to new speed mechanics (need to recalculate speeds first!)
-				#moves = sorted(unsorted, key=lambda x: (x[1], x[2]))
-				# get move and remove from list
-				move = move_order.pop(0)
-				# currently only consider attacks by bot
-				if (moves_dex[move[2]]['category'] == 'Status' or move[0] == "foe"):
-					continue
-				# get user and targets to deal with attack
-				user = next((mon for mon in battle_copy.active_pokemon(move[0]) if mon.id == move[1]))
-				foes = battle_copy.active_pokemon(player_dict[move[0]])
-				simulation.simulate_attack(move, user, foes, battle_copy, move_order)
-			# moves done, would do end of turn effects here
-			# evaluate new state with heuristic function based on hp/alive pokemon
-			score = state_heuristic(battle_copy)
-			# if better than current best choice, then update
-			if (best_state == None or score > best_state):
-				best_state = score
-				best_choice = formatting.format_move_choice(move_1, move_2)
-
-	command_str = battle.battletag + "|/choose " + best_choice
-	# send turn decision
-	await senders.send_turn_decision(ws, command_str, battle)
-	"""
-
 
 
 # gets called when forced to switch
@@ -306,7 +142,6 @@ async def choose_switch(ws, battle, switches):
 	# send switch decision
 	command_str = battle.battletag + "|/choose " + switch_str
 	await senders.send_forced_switch_decision(ws, command_str, battle)
-
 
 
 # gets called at team preview

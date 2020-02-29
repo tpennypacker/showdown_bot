@@ -103,3 +103,16 @@ https://replay.pokemonshowdown.com/gen8doublesou-1070973036 | Loss | Yoda2798 | 
 https://replay.pokemonshowdown.com/gen8doublesou-1070977447 | Loss | Yoda2798 | Rotom-Mow, Milotic, Excadrill, Arcanine, Grimmsnarl, Hydreigon
 https://replay.pokemonshowdown.com/gen8doublesou-1071159244 | Loss | Yoda2798 | Hawlucha, Indeedee-F, Cinderace, Gastrodon-East, Rotom-Mow, Drifblim
 https://replay.pokemonshowdown.com/gen8doublesou-1071166499 | Loss | Yoda2798 | Excadrill, Pelipper, Drednaw, Gothitelle, Ludicolo, Snorlax
+https://replay.pokemonshowdown.com/gen8doublesou-1071258578 | Win | Yoda2798 | Dragapult, Togekiss, Arcanine, Rhyperior, Rotom-Wash, Bronzong
+https://replay.pokemonshowdown.com/gen8doublesou-1071272542 | Loss | Yoda2798 | Bisharp, Sylveon, Braviary, Rotom-Mow, Dracovish, Arcanine
+https://replay.pokemonshowdown.com/gen8doublesou-1071274775 | Win | Yoda2798 | Oranguru, Torkoal, Rhyperior, Butterfree, Dusclops, Hatterene
+https://replay.pokemonshowdown.com/gen8doublesou-1071278662 | Win | Yoda2798 | Hawlucha, Indeedee-F, Cinderace, Gastrodon-East, Rotom-Mow, Drifblim
+https://replay.pokemonshowdown.com/gen8doublesou-1071281365 | Loss | Yoda2798 | Bisharp, Sylveon, Braviary, Rotom-Mow, Dracovish, Arcanine
+https://replay.pokemonshowdown.com/gen8doublesou-1071356035 | Loss | Yoda2798 | Lapras, Excadrill, Tyranitar, Whimsicott, Arcanine, Corviknight
+https://replay.pokemonshowdown.com/gen8doublesou-1071360892 | Loss | Yoda2798 | Braviary, Clefairy, Ferrothorn, Corviknight, Rotom-Wash, Kommo-o
+https://replay.pokemonshowdown.com/gen8doublesou-1071364465 | Loss | Yoda2798 | Tyranitar, Excadrill, Indeedee-F, Gastrodon-East, Arcanine, Hawlucha
+https://replay.pokemonshowdown.com/gen8doublesou-1071437370 | Loss | Yoda2798 | Togekiss, Dragapult, Excadrill, Rotom-Mow, Tyranitar, Gastrodon-East
+https://replay.pokemonshowdown.com/gen8doublesou-1071439788 | Win | MegaCrazy | Dragapult, Terrakion, Whimsicott, Keldeo, Incineroar, Blastoise
+https://replay.pokemonshowdown.com/gen8doublesou-1071442392 | Win | Yoda2798 | Hydreigon, Hatterene, Pelipper, Charizard, Ludicolo, Rhyperior
+https://replay.pokemonshowdown.com/gen8doublesou-1071448549 | Loss | Yoda2798 | Sableye, Sylveon, Corviknight, Toxtricity, Dragapult, Gyarados
+https://replay.pokemonshowdown.com/gen8doublesou-1071448874 | Loss | dlts1dewgong | Dragapult, Togekiss, Gothitelle, Rotom-Wash, Incineroar, Melmetal

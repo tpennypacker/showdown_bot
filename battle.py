@@ -37,7 +37,6 @@ class Battle:
 		self.start_datetime = str(datetime.datetime.now())
 		self.did_bot_win = False
 		self.gen = int(battletag.split("gen")[1][0])
-		print("ggen issss",self.gen)
 
 		# used for simulating turns
 		self.possible_bot_decisions = []
@@ -46,6 +45,20 @@ class Battle:
 		self.foe_decision = []
 
 		self.rqid = 0 # code to show which request message are responding to
+
+		# currently not used otherwise
+		self.can_mega = {'bot': False, 'foe': False}
+		self.can_zmove = {'bot': False, 'foe': False}
+		self.can_dmax = {'bot': False, 'foe': False}
+		if (self.gen in [6, 7]):
+			self.can_mega = {'bot': True, 'foe': True}
+			if (self.gen == 7):
+				self.can_zmove = {'bot': True, 'foe': True}
+		elif (self.gen == 8): # doesn't consider banned in singles
+			self.can_dmax = {'bot': True, 'foe': True}
+
+		# will take entries of form {'move': 'ragepowder', 'user_id': 'Amoonguss'}
+		self.redirection = {'bot': {}, 'foe': {}}
 
 
 	# load pokemon into teams from team preview
@@ -104,7 +117,7 @@ class Battle:
 				pokemon.health_points = "0"
 				pokemon.health_percentage = 0
 				hp2 = -1
-				pokemon.has_fainted = True
+				pokemon.fainted = True
 				pokemon.status = "fnt"
 			else:
 				# set status
@@ -242,24 +255,31 @@ class Battle:
 	# update counters for things like tr/tw/terrain/weather
 	def upkeep_counters(self):
 
-		# trick room
+		# Trick Room
 		if (self.trick_room > 0):
 			self.trick_room -= 1
-		# tailwind
+		# Tailwind
 		if (self.tailwind["bot"] > 0):
 			self.tailwind["bot"] -= 1
 		if (self.tailwind["foe"] > 0):
 			self.tailwind["foe"] -= 1
-		# terrain
+		# Terrain
 		if (self.terrain_turns_left > 0):
 			self.terrain_turns_left -= 1
-		# weather
+		# Weather
 		if (self.weather_turns_left > 0):
 			self.weather_turns_left -= 1
-		# protect
+		# invidivual Pokemon stuff
 		for pokemon in self.active_pokemon("both"):
-			if (pokemon.can_protect > 0):
-				pokemon.can_protect -= 1
+			# Protect
+			if (pokemon.can_protect == False):
+				pokemon.can_protect = True
+			# Dynamax
+			if (pokemon.dynamax > 0):
+				pokemon.dynamax -= 1
+
+		# redirection
+		self.redirection = {'bot': {}, 'foe': {}}
 
 
 	# calculate order pokemon should move, returning list of lists in form [side, position, pokemon id, effective speed]
