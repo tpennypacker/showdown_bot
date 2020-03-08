@@ -67,6 +67,9 @@ class Pokemon:
         self.can_protect = True  # if can use a guaranteed protect
         self.dynamax = 0  # 0 if not dynamaxed, otherwise counts down turns left
 
+        self.flinched = 0  # chance to flinch, either 0 or 1
+        self.protect = 0  # current protect status, 0 for none, 1 for normal, 2 for max guard
+
         # stat changes, values from -6 to 6
         self.buff = {  # first number boost from -6 to 6, second number is equivalent modifier
             "atk": [0, 1],
@@ -123,6 +126,9 @@ class Pokemon:
         self.active = 0
         # remove Dynamax
         self.dynamax = 0
+        # reset flinch/protect
+        self.flinched = 0
+        self.protect = 0
 
 
     def switch_in(self, position):
@@ -135,8 +141,8 @@ class Pokemon:
 
         # speed stat and buff
         speed = self.stats['spe'] * self.buff['spe'][1]
-        # choice scarf
 
+        # choice scarf
         if (self.has_item and 'choicescarf' in self.item):
             speed *= 1.5
 

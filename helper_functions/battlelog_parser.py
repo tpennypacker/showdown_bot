@@ -38,7 +38,10 @@ def major_actions(battle: Battle, split_line, side_dict):
             battle.form_change("foe", position, new_id)
     # includes flinches - use for Stomping Tantrum boost?
     elif split_line[0] == "cant":
-        pass
+        side = side_dict[split_line[1][0:2]]
+        position = pos_dict[split_line[1][2]]
+        pokemon = battle.get_pokemon(side, position)
+        pokemon.can_fake_out = False
     # Pokemon fainting, currently do for bot team with team_data anyways
     elif split_line[0] == "faint":
         position = pos_dict[split_line[1][2]]

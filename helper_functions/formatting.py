@@ -1,60 +1,75 @@
-
+import json
 
 
 # format active moves, and denote disabled moves as ""
 def format_active_move(move):
-	if (move["disabled"] == True):
-		return ""
-	else:
-		return format_move(move["move"])
+    if (move["disabled"] == True):
+        return ""
+    else:
+        return format_move(move["move"])
 
 
 # format move e.g. "U-turn" -> "uturn"
 def format_move(move):
-	return move.replace("move: ","").strip("\n").lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
+    return move.replace("move: ","").strip("\n").lower().replace(" ", "").replace("'", "").replace("-", "").replace(",", "")
 
 
 mons_with_useless_forms = ['gastrodon', 'shellos', 'florges', 'genesect',
-							'deerling', 'sawsbuck', 'burmy', 'furfrou',
-							'magearna', 'minior', 'gourgeist', 'pumpkaboo']
+                            'deerling', 'sawsbuck', 'burmy', 'furfrou',
+                            'magearna', 'minior', 'gourgeist', 'pumpkaboo']
 
 def get_formatted_name(pokemon_name):
-	formatted = pokemon_name.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "").replace("*","").strip("\n")
+    formatted = pokemon_name.split(",")[0].lower().replace(' ', '').replace('-', '').replace("'", "").replace(":", "").replace("*","").strip("\n")
 
-	for mon in mons_with_useless_forms:
-		if mon in formatted:
-			return mon
+    for mon in mons_with_useless_forms:
+        if mon in formatted:
+            return mon
 
-	return formatted
+    return formatted
 
 
 def format_switch_name(pokemon_name):
-	pokemon_name = pokemon_name.split(',')[0]
-	if (pokemon_name[-4:] == "mega"):
-		return pokemon_name[:-4]
-	elif (pokemon_name[-5:] == "megax" or pokemon_name[-5:] == "megay"):
-		return pokemon_name[:-5]
-	else:
-		return pokemon_name
+    pokemon_name = pokemon_name.split(',')[0]
+    if (pokemon_name[-4:] == "mega"):
+        return pokemon_name[:-4]
+    elif (pokemon_name[-5:] == "megax" or pokemon_name[-5:] == "megay"):
+        return pokemon_name[:-5]
+    else:
+        return pokemon_name
 
 
 # e.g. convert "hiddenpowerice60" to "hiddenpowerice"
 def remove_hp_power(move_name):
-	if ("hiddenpower" in move_name):
-		return move_name[:-2]
-	else:
-		return move_name
+    if ("hiddenpower" in move_name):
+        return move_name[:-2]
+    else:
+        return move_name
 
 
-def format_move_choice(move_1, move_2):
-	if (move_1 != 'pass' and move_2 != 'pass'): # both Pokemon alive
-		target1 = " {}".format(move_1['target']) if move_1['target'] != None else ""
-		target2 = " {}".format(move_2['target']) if move_2['target'] != None else ""
-		best_choice = "move " + move_1['move_id'] + target1 + ", move " + move_2['move_id'] + target2
-	elif (move_2 == 'pass'): # only 1st Pokemon alive
-		target1 = " {}".format(move_1['target']) if move_1['target'] != None else ""
-		best_choice = "move " + move_1['move_id'] + target1 + ", pass"
-	else: # only 2nd Pokemon alive
-		target2 = " {}".format(move_2['target']) if move_2['target'] != None else ""
-		best_choice = "pass, move " + move_2['move_id'] + target2
-	return best_choice
+def format_move_choice(moves):
+    moves_str = []
+    for move in moves:
+        if ('pass' in move.keys()):
+            moves_str.append('pass')
+        else:
+            target = ' {}'.format(move['target']) if move['target'] != None else ''
+            str = 'move {}{}'.format( move['move_id'], target )
+            moves_str.append(str)
+    best_choice = ', '.join(moves_str)
+    return best_choice
+
+
+def format_move_choice_pretty(moves, battle, opp_side):
+    with open('data/moves.json') as moves_file:
+        moves_dex = json.load(moves_file)
+    moves_str = []
+    for move in moves:
+        if ('pass' in move.keys()):
+            pass
+        else:
+            move_name = moves_dex[move['move_id']]['name']
+            target = ' {}'.format( battle.get_pokemon(opp_side, move['target']).id ) if move['target'] in [1, 2] else ''
+            str = '{}{}'.format( move_name, target )
+            moves_str.append(str)
+    best_choice = ', '.join(moves_str)
+    return best_choice

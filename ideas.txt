@@ -1,0 +1,23 @@
+Kinda should make sure everything rounded for damages/hps currently do in state heuristic might be okay but still idk couldn't find problem
+maybe round all hps to int?
+possibly reduce value of KO? since should prioritise in some form to reduce damage taken anyways
+had exca using rock slide vs rotom/tar, look into
+print move combinations, id/moveid as well as score
+take score before turn and subtract from end ones in showing, to get better idea of what's happening
+show foes strongest response to our best move
+factor in multiplied accuracies to evaluation as tiebreaker?
+because moves getting redirected on ko, doesn't care about target of 2nd move, will be fixed when add protect or order moves individually first?
+discard moves like eq/surf that hit partner if damage on them is greater than say 10% (or even if just not immune/protecting)
+also only have strongest spread move, or at least discard ones that do less damage to both foes compared to another move?
+have protect = 0,1,2 for not, normal, dynamax
+have try except with move decisions stuff inside so don't break if problem?
+have log file all messages are logged to and overwrite on each run
+make sure not adding options to hit dead foe
+if two moves with equal evaluation, choose the one targeting different slots? makes better against protect in that case
+if one spread then use one that koes the other foe (more complicated), if first move koes already then idk
+
+
+add fake out stuff, considering only against not inner focus or ghost, only when can use, add flinch counter on pokemon and make reset at end of turn, also to ignore moves for flinched pokemon
+add pixelate, also strong jaw/iron fist etc for some basic abilities
+make knock out work with getting boost at least
+add consideration for focus sash when dealing damage

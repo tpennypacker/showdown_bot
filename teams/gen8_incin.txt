@@ -1,0 +1,57 @@
+Incineroar @ Sitrus Berry
+Ability: Intimidate
+EVs: 252 HP / 36 Atk / 204 SpD / 16 Spe
+Careful Nature
+- Fake Out
+- Flare Blitz
+- Knock Off
+- U-turn
+
+Dragapult @ Life Orb
+Ability: Clear Body
+EVs: 4 Def / 252 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Draco Meteor
+- Shadow Ball
+- Fire Blast
+- Protect
+
+Melmetal @ Assault Vest
+Ability: Iron Fist
+EVs: 156 HP / 152 Atk / 152 SpD / 48 Spe
+Adamant Nature
+- Double Iron Bash
+- Thunder Punch
+- High Horsepower
+- Body Press
+
+Togekiss @ Scope Lens
+Ability: Super Luck
+EVs: 4 Def / 252 SpA / 252 Spe
+Modest Nature
+IVs: 0 Atk
+- Air Slash
+- Dazzling Gleam
+- Heat Wave
+- Follow Me
+
+Rotom-Wash @ Sitrus Berry
+Ability: Levitate
+EVs: 40 HP / 216 SpA / 252 Spe
+Timid Nature
+IVs: 0 Atk
+- Thunderbolt
+- Hydro Pump
+- Electroweb
+- Dark Pulse
+
+Excadrill @ Focus Sash
+Ability: Mold Breaker
+Happiness: 160
+EVs: 252 Atk / 4 SpD / 252 Spe
+Jolly Nature
+- Iron Head
+- High Horsepower
+- Rock Slide
+- Protect

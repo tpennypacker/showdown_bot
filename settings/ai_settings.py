@@ -15,3 +15,8 @@ alpha = 20
 # >= beta, then it is assumed the foe has that item
 # (based on usage stats)
 beta = 10
+
+# if the probability of a foe's pokemon having a certain ability is
+# >= gamma, then it is assumed the foe has that ability
+# (based on usage stats)
+gamma = 15
