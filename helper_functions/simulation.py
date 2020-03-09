@@ -210,6 +210,7 @@ def simulate_attack(move, user, targets, battle, move_order):
         # fake out, should factor in hitting ghost/protect seeing if damage > 0
         #target.flinched = 1 if move['move_id'] == 'fakeout'
         if move['move_id'] == 'fakeout': target.flinched = 1
+        elif move['move_id'] == 'knockoff': target.has_item = False
 
 
 def simulate_turn(battle, debug=False):

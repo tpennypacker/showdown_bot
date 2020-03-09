@@ -114,7 +114,7 @@ async def choose_moves(ws, battle):
 
     best_choice = formatting.format_move_choice_pretty(best_choice, battle, 'foe')
     best_foe_choice = formatting.format_move_choice_pretty(best_foe_choice, battle, 'bot')
-
+    
     print('Best move for Bot and best response:\n{}\n{}\nPredicted change to evaluation: {}\n'.format(best_choice, best_foe_choice, round(eval-cur_eval,1)))
 
     # send turn decision

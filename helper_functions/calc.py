@@ -102,7 +102,7 @@ def get_field_modifier(battle, my_types, my_abilities, move_type, move_category,
     if (battle.weather == "sandstorm" and "Rock" in foe.types and  move_category == "Special"):
         mult *= 2/3
     # sun/rain effects
-    elif (move_type == "Fire"):
+    if (move_type == "Fire"):
         if (battle.weather == "sunnyday"):
             mult *= 1.5
         elif (battle.weather == "raindance"):
@@ -113,7 +113,7 @@ def get_field_modifier(battle, my_types, my_abilities, move_type, move_category,
         elif (battle.weather == "raindance"):
             mult *= 1.5
     # terrain
-    if (move_type == "Dragon"):
+    elif (move_type == "Dragon"):
         if (battle.terrain == "mistyterrain" and target_flying == False):
             mult *= 0.5
     # could combine below terrains and weather above
@@ -216,6 +216,9 @@ def calc_damage(move, user, target, battle, spread_modifier=1):
     else:
         mod = 1
     power *= mod
+
+    # Knock Off
+    if (move == 'knockoff' and target.has_item): power *= 1.5
 
     #spread = get_spread_mult(move, all_moves, target, battle)
     #spread = 1

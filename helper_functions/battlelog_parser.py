@@ -153,11 +153,12 @@ def minor_actions(battle: Battle, split_line, side_dict):
         pokemons = battle.active_pokemon("both")
         [pokemon.clear_boosts() for pokemon in pokemons]
     # Weather, ignore on upkeep messages
-    elif split_line[0] == "-weather" and len(split_line) == 2: #and len(split_line) >= 3 and split_line[2].strip("\n") != "[upkeep]":
+    elif split_line[0] == "-weather": #and len(split_line) == 2: #and len(split_line) >= 3 and split_line[2].strip("\n") != "[upkeep]":
+        weather = formatting.format_move(split_line[1])
         if (split_line[1].strip("\n") == "none"):
             battle.weather = None
             battle.weather_turns_left = 0
-        else:
+        elif (weather != battle.weather):
             battle.weather = formatting.format_move(split_line[1])
             battle.weather_turns_left = 5
     # Terrain, Trick Room start

@@ -137,3 +137,16 @@ https://replay.pokemonshowdown.com/gen8doublesou-1075593731 | Loss | Yoda2798 | 
 https://replay.pokemonshowdown.com/gen8doublesou-1075606679 | Loss | Yoda2798 | Togekiss, Dragapult, Excadrill, Rotom-Mow, Tyranitar, Gastrodon-East
 https://replay.pokemonshowdown.com/gen8doublesou-1075614849 | Loss | Yoda2798 | Incineroar, Dragapult, Melmetal, Togekiss, Rotom-Wash, Excadrill
 https://replay.pokemonshowdown.com/gen8doublesou-1075620973 | Win | Yoda2798 | Incineroar, Sylveon, Melmetal, Jellicent, Braviary, Rotom-Mow
+https://replay.pokemonshowdown.com/gen8doublesou-1075628830 | Win | Yoda2798 | Hydreigon, Hatterene, Pelipper, Charizard, Ludicolo, Rhyperior
+https://replay.pokemonshowdown.com/gen8doublesou-1075656968 | Loss | Yoda2798 | Togekiss, Dragapult, Excadrill, Rotom-Mow, Tyranitar, Gastrodon-East
+https://replay.pokemonshowdown.com/gen8doublesou-1075659835 | Win | Yoda2798 | Hydreigon, Hatterene, Pelipper, Charizard, Ludicolo, Rhyperior
+https://replay.pokemonshowdown.com/gen8doublesou-1075662267 | Loss | Yoda2798 | Lapras, Arcanine, Hitmontop, Dragapult, Corviknight, Sylveon
+https://replay.pokemonshowdown.com/gen8doublesou-1075663579 | Loss | Yoda2798 | Gothitelle, Torkoal, Venusaur, Melmetal, Whimsicott, Dracozolt
+https://replay.pokemonshowdown.com/gen8doublesou-1075665497 | Win | Yoda2798 | Incineroar, Torkoal, Venusaur, Melmetal, Togekiss, Gothitelle
+https://replay.pokemonshowdown.com/gen8doublesou-1075665690 | Win | Yoda2798 | Rotom-Mow, Milotic, Excadrill, Arcanine, Grimmsnarl, Hydreigon
+https://replay.pokemonshowdown.com/gen8doublesou-1075808515 | Win | Yoda2798 | Drednaw, Pelipper, Ludicolo, Excadrill, Gothitelle, Snorlax
+https://replay.pokemonshowdown.com/gen8doublesou-1075810562 | Win | Yoda2798 | Hydreigon, Hatterene, Pelipper, Charizard, Ludicolo, Rhyperior
+https://replay.pokemonshowdown.com/gen8doublesou-1075812986 | Loss | MegaCrazy | Torkoal, Venusaur, Gothitelle, Incineroar, Melmetal, Charizard
+https://replay.pokemonshowdown.com/gen8doublesou-1075815013 | Loss | Yoda2798 | Gothitelle, Melmetal, Venusaur, Dragapult, Sylveon, Torkoal
+https://replay.pokemonshowdown.com/gen8doublesou-1075816987 | Win | Yoda2798 | Togekiss, Rotom-Wash, Arcanine, Kommo-o, Bronzong, Gigalith
+https://replay.pokemonshowdown.com/gen8doublesou-1075817857 | Loss | Yoda2798 | Incineroar, Sylveon, Melmetal, Jellicent, Braviary, Rotom-Mow
