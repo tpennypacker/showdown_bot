@@ -19,6 +19,10 @@ make knock out work with getting boost at least
 add consideration for focus sash when dealing damage
 
 
-fishious rend, dragon darts, eruption, dragon darts, phantom force, follow me/rage powder, status moves
+fishious rend, dragon darts, eruption, dragon darts, phantom force, follow me/rage powder, status moves, taunt/encore/disable, substitute
 half damage against dmax
 for dmaxed pokemon use max moves
+
+
+when evaluating moves from one side (against null move), could cut off moves say 100 lower than best? ignoring fake out/status/switch
+could maybe just ignore spread moves hitting everything for now since rarely good and does add an extra second or so, in better case only consider in certain cases or have lower priority in list

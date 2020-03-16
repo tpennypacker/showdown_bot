@@ -218,6 +218,7 @@ def calc_damage(move, user, target, battle, spread_modifier=1):
     power *= mod
 
     # Knock Off
+    #print(target.id, target.has_item)
     if (move == 'knockoff' and target.has_item): power *= 1.5
 
     #spread = get_spread_mult(move, all_moves, target, battle)

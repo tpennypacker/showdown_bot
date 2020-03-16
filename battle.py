@@ -69,7 +69,11 @@ class Battle:
                 # get name/id of pokemon and if has item
                 split_msg = [i.strip() for i in msg_arr[i-1].split(',')]
                 id = split_msg[0]
-                has_item = (msg_arr[i] == "item\n")
+                # don't see if have item in gen 8 so assume true
+                if (self.gen >= 8):
+                    has_item = True
+                else:
+                    has_item = (msg_arr[i] == "item\n")
                 # look for level, gender
                 level, gender, shiny = 100, None, False  # values if not given
                 for part in split_msg[1:]:
